@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zorfix — Atelier de l'image inévitable</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,200;1,9..144,300;1,9..144,400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0907;
+  --bg-soft:#11100D;
+  --ink:#E8E2D2;
+  --ink-dim:#8C887E;
+  --ink-faint:#4A4844;
+  --gold:#E8B53C;
+  --gold-warm:#F4C957;
+  --line:rgba(232,181,60,0.15);
+  --line-soft:rgba(232,226,210,0.06);
+  --ease:cubic-bezier(.16,1,.3,1);
+  --ease-sharp:cubic-bezier(.7,0,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased}
+html,body{background:var(--bg);color:var(--ink);font-family:'Fraunces',serif;font-weight:300;line-height:1.55;overflow-x:hidden;cursor:none}
+html{scroll-behavior:smooth}
+::selection{background:var(--gold);color:var(--bg)}
+
+/* Subtle film grain */
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:0.035;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ─── CURSOR ─── */
+.cur-dot,.cur-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;will-change:transform;mix-blend-mode:difference}
+.cur-dot{width:5px;height:5px;background:var(--gold);border-radius:50%;transform:translate(-50%,-50%)}
+.cur-ring{width:32px;height:32px;border:1px solid rgba(232,181,60,0.5);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.4s var(--ease),height 0.4s var(--ease),border-color 0.3s,background 0.3s}
+.cur-ring.grow{width:72px;height:72px;border-color:var(--gold);background:rgba(232,181,60,0.04)}
+@media(hover:none){html,body{cursor:auto}.cur-dot,.cur-ring{display:none}}
+
+/* ─── LOADER ─── */
+.loader{position:fixed;inset:0;background:var(--bg);z-index:10000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2rem;transition:opacity 0.9s var(--ease) 0.5s,visibility 0s linear 1.4s}
+.loader.gone{opacity:0;visibility:hidden}
+.loader svg{width:64px;height:64px}
+.loader .l-stroke{stroke:var(--gold);fill:none;stroke-width:1;stroke-dasharray:300;stroke-dashoffset:300;animation:draw 1.4s var(--ease) forwards}
+.loader .l-stroke.s2{animation-delay:0.2s}
+.loader .l-stroke.s3{animation-delay:0.4s}
+.loader .l-stroke.s4{animation-delay:0.6s;stroke-dasharray:20}
+@keyframes draw{to{stroke-dashoffset:0}}
+.loader-meta{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.4em;color:var(--ink-dim);text-transform:uppercase;opacity:0;animation:fadeIn 0.6s 0.8s forwards}
+.loader-meta span{color:var(--gold)}
+@keyframes fadeIn{to{opacity:1}}
+
+/* ─── TOP BAR ─── */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.6rem 2rem;font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.3em;color:var(--ink);text-transform:uppercase;mix-blend-mode:difference}
+.tb-brand{display:flex;align-items:center;gap:0.7rem}
+.tb-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:0.5;transform:scale(0.9)}50%{opacity:1;transform:scale(1.15)}}
+.tb-center{display:none}
+@media(min-width:900px){.tb-center{display:block;opacity:0.6}}
+.tb-right{display:flex;gap:2rem;align-items:center}
+.tb-time{color:var(--gold);opacity:0.9}
+.tb-cta{position:relative;padding:0.7rem 1.3rem;border:1px solid var(--line);color:var(--gold);text-decoration:none;overflow:hidden;transition:color 0.5s var(--ease-sharp)}
+.tb-cta::before{content:'';position:absolute;inset:0;background:var(--gold);transform:translateY(101%);transition:transform 0.5s var(--ease-sharp);z-index:-1}
+.tb-cta:hover{color:var(--bg)}
+.tb-cta:hover::before{transform:translateY(0)}
+
+/* ─── PAGE INDICATOR ─── */
+.page-ind{position:fixed;right:2rem;top:50%;transform:translateY(-50%);z-index:80;display:flex;flex-direction:column;gap:1.2rem;mix-blend-mode:difference}
+.page-ind .pi-line{position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(232,226,210,0.1);transform:translateX(-50%)}
+.pi-item{position:relative;display:flex;align-items:center;gap:0.7rem;font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.25em;color:var(--ink-faint);text-transform:uppercase;transition:color 0.4s}
+.pi-item.active{color:var(--gold)}
+.pi-mark{width:8px;height:8px;border:1px solid currentColor;background:var(--bg);border-radius:50%;transition:all 0.4s var(--ease)}
+.pi-item.active .pi-mark{background:var(--gold);box-shadow:0 0 0 4px rgba(232,181,60,0.15)}
+.pi-num{display:none}
+@media(min-width:1100px){.pi-num{display:block}}
+@media(max-width:900px){.page-ind{display:none}}
+
+/* ─── DRIFT (floating decorative numerals) ─── */
+.drift{position:absolute;font-family:'Fraunces',serif;font-style:italic;font-weight:200;color:rgba(232,181,60,0.025);pointer-events:none;line-height:0.8;letter-spacing:-0.05em;z-index:0;will-change:transform}
+
+/* ─── COMMON FRAME ─── */
+.frame{position:relative;padding:8rem 2rem;z-index:1}
+.frame > *{position:relative;z-index:2}
+.label{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.35em;color:var(--gold);text-transform:uppercase;display:inline-flex;align-items:center;gap:0.7rem}
+.label::before{content:'';width:2rem;height:1px;background:var(--gold)}
+
+/* ─── I — WELCOME ─── */
+#fI{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:8rem 2rem 6rem}
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.4em;color:var(--ink-dim);text-transform:uppercase;margin-bottom:3rem;opacity:0;animation:rise 1s 0.4s var(--ease) forwards}
+.hero-eyebrow span{color:var(--gold)}
+.hero-title{font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:clamp(5rem,18vw,18rem);line-height:0.88;letter-spacing:-0.05em;color:var(--ink);position:relative;display:inline-block}
+.hero-title .clip{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero-title .clip > span{display:inline-block;transform:translateY(110%);animation:rise 1.4s 0.6s var(--ease) forwards}
+.hero-title .dot{color:var(--gold);font-style:normal;font-weight:200;display:inline-block;animation:fadeIn 0.6s 1.8s forwards;opacity:0}
+@keyframes rise{to{transform:translateY(0);opacity:1}}
+.hero-sub{margin-top:3rem;font-size:1rem;color:var(--ink-dim);max-width:480px;line-height:1.7;font-weight:300;opacity:0;animation:rise 1s 1.4s var(--ease) forwards;transform:translateY(20px)}
+.hero-sub em{color:var(--ink);font-style:italic}
+.hero-meta-grid{position:absolute;inset:5.5rem 2rem;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto 1fr auto;pointer-events:none}
+.hero-meta-grid > *{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.3em;color:var(--ink-faint);text-transform:uppercase;opacity:0;animation:fadeIn 0.8s 1.5s forwards}
+.hero-meta-grid .ln{display:block;width:2rem;height:1px;background:var(--gold);margin:0.5rem 0;opacity:0.5}
+.hm-tl{align-self:start}
+.hm-tr{align-self:start;text-align:right}
+.hm-tr .ln{margin-left:auto}
+.hm-bl{align-self:end;grid-row:3}
+.hm-br{align-self:end;text-align:right;grid-row:3;grid-column:2}
+.hm-br .ln{margin-left:auto}
+.hero-mark{position:absolute;bottom:6rem;left:50%;transform:translateX(-50%);opacity:0;animation:fadeIn 1s 1.8s forwards}
+.hero-mark svg{width:42px;height:42px;animation:spin 22s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ─── MARQUEE ─── */
+.marquee{border-top:0.5px solid var(--line);border-bottom:0.5px solid var(--line);padding:1.5rem 0;overflow:hidden;position:relative;z-index:1;background:var(--bg)}
+.marquee-track{display:flex;gap:2.5rem;animation:marquee 42s linear infinite;white-space:nowrap;will-change:transform}
+@keyframes marquee{to{transform:translateX(-50%)}}
+.marquee-item{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(1.8rem,3.5vw,3rem);font-weight:300;color:var(--ink);display:inline-flex;align-items:center;gap:2.5rem;letter-spacing:-0.01em}
+.marquee-item:nth-child(2n){color:var(--gold)}
+.marquee-item::after{content:'·';color:var(--gold);font-style:normal;margin-left:2.5rem;font-size:0.6em}
+
+/* ─── II — MANIFESTO ─── */
+#fII{padding:14rem 2rem;max-width:1200px;margin:0 auto;text-align:left;position:relative}
+.fII-roman{position:absolute;top:8rem;right:2rem;font-family:'Fraunces',serif;font-style:italic;font-weight:200;font-size:clamp(8rem,18vw,18rem);color:rgba(232,181,60,0.06);line-height:1;letter-spacing:-0.05em;pointer-events:none;z-index:0}
+.manifesto-label{margin-bottom:4rem}
+.manifesto-text{font-family:'Fraunces',serif;font-size:clamp(2rem,4.5vw,4.5rem);font-weight:300;line-height:1.18;letter-spacing:-0.015em;color:var(--ink-dim);max-width:1100px}
+.manifesto-text .line{display:block;overflow:hidden}
+.manifesto-text .line > span{display:inline-block;transform:translateY(110%);transition:transform 1s var(--ease)}
+.manifesto-text.in .line > span{transform:translateY(0)}
+.manifesto-text .accent{color:var(--gold);font-style:italic;font-weight:400}
+.manifesto-text .light{color:var(--ink);font-style:italic}
+.manifesto-foot{margin-top:6rem;display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:2rem}
+.sig{font-family:'Fraunces',serif;font-style:italic;font-size:1.3rem;color:var(--ink);opacity:0.65}
+.coord{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.25em;color:var(--ink-faint);text-align:right;line-height:1.9;text-transform:uppercase}
+
+/* ─── III — CRAFT ─── */
+#fIII{padding:10rem 2rem;background:var(--bg-soft);position:relative;overflow:hidden}
+.fIII-roman{position:absolute;top:50%;left:-4vw;transform:translateY(-50%);font-family:'Fraunces',serif;font-style:italic;font-weight:200;font-size:55vw;color:rgba(232,181,60,0.022);line-height:0.8;letter-spacing:-0.06em;pointer-events:none;z-index:0}
+.craft-head{margin-bottom:6rem;max-width:1300px;margin-left:auto;margin-right:auto}
+.craft-head .label{margin-bottom:2rem}
+.craft-title{font-family:'Fraunces',serif;font-size:clamp(2.5rem,5.5vw,5.5rem);font-weight:300;line-height:1.05;letter-spacing:-0.02em;max-width:900px}
+.craft-title .it{font-style:italic;color:var(--gold);font-weight:400}
+.stages{max-width:1300px;margin:0 auto;display:flex;flex-direction:column}
+.stage{display:grid;grid-template-columns:auto 1fr;gap:3rem;padding:4.5rem 0;border-top:0.5px solid var(--line-soft);align-items:start}
+.stage:last-child{border-bottom:0.5px solid var(--line-soft)}
+.stage-num{font-family:'Fraunces',serif;font-style:italic;font-weight:200;font-size:clamp(5rem,10vw,10rem);color:var(--gold);line-height:0.82;letter-spacing:-0.04em;min-width:140px}
+.stage-body{padding-top:2.5rem}
+.stage-cat{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.35em;color:var(--ink-dim);text-transform:uppercase;margin-bottom:1.2rem}
+.stage-title{font-family:'Fraunces',serif;font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:300;line-height:1.25;letter-spacing:-0.01em;margin-bottom:1.2rem;max-width:680px}
+.stage-title .it{font-style:italic;color:var(--gold)}
+.stage-text{font-size:0.92rem;color:var(--ink-dim);max-width:540px;line-height:1.8;font-weight:300}
+.stage-meta{margin-top:1.8rem;font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.3em;color:var(--ink-faint);text-transform:uppercase}
+.stage-meta span{color:var(--gold)}
+
+/* ─── IV — ENROLLMENT (horizontal scroll) ─── */
+#fIV{height:380vh;position:relative;z-index:1}
+.enr-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center;background:var(--bg)}
+.fIV-roman{position:absolute;top:2rem;right:2rem;font-family:'Fraunces',serif;font-style:italic;font-weight:200;font-size:clamp(8rem,14vw,14rem);color:rgba(232,181,60,0.06);line-height:1;letter-spacing:-0.05em;pointer-events:none;z-index:0}
+.enr-label{position:absolute;top:6rem;left:2rem;z-index:3}
+.enr-progress{position:absolute;bottom:3rem;left:2rem;right:2rem;height:1px;background:rgba(232,226,210,0.08);z-index:3}
+.enr-progress-fill{height:100%;background:var(--gold);width:0;transition:width 0.1s linear}
+.enr-progress-text{position:absolute;bottom:4rem;left:2rem;font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.3em;color:var(--ink-dim);text-transform:uppercase;z-index:3}
+.enr-progress-text span{color:var(--gold)}
+.enr-track{display:flex;gap:3rem;padding:0 6rem;align-items:center;will-change:transform}
+.enr-intro{flex-shrink:0;width:min(560px,85vw);padding-right:2rem}
+.enr-intro-title{font-family:'Fraunces',serif;font-size:clamp(2.5rem,5vw,5rem);font-weight:300;line-height:1.05;letter-spacing:-0.02em;margin-bottom:1.5rem}
+.enr-intro-title .it{font-style:italic;color:var(--gold);font-weight:400}
+.enr-intro-text{font-size:0.95rem;color:var(--ink-dim);line-height:1.8;font-weight:300;max-width:420px}
+.plan{flex-shrink:0;width:min(440px,82vw);padding:3.5rem 2.5rem;border:0.5px solid var(--line);background:var(--bg-soft);display:flex;flex-direction:column;min-height:560px;position:relative;transition:border-color 0.5s,background 0.5s}
+.plan:hover{border-color:rgba(232,181,60,0.4)}
+.plan.featured{border-color:var(--gold);background:linear-gradient(180deg,rgba(232,181,60,0.04) 0%,transparent 50%)}
+.plan-badge{position:absolute;top:-1px;left:2rem;background:var(--gold);color:var(--bg);font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;padding:0.4rem 0.9rem}
+.plan-num{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.3em;color:var(--ink-faint);text-transform:uppercase;display:flex;justify-content:space-between;margin-bottom:2.5rem}
+.plan-num span{color:var(--gold)}
+.plan-name{font-family:'Fraunces',serif;font-size:2.2rem;font-weight:300;line-height:1;letter-spacing:-0.01em;margin-bottom:0.8rem}
+.plan-name .it{font-style:italic;color:var(--gold)}
+.plan-tag{font-family:'Fraunces',serif;font-style:italic;font-size:0.95rem;color:var(--ink-dim);font-weight:300;line-height:1.5;margin-bottom:2.5rem}
+.plan-price{display:flex;align-items:baseline;gap:0.5rem;margin-bottom:0.5rem}
+.plan-amt{font-family:'Fraunces',serif;font-style:italic;font-weight:200;font-size:4.5rem;line-height:0.9;letter-spacing:-0.04em;color:var(--ink)}
+.plan.featured .plan-amt{color:var(--gold)}
+.plan-cur{font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.2em;color:var(--ink-dim);text-transform:uppercase}
+.plan-divider{height:0.5px;background:var(--line-soft);margin:2rem 0 1.6rem}
+.plan-features{list-style:none;display:flex;flex-direction:column;gap:0.7rem;flex:1}
+.plan-features li{font-size:0.85rem;color:var(--ink-dim);font-weight:300;display:flex;gap:0.7rem;align-items:baseline;line-height:1.5}
+.plan-features li::before{content:'—';color:var(--gold);flex-shrink:0;font-weight:400}
+.plan-cta{margin-top:2rem;display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--ink);text-decoration:none;padding:1rem 0;border-top:0.5px solid var(--line-soft);transition:color 0.3s}
+.plan-cta:hover{color:var(--gold)}
+.plan-cta .arrow{transition:transform 0.5s var(--ease-sharp)}
+.plan-cta:hover .arrow{transform:translateX(8px)}
+
+/* ─── V — FOUNDER FLASH ─── */
+.founder{padding:8rem 2rem;background:var(--gold);color:var(--bg);position:relative;overflow:hidden}
+.founder-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;position:relative;z-index:2}
+.founder-bg{position:absolute;font-family:'Fraunces',serif;font-style:italic;font-weight:200;font-size:35vw;color:rgba(10,9,7,0.05);bottom:-8vw;right:-3vw;pointer-events:none;line-height:0.8;letter-spacing:-0.06em;z-index:1}
+.founder-left .label{color:var(--bg);opacity:0.8;margin-bottom:2rem}
+.founder-left .label::before{background:var(--bg)}
+.founder-mega{font-family:'Fraunces',serif;font-style:italic;font-weight:200;font-size:clamp(7rem,16vw,16rem);line-height:0.82;letter-spacing:-0.06em;color:var(--bg)}
+.founder-right h3{font-family:'Fraunces',serif;font-size:clamp(1.8rem,3.5vw,3.2rem);font-weight:300;line-height:1.1;letter-spacing:-0.01em;margin-bottom:1.5rem}
+.founder-right h3 .it{font-style:italic}
+.founder-right p{font-size:0.95rem;line-height:1.8;opacity:0.78;margin-bottom:2.5rem;max-width:440px;font-weight:300}
+.spots{display:flex;align-items:center;gap:1rem;margin-bottom:2rem;font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase}
+.spots-line{display:flex;gap:5px}
+.spots-line .s{width:20px;height:2px;background:var(--bg);opacity:0.25;transition:opacity 0.6s}
+.spots-line .s.live{opacity:1;height:3px}
+.founder-cta{display:inline-flex;align-items:center;gap:1rem;text-decoration:none;background:var(--bg);color:var(--gold);font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.28em;text-transform:uppercase;padding:1.2rem 2.2rem;transition:transform 0.5s var(--ease-sharp)}
+.founder-cta:hover{transform:translateY(-3px)}
+
+/* ─── VI — THRESHOLD (final) ─── */
+#fV{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:10rem 2rem;position:relative;overflow:hidden}
+#fV::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:90vw;height:90vw;max-width:900px;max-height:900px;border-radius:50%;background:radial-gradient(circle,rgba(232,181,60,0.07) 0%,transparent 60%);pointer-events:none;z-index:0}
+.fV-roman{position:absolute;font-family:'Fraunces',serif;font-style:italic;font-weight:200;font-size:60vw;color:rgba(232,181,60,0.025);line-height:0.8;letter-spacing:-0.05em;pointer-events:none;z-index:0;top:50%;left:50%;transform:translate(-50%,-50%)}
+.th-label{margin-bottom:3rem;justify-content:center}
+.th-label::after{content:'';width:2rem;height:1px;background:var(--gold)}
+.th-title{font-family:'Fraunces',serif;font-style:italic;font-weight:200;font-size:clamp(4.5rem,14vw,14rem);line-height:0.9;letter-spacing:-0.05em;color:var(--ink);margin-bottom:2rem}
+.th-title .gd{color:var(--gold);font-weight:300}
+.th-sub{font-size:1rem;color:var(--ink-dim);max-width:460px;line-height:1.8;font-weight:300;margin-bottom:4rem}
+.th-cta-wrap{position:relative;display:inline-block}
+.th-cta{position:relative;display:inline-flex;align-items:center;gap:1.2rem;text-decoration:none;background:var(--gold);color:var(--bg);font-family:'JetBrains Mono',monospace;font-size:0.78rem;letter-spacing:0.3em;text-transform:uppercase;padding:1.4rem 3.2rem;overflow:hidden;will-change:transform;transition:transform 0.4s var(--ease)}
+.th-cta::before{content:'';position:absolute;inset:0;background:var(--ink);transform:translateY(101%);transition:transform 0.6s var(--ease-sharp);z-index:0}
+.th-cta:hover::before{transform:translateY(0)}
+.th-cta span{position:relative;z-index:1;transition:color 0.6s}
+.th-cta:hover span{color:var(--bg)}
+.th-note{margin-top:2rem;font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.3em;color:var(--ink-faint);text-transform:uppercase}
+
+/* ─── FOOTER ─── */
+footer{padding:2.5rem 2rem;border-top:0.5px solid var(--line);display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.25em;color:var(--ink-faint);text-transform:uppercase;align-items:center}
+footer .c{text-align:center}
+footer .r{text-align:right}
+footer a{color:var(--ink-faint);text-decoration:none;transition:color 0.3s}
+footer a:hover{color:var(--gold)}
+
+/* ─── REVEAL ─── */
+.r{opacity:0;transform:translateY(40px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease)}
+.r.in{opacity:1;transform:translateY(0)}
+
+/* ─── MOBILE ─── */
+@media(max-width:900px){
+  .topbar{padding:1.2rem}
+  #fI{padding:7rem 1.2rem 5rem}
+  .hero-meta-grid{inset:5rem 1.2rem}
+  #fII{padding:6rem 1.2rem}
+  .fII-roman{font-size:8rem;top:4rem}
+  #fIII{padding:5rem 1.2rem}
+  .stage{grid-template-columns:1fr;gap:0;padding:3rem 0}
+  .stage-num{font-size:5rem}
+  .stage-body{padding-top:1rem}
+  #fIV{height:auto}
+  .enr-sticky{position:relative;height:auto;display:block;padding:5rem 0}
+  .enr-track{flex-direction:column;padding:0 1.2rem;transform:none!important;gap:1.5rem}
+  .enr-intro,.plan{width:100%}
+  .enr-progress,.enr-progress-text,.enr-label,.fIV-roman{display:none}
+  .founder{padding:5rem 1.2rem}
+  .founder-inner{grid-template-columns:1fr;gap:3rem}
+  #fV{padding:6rem 1.2rem;min-height:80vh}
+  footer{grid-template-columns:1fr;text-align:center;gap:0.8rem}
+  footer .r,footer .c{text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <svg viewBox="0 0 80 80" fill="none">
+    <circle class="l-stroke" cx="40" cy="40" r="34"/>
+    <ellipse class="l-stroke s2" cx="40" cy="40" rx="17" ry="34"/>
+    <line class="l-stroke s3" x1="6" y1="40" x2="74" y2="40"/>
+    <circle class="l-stroke s4" cx="40" cy="40" r="3" fill="#E8B53C" stroke-width="0"/>
+  </svg>
+  <div class="loader-meta">Atelier · <span id="lc">N°01</span></div>
+</div>
+
+<!-- CURSOR -->
+<div class="cur-dot" id="curDot"></div>
+<div class="cur-ring" id="curRing"></div>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="tb-brand">
+    <span class="tb-dot"></span>
+    <span>Zorfix · Networks</span>
+  </div>
+  <div class="tb-center">Atelier de contenu · Suisse · Édition 01</div>
+  <div class="tb-right">
+    <span class="tb-time" id="clock">—— CET</span>
+    <a class="tb-cta" data-hov href="https://docs.google.com/forms/d/e/1FAIpQLSdb4PVUFV-ep9iOkXgGzvQoS3zhesozP_FVGzQtJp7hwLJcqg/viewform" target="_blank">Postuler ↗</a>
+  </div>
+</div>
+
+<!-- PAGE INDICATOR -->
+<aside class="page-ind">
+  <div class="pi-line"></div>
+  <div class="pi-item active" data-target="fI"><div class="pi-mark"></div><span class="pi-num">I — Bienvenue</span></div>
+  <div class="pi-item" data-target="fII"><div class="pi-mark"></div><span class="pi-num">II — Manifeste</span></div>
+  <div class="pi-item" data-target="fIII"><div class="pi-mark"></div><span class="pi-num">III — Atelier</span></div>
+  <div class="pi-item" data-target="fIV"><div class="pi-mark"></div><span class="pi-num">IV — Inscription</span></div>
+  <div class="pi-item" data-target="fV"><div class="pi-mark"></div><span class="pi-num">V — Seuil</span></div>
+</aside>
+
+<!-- ─── I — WELCOME ─── -->
+<section id="fI" data-frame="1">
+  <div class="hero-meta-grid">
+    <div class="hm-tl">
+      <div class="ln"></div>
+      I · Bienvenue
+    </div>
+    <div class="hm-tr">
+      <div class="ln"></div>
+      46.5197° N<br>06.6323° E
+    </div>
+    <div class="hm-bl">
+      <div class="ln"></div>
+      07 / 10 places fondateur
+    </div>
+    <div class="hm-br">
+      <div class="ln"></div>
+      MMXXVI
+    </div>
+  </div>
+
+  <div class="hero-eyebrow"><span>—</span> Devenez</div>
+  <h1 class="hero-title">
+    <span class="clip"><span>Inévitable</span></span><span class="dot">.</span>
+  </h1>
+  <p class="hero-sub">
+    Atelier de contenu Instagram pour les <em>marques, restaurants &amp; fondations</em> qui refusent l'amateurisme. Tournage, montage, stratégie — orchestrés à la main.
+  </p>
+
+  <div class="hero-mark" data-hov>
+    <svg viewBox="0 0 80 80" fill="none">
+      <circle cx="40" cy="40" r="34" stroke="#E8B53C" stroke-width="0.8" opacity="0.6"/>
+      <ellipse cx="40" cy="40" rx="17" ry="34" stroke="#E8B53C" stroke-width="0.8" opacity="0.4"/>
+      <line x1="6" y1="40" x2="74" y2="40" stroke="#E8B53C" stroke-width="0.8" opacity="0.4"/>
+      <circle cx="40" cy="40" r="3" fill="#E8B53C"/>
+    </svg>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span class="marquee-item">Visual craft</span>
+    <span class="marquee-item">Atelier suisse</span>
+    <span class="marquee-item">Image inévitable</span>
+    <span class="marquee-item">Editorial soul</span>
+    <span class="marquee-item">Visual craft</span>
+    <span class="marquee-item">Atelier suisse</span>
+    <span class="marquee-item">Image inévitable</span>
+    <span class="marquee-item">Editorial soul</span>
+  </div>
+</div>
+
+<!-- ─── II — MANIFESTO ─── -->
+<section id="fII" data-frame="2" class="frame">
+  <div class="fII-roman">II</div>
+  <div class="label manifesto-label r">Manifeste — 02</div>
+  <p class="manifesto-text" id="manText">
+    <span class="line"><span>Le bruit est partout.</span></span>
+    <span class="line"><span>L'attention, <span class="accent">nulle part.</span></span></span>
+    <span class="line"><span>Nous fabriquons</span></span>
+    <span class="line"><span>ce qui reste —</span></span>
+    <span class="line"><span><span class="light">l'image qu'on n'oublie pas,</span></span></span>
+    <span class="line"><span><span class="light">le geste qu'on garde,</span></span></span>
+    <span class="line"><span>la signature</span></span>
+    <span class="line"><span>qui devient <span class="accent">repère.</span></span></span>
+  </p>
+  <div class="manifesto-foot r">
+    <div class="sig">— Zorfix Atelier</div>
+    <div class="coord">Lausanne · Suisse<br>MMXXVI</div>
+  </div>
+</section>
+
+<!-- ─── III — CRAFT ─── -->
+<section id="fIII" data-frame="3">
+  <div class="fIII-roman">III</div>
+  <div class="craft-head">
+    <div class="label r">Atelier — 03</div>
+    <h2 class="craft-title r" style="margin-top:1.5rem">Trois gestes.<br><span class="it">Une obsession.</span></h2>
+  </div>
+  <div class="stages">
+    <article class="stage r">
+      <div class="stage-num">01</div>
+      <div class="stage-body">
+        <div class="stage-cat">Captation</div>
+        <h3 class="stage-title">Nous venons chez vous — <span class="it">sans script ni studio froid.</span></h3>
+        <p class="stage-text">Une session sur place pour capturer ce qui vous rend impossible à confondre. La lumière de votre lieu, le geste de votre métier, l'âme que les autres caméras ne voient pas.</p>
+        <div class="stage-meta"><span>02—03h</span> · sur site · matériel professionnel</div>
+      </div>
+    </article>
+    <article class="stage r">
+      <div class="stage-num">02</div>
+      <div class="stage-body">
+        <div class="stage-cat">Façonnage</div>
+        <h3 class="stage-title">Reels montés image par image. <span class="it">Photos retouchées au millimètre.</span></h3>
+        <p class="stage-text">Chaque cadre est tenu. Chaque transition pensée. Chaque détail aligné. La cohérence visuelle absolue qui transforme un compte en signature reconnaissable au premier scroll.</p>
+        <div class="stage-meta"><span>Direction artistique</span> · révision incluse · 4K</div>
+      </div>
+    </article>
+    <article class="stage r">
+      <div class="stage-num">03</div>
+      <div class="stage-body">
+        <div class="stage-cat">Stratégie</div>
+        <h3 class="stage-title">Vous publiez. <span class="it">Nous pensons à votre place.</span></h3>
+        <p class="stage-text">Plan éditorial mensuel, optimisation du profil, idées qui transforment les abonnés en clients. Vous gardez la voix. Nous orchestrons la résonance.</p>
+        <div class="stage-meta"><span>Calendrier mensuel</span> · analytics · ajustement continu</div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ─── IV — ENROLLMENT (horizontal scroll) ─── -->
+<section id="fIV" data-frame="4">
+  <div class="enr-sticky">
+    <div class="fIV-roman">IV</div>
+    <div class="enr-label label">Inscription — 04</div>
+
+    <div class="enr-track" id="enrTrack">
+      <div class="enr-intro">
+        <h2 class="enr-intro-title">Trois portes.<br><span class="it">Une seule destination.</span></h2>
+        <p class="enr-intro-text">L'excellence ne se négocie pas — elle se choisit. Trois formules, calibrées pour trois ambitions distinctes, livrées avec le même niveau d'exigence.</p>
+        <div style="margin-top:2rem;font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.3em;color:var(--ink-faint);text-transform:uppercase">→ Scrollez<br>pour découvrir</div>
+      </div>
+
+      <article class="plan">
+        <div class="plan-num"><span>01</span><span>Core</span></div>
+        <div class="plan-name">L'<span class="it">Essentiel</span></div>
+        <div class="plan-tag">« Poser les bases d'une présence sérieuse. »</div>
+        <div class="plan-price">
+          <span class="plan-amt">290</span>
+          <span class="plan-cur">CHF / mois</span>
+        </div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>1 session de tournage mensuelle (2—3h)</li>
+          <li>4 Reels montés et optimisés</li>
+          <li>8 posts photo retouchés</li>
+          <li>Calendrier de publication mensuel</li>
+        </ul>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdb4PVUFV-ep9iOkXgGzvQoS3zhesozP_FVGzQtJp7hwLJcqg/viewform" target="_blank" class="plan-cta" data-hov>
+          <span>Postuler</span><span class="arrow">→</span>
+        </a>
+      </article>
+
+      <article class="plan featured">
+        <div class="plan-badge">Le plus choisi</div>
+        <div class="plan-num"><span>02</span><span>Pro</span></div>
+        <div class="plan-name">La <span class="it">Présence</span></div>
+        <div class="plan-tag">« Faire d'Instagram une machine à attirer. »</div>
+        <div class="plan-price">
+          <span class="plan-amt">590</span>
+          <span class="plan-cur">CHF / mois</span>
+        </div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>Tout ce qui est inclus dans Core</li>
+          <li>2 sessions de tournage / mois</li>
+          <li>8 Reels + 15 posts photo</li>
+          <li>Stories quotidiennes (5j / 7)</li>
+          <li>Optimisation profil &amp; bio</li>
+        </ul>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdb4PVUFV-ep9iOkXgGzvQoS3zhesozP_FVGzQtJp7hwLJcqg/viewform" target="_blank" class="plan-cta" data-hov>
+          <span>Postuler</span><span class="arrow">→</span>
+        </a>
+      </article>
+
+      <article class="plan">
+        <div class="plan-num"><span>03</span><span>Elite</span></div>
+        <div class="plan-name">L'<span class="it">Inévitable</span></div>
+        <div class="plan-tag">« Devenir LA référence absolue de votre domaine. »</div>
+        <div class="plan-price">
+          <span class="plan-amt">1290</span>
+          <span class="plan-cur">CHF / mois</span>
+        </div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>Tout ce qui est inclus dans Pro</li>
+          <li>Tournages illimités</li>
+          <li>Reels &amp; posts illimités</li>
+          <li>Gestion complète des Instagram Ads</li>
+          <li>Rapport de performance mensuel</li>
+          <li>Ligne directe WhatsApp · 3 places max</li>
+        </ul>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdb4PVUFV-ep9iOkXgGzvQoS3zhesozP_FVGzQtJp7hwLJcqg/viewform" target="_blank" class="plan-cta" data-hov>
+          <span>Postuler</span><span class="arrow">→</span>
+        </a>
+      </article>
+
+      <!-- founder card -->
+      <article class="plan" style="background:var(--gold);color:var(--bg);border-color:var(--gold)">
+        <div class="plan-num" style="color:rgba(10,9,7,0.5)"><span style="color:var(--bg)">★</span><span style="color:var(--bg)">Tarif fondateur</span></div>
+        <div class="plan-name" style="color:var(--bg)">−50<span class="it" style="color:var(--bg)">%</span></div>
+        <div class="plan-tag" style="color:rgba(10,9,7,0.7)">« Sur votre premier mois — édition limitée. »</div>
+        <div class="plan-price" style="margin-top:2rem">
+          <span class="plan-amt" style="color:var(--bg);font-size:3.5rem">07 / 10</span>
+        </div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.25em;color:rgba(10,9,7,0.7);text-transform:uppercase;margin-top:0.5rem">places restantes</div>
+        <div class="plan-divider" style="background:rgba(10,9,7,0.15)"></div>
+        <ul class="plan-features">
+          <li style="color:rgba(10,9,7,0.85)"><span style="content:'';"></span>Réservé aux 10 premiers clients</li>
+          <li style="color:rgba(10,9,7,0.85)">Applicable sur toute formule</li>
+          <li style="color:rgba(10,9,7,0.85)">Une seule fois. Définitivement.</li>
+        </ul>
+        <style>article.plan[style*="--gold"] .plan-features li::before{color:var(--bg)}</style>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdb4PVUFV-ep9iOkXgGzvQoS3zhesozP_FVGzQtJp7hwLJcqg/viewform" target="_blank" class="plan-cta" data-hov style="color:var(--bg);border-color:rgba(10,9,7,0.2)">
+          <span>Réserver ma place</span><span class="arrow">→</span>
+        </a>
+      </article>
+    </div>
+
+    <div class="enr-progress-text">Inscription · <span id="enrPct">00</span>%</div>
+    <div class="enr-progress"><div class="enr-progress-fill" id="enrFill"></div></div>
+  </div>
+</section>
+
+<!-- ─── V — THRESHOLD ─── -->
+<section id="fV" data-frame="5">
+  <div class="fV-roman">V</div>
+  <div class="th-label label r" style="margin-bottom:3rem">Le seuil — 05</div>
+  <h2 class="th-title r">
+    <span class="gd">Postulez.</span>
+  </h2>
+  <p class="th-sub r">Chaque candidature est étudiée personnellement. Réponse sous quarante-huit heures, signée d'une main.</p>
+  <div class="th-cta-wrap r" id="magWrap">
+    <a class="th-cta" id="magBtn" data-hov href="https://docs.google.com/forms/d/e/1FAIpQLSdb4PVUFV-ep9iOkXgGzvQoS3zhesozP_FVGzQtJp7hwLJcqg/viewform" target="_blank">
+      <span>Accéder au formulaire</span>
+      <span style="position:relative;z-index:1">↗</span>
+    </a>
+  </div>
+  <p class="th-note r">02 minutes · 12 questions · gratuit</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>© MMXXVI · Zorfix Networks</div>
+  <div class="c">Atelier · Suisse · Édition N°01</div>
+  <div class="r"><a href="https://instagram.com/zorfix_networks" target="_blank" data-hov>@zorfix_networks ↗</a></div>
+</footer>
+
+<script>
+/* ── LOADER ── */
+setTimeout(()=>document.getElementById('loader').classList.add('gone'),1400);
+
+/* ── CURSOR ── */
+(function(){
+  const dot=document.getElementById('curDot'), ring=document.getElementById('curRing');
+  let mx=0,my=0,rx=0,ry=0;
+  window.addEventListener('mousemove',e=>{
+    mx=e.clientX;my=e.clientY;
+    dot.style.transform=`translate3d(${mx}px,${my}px,0) translate(-50%,-50%)`;
+  });
+  (function loop(){
+    rx+=(mx-rx)*0.18; ry+=(my-ry)*0.18;
+    ring.style.transform=`translate3d(${rx}px,${ry}px,0) translate(-50%,-50%)`;
+    requestAnimationFrame(loop);
+  })();
+  document.querySelectorAll('a,[data-hov]').forEach(el=>{
+    el.addEventListener('mouseenter',()=>ring.classList.add('grow'));
+    el.addEventListener('mouseleave',()=>ring.classList.remove('grow'));
+  });
+})();
+
+/* ── LIVE SWISS CLOCK ── */
+(function(){
+  const clock=document.getElementById('clock');
+  function tick(){
+    try{
+      const t=new Intl.DateTimeFormat('fr-CH',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Zurich',hour12:false}).format(new Date());
+      clock.textContent=t+' CET';
+    }catch(e){
+      const d=new Date(); clock.textContent=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')+' CET';
+    }
+  }
+  tick(); setInterval(tick,30000);
+})();
+
+/* ── REVEAL ON SCROLL ── */
+(function(){
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);} });
+  },{threshold:0.15,rootMargin:'0px 0px -60px 0px'});
+  document.querySelectorAll('.r').forEach(el=>obs.observe(el));
+})();
+
+/* ── MANIFESTO STAGGER ── */
+(function(){
+  const m=document.getElementById('manText'); if(!m) return;
+  const lines=m.querySelectorAll('.line > span');
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        lines.forEach((l,i)=>{ l.style.transitionDelay=(i*0.12)+'s'; });
+        m.classList.add('in');
+        obs.unobserve(m);
+      }
+    });
+  },{threshold:0.2});
+  obs.observe(m);
+})();
+
+/* ── PAGE INDICATOR ── */
+(function(){
+  const items=document.querySelectorAll('.pi-item');
+  const sections=document.querySelectorAll('section[data-frame]');
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const id=e.target.id;
+        items.forEach(it=>it.classList.toggle('active',it.dataset.target===id));
+      }
+    });
+  },{threshold:0.4});
+  sections.forEach(s=>obs.observe(s));
+  items.forEach(it=>it.addEventListener('click',()=>{
+    document.getElementById(it.dataset.target).scrollIntoView({behavior:'smooth'});
+  }));
+})();
+
+/* ── HORIZONTAL ENROLLMENT SCROLL ── */
+(function(){
+  if(window.innerWidth<900) return;
+  const sec=document.getElementById('fIV');
+  const track=document.getElementById('enrTrack');
+  const fill=document.getElementById('enrFill');
+  const pct=document.getElementById('enrPct');
+  if(!sec||!track) return;
+
+  function update(){
+    const rect=sec.getBoundingClientRect();
+    const start=rect.top;
+    const total=sec.offsetHeight-window.innerHeight;
+    if(total<=0||start>0||rect.bottom<window.innerHeight) {
+      if(start>0){ track.style.transform='translate3d(0,0,0)'; fill.style.width='0%'; pct.textContent='00'; }
+      return;
+    }
+    const scrolled=-start;
+    const progress=Math.max(0,Math.min(1,scrolled/total));
+    const maxX=track.scrollWidth-window.innerWidth+96;
+    track.style.transform=`translate3d(${-maxX*progress}px,0,0)`;
+    fill.style.width=(progress*100)+'%';
+    pct.textContent=String(Math.round(progress*100)).padStart(2,'0');
+  }
+  window.addEventListener('scroll',update,{passive:true});
+  window.addEventListener('resize',update);
+  update();
+})();
+
+/* ── MAGNETIC BUTTON ── */
+(function(){
+  const wrap=document.getElementById('magWrap');
+  const btn=document.getElementById('magBtn');
+  if(!wrap||!btn||window.innerWidth<900) return;
+  wrap.addEventListener('mousemove',e=>{
+    const rect=wrap.getBoundingClientRect();
+    const cx=rect.left+rect.width/2, cy=rect.top+rect.height/2;
+    const dx=(e.clientX-cx)*0.35, dy=(e.clientY-cy)*0.5;
+    btn.style.transform=`translate(${dx}px,${dy}px)`;
+  });
+  wrap.addEventListener('mouseleave',()=>{ btn.style.transform=''; });
+})();
+</script>
+</body>
+</html>
