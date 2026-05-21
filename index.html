@@ -8,6 +8,39 @@
   <title>Zorfix — Atelier de croissance</title>
 
   <!-- ================================================
+       FAVICON — SVG inline (fonctionne sans fichier externe)
+       Un "Z" italique doré sur fond noir.
+       Remplacer par un vrai fichier /favicon.svg en V2
+       si une icône plus élaborée est souhaitée.
+  ================================================ -->
+  <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0907' rx='4'/%3E%3Ctext x='16' y='25' font-family='Georgia%2C serif' font-size='23' font-style='italic' fill='%23E8B53C' text-anchor='middle'%3EZ%3C/text%3E%3C/svg%3E">
+  <!-- Icône iOS (fond plein, pas de transparence) -->
+  <link rel="apple-touch-icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' fill='%230A0907'/%3E%3Ctext x='90' y='138' font-family='Georgia%2C serif' font-size='130' font-style='italic' fill='%23E8B53C' text-anchor='middle'%3EZ%3C/text%3E%3C/svg%3E">
+
+  <!-- ================================================
+       OPEN GRAPH — prévisualisation lors du partage
+       ⚠️  Mettre à jour og:url avec le vrai domaine.
+       ⚠️  Créer og.jpg (1200×630 px) et l'héberger à
+           la racine du site, puis mettre à jour og:image.
+           Taille recommandée : 1200 × 630 px, < 300 Ko.
+  ================================================ -->
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="Zorfix — Atelier de croissance">
+  <meta property="og:description" content="Contenu façonné à la main. Stratégie qui amène des clients. Trois places fondateur à 350 CHF / mois — exclusivité par corps de métier.">
+  <meta property="og:url"         content="https://zorfix.ch"><!-- ⚠️ À mettre à jour -->
+  <meta property="og:image"       content="https://zorfix.ch/og.jpg"> <!-- ⚠️ À créer -->
+  <meta property="og:locale"      content="fr_CH">
+  <meta property="og:site_name"   content="Zorfix">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Zorfix — Atelier de croissance">
+  <meta name="twitter:description" content="Contenu façonné à la main. Stratégie qui amène des clients. Trois places fondateur à 350 CHF / mois.">
+  <meta name="twitter:image"       content="https://zorfix.ch/og.jpg"> <!-- ⚠️ À créer -->
+
+  <!-- ================================================
        Google Fonts
        · Fraunces (serif, italic) → titres
        · JetBrains Mono           → labels, détails
