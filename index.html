@@ -631,6 +631,18 @@
       color: var(--gray-dark);
     }
 
+    /* Lien Instagram dans le footer */
+    .footer__insta {
+      font-family: var(--mono);
+      font-size: .58rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gray-dark);
+      text-decoration: none;
+      transition: color .25s var(--ease);
+    }
+    .footer__insta:hover { color: var(--gold); }
+
     /* ================================================
        13. ANIMATIONS AU SCROLL
        Chaque élément marqué [data-reveal] part invisible
@@ -1137,6 +1149,13 @@
       <span class="footer__brand">Zorfix</span>
       <span class="footer__copy">© MMXXVI — Tous droits réservés</span>
       <span class="footer__origin">Suisse romande</span>
+      <a href="https://instagram.com/atelier.zorfix"
+         class="footer__insta"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="Zorfix sur Instagram">
+        @atelier.zorfix ↗
+      </a>
     </div>
   </footer>
 
