@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Zorfix — Atelier suisse romand. Contenu façonné à la main, stratégie qui amène des clients. Trois places fondateur à 350 CHF / mois.">
+  <meta name="description" content="Zorfix — Atelier suisse romand. Stratégie social media sur mesure. 3 packs mensuels : Présence 490.-, Croissance 890.-, Signature 1490.-. Accompagnement 3 mois, 1er mois offert.">
   <meta name="theme-color" content="#0A0907">
   <title>Zorfix — Atelier de croissance</title>
 
@@ -28,7 +28,7 @@
   ================================================ -->
   <meta property="og:type"        content="website">
   <meta property="og:title"       content="Zorfix — Atelier de croissance">
-  <meta property="og:description" content="Contenu façonné à la main. Stratégie qui amène des clients. Trois places fondateur à 350 CHF / mois — exclusivité par corps de métier.">
+  <meta property="og:description" content="Zorfix — Atelier suisse romand. Stratégie social media sur mesure. 3 packs mensuels : Présence 490.-, Croissance 890.-, Signature 1490.-. Accompagnement 3 mois, 1er mois offert.">
   <meta property="og:url"         content="https://contactzorfix-boop.github.io/zorfix-atelier/">
   <meta property="og:image"       content="https://contactzorfix-boop.github.io/zorfix-atelier/og.jpg">
   <meta property="og:image:width"  content="1200">
@@ -39,7 +39,7 @@
   <!-- Twitter / X Card -->
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:title"       content="Zorfix — Atelier de croissance">
-  <meta name="twitter:description" content="Contenu façonné à la main. Stratégie qui amène des clients. Trois places fondateur à 350 CHF / mois.">
+  <meta name="twitter:description" content="Zorfix — Stratégie social media sur mesure. 3 packs mensuels : Présence 490.-, Croissance 890.-, Signature 1490.-. Accompagnement 3 mois, 1er mois offert.">
   <meta name="twitter:image"       content="https://contactzorfix-boop.github.io/zorfix-atelier/og.jpg">
 
   <!-- ================================================
@@ -576,6 +576,114 @@
       color: var(--cream);
     }
 
+    /* Grille 3 packs */
+    .offre__accomp {
+      font-family: var(--mono);
+      font-size: .6rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: clamp(2rem, 5vw, 3.5rem);
+    }
+    .offre__accomp::before { content: '— '; }
+
+    .packs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 1100px;
+    }
+
+    .pack {
+      position: relative;
+      border: 1px solid var(--gray-dark);
+      padding: clamp(1.5rem, 4vw, 2.5rem);
+      display: flex;
+      flex-direction: column;
+    }
+    .pack--featured {
+      border-color: var(--gold);
+    }
+    .pack__badge {
+      position: absolute;
+      top: -.58rem;
+      left: 1.5rem;
+      background: var(--bg);
+      padding: 0 .6rem;
+      font-family: var(--mono);
+      font-size: .5rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .pack__name {
+      font-family: var(--mono);
+      font-size: .65rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+    .pack__price {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 200;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      color: var(--cream);
+      line-height: 1;
+    }
+    .pack__currency {
+      font-family: var(--mono);
+      font-size: .9rem;
+      font-weight: 300;
+      font-style: normal;
+      color: var(--gray);
+      margin-left: .2em;
+    }
+    .pack__period {
+      font-family: var(--mono);
+      font-size: .6rem;
+      letter-spacing: .1em;
+      color: var(--gray);
+      margin-top: .3rem;
+      margin-bottom: 1.8rem;
+    }
+    .pack__features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .9rem;
+      flex: 1;
+    }
+    .pack__features li {
+      display: flex;
+      align-items: flex-start;
+      gap: .8rem;
+      font-size: .78rem;
+      color: var(--cream);
+      line-height: 1.5;
+    }
+    .pack__features li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 4px; height: 4px;
+      background: var(--gold);
+      border-radius: 50%;
+      margin-top: .5rem;
+    }
+    .pack__desc {
+      font-size: .72rem;
+      color: var(--gray);
+      font-style: italic;
+      margin-top: 1.5rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--gray-dark);
+    }
+
+    @media (max-width: 860px) {
+      .packs { grid-template-columns: 1fr; max-width: 520px; }
+    }
+
     /* ================================================
        SECTION RÉALISATIONS — à ajouter en V2
     ================================================ */
@@ -733,7 +841,7 @@
        class="btn"
        target="_blank"
        rel="noopener noreferrer"
-       aria-label="Postuler à l'offre fondateur">
+       aria-label="Choisir un pack Zorfix">
       Postuler
     </a>
   </header>
@@ -1006,10 +1114,10 @@
 
 
     <!-- ================================================
-         V. L'OFFRE FONDATEUR
-         3 places · 350 CHF/mois · 3 mois · exclusivité métier
+         V. L'OFFRE — 3 PACKS MENSUELS
+         Présence · Croissance · Signature
     ================================================ -->
-    <section class="offre" id="offre" aria-label="Offre fondateur">
+    <section class="offre" id="offre" aria-label="Nos offres">
       <div class="wrap">
 
         <div class="offre__header">
@@ -1019,54 +1127,66 @@
             V <span class="sep" aria-hidden="true">·</span> L'offre
           </p>
           <h2 class="offre__heading" data-reveal data-delay="1">
-            Fondateur.
+            Choisissez votre rythme.
           </h2>
           <p class="offre__intro" data-reveal data-delay="2">
-            Pour lancer Zorfix avec les entreprises qui croient en notre
-            vision, nous ouvrons trois places à un tarif fondateur.
-            Trois. Pas quatre.
+            Trois packs mensuels, un seul objectif : vous amener des clients.
+            Accompagnement de 3 mois inclus — le 1<sup>er</sup> mois offert.
+          </p>
+          <p class="offre__accomp" data-reveal data-delay="3">
+            Accompagnement 3 mois · 1<sup>er</sup> mois offert
           </p>
         </div>
 
-        <div class="offre__card" data-reveal>
+        <div class="packs" data-reveal>
 
-          <p class="offre__spots">3 places disponibles</p>
+          <!-- Pack Présence -->
+          <article class="pack" aria-label="Pack Présence">
+            <p class="pack__name">Présence</p>
+            <p class="pack__price">
+              490 <span class="pack__currency">CHF</span>
+            </p>
+            <p class="pack__period">par mois</p>
+            <ul class="pack__features">
+              <li>4 réels par mois</li>
+              <li>8 photos par mois</li>
+              <li>Stories incluses</li>
+            </ul>
+            <p class="pack__desc">Pour crédibiliser votre présence.</p>
+          </article>
 
-          <p class="offre__price">
-            350 <span class="offre__currency">CHF</span>
-          </p>
-          <p class="offre__period">par mois</p>
+          <!-- Pack Croissance — mis en avant -->
+          <article class="pack pack--featured" aria-label="Pack Croissance, recommandé">
+            <span class="pack__badge">— Recommandé</span>
+            <p class="pack__name">Croissance</p>
+            <p class="pack__price">
+              890 <span class="pack__currency">CHF</span>
+            </p>
+            <p class="pack__period">par mois</p>
+            <ul class="pack__features">
+              <li>6 réels par mois</li>
+              <li>10 photos par mois</li>
+              <li>Stories incluses</li>
+              <li>Campagnes ads</li>
+            </ul>
+            <p class="pack__desc">Pour aller chercher plus de clients.</p>
+          </article>
 
-          <div class="offre__conditions">
-
-            <div class="offre__cond">
-              <span class="offre__cond-dot" aria-hidden="true"></span>
-              <p>Engagement de 3 mois — le temps de bâtir quelque chose de solide.</p>
-            </div>
-
-            <div class="offre__cond">
-              <span class="offre__cond-dot" aria-hidden="true"></span>
-              <p>Exclusivité par corps de métier — un seul concurrent de vous dans Zorfix.</p>
-            </div>
-
-            <div class="offre__cond">
-              <span class="offre__cond-dot" aria-hidden="true"></span>
-              <p>Captation mensuelle sur site, façonnage complet, stratégie éditoriale incluse.</p>
-            </div>
-
-            <div class="offre__cond">
-              <span class="offre__cond-dot" aria-hidden="true"></span>
-              <p>Tarif réservé aux trois premiers — il n'est pas reconductible.</p>
-            </div>
-
-          </div>
-
-          <a href="https://tally.so/r/VLbq5l"
-             class="btn"
-             target="_blank"
-             rel="noopener noreferrer">
-            Réserver ma place
-          </a>
+          <!-- Pack Signature -->
+          <article class="pack" aria-label="Pack Signature">
+            <p class="pack__name">Signature</p>
+            <p class="pack__price">
+              1490 <span class="pack__currency">CHF</span>
+            </p>
+            <p class="pack__period">par mois</p>
+            <ul class="pack__features">
+              <li>8 réels par mois</li>
+              <li>12 photos par mois</li>
+              <li>Stories incluses</li>
+              <li>Ads + SEO</li>
+            </ul>
+            <p class="pack__desc">Pour vous installer durablement.</p>
+          </article>
 
         </div>
 
@@ -1078,7 +1198,7 @@
          SECTION RÉALISATIONS — à ajouter en V2
 
          Insérer ici la section "Réalisations" lors de la V2,
-         entre l'offre fondateur (section V) et l'appel à
+         entre l'offre (section V) et l'appel à
          l'action final (section VI, à renuméroter VII).
 
          Structure suggérée :
@@ -1123,9 +1243,9 @@
           </h2>
 
           <p class="cta-finale__lead" data-reveal data-delay="2">
-            Trois places. Trois entreprises qui auront choisi de prendre
-            leur présence au sérieux. Si vous êtes l'une d'elles,
-            postulez maintenant.
+            Choisissez le pack qui correspond à vos ambitions.
+            Accompagnement de 3 mois, premier mois offert.
+            Réservez votre place maintenant.
           </p>
 
           <a href="https://tally.so/r/VLbq5l"
@@ -1141,7 +1261,7 @@
             <span class="sep">·</span>
             Suisse romande
             <span class="sep">·</span>
-            3 places seulement
+            1er mois offert
           </span>
 
         </div>
