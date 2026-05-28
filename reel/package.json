@@ -1,0 +1,20 @@
+{
+  "name": "zorfix-reel",
+  "version": "1.0.0",
+  "description": "Zorfix — Reel Instagram / TikTok (motion design)",
+  "scripts": {
+    "studio": "remotion studio",
+    "render": "remotion render ZorfixReel out/reel.mp4 --codec=h264"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.268"
+  },
+  "devDependencies": {
+    "@remotion/cli": "^4.0.268",
+    "@remotion/renderer": "^4.0.268",
+    "@types/react": "^18.3.1",
+    "typescript": "^5.5.4"
+  }
+}

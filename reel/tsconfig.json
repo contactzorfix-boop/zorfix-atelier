@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "es2022"],
+    "module": "esnext",
+    "target": "es2022",
+    "jsx": "react",
+    "strict": true,
+    "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true
+  }
+}
