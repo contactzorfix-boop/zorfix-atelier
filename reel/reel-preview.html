@@ -2,8 +2,8 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zorfix — Reel Preview</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Zorfix — Reel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,200;1,9..144,300&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
@@ -13,44 +13,40 @@
     --gold:  #E8B53C;
     --cream: #E8E2D2;
     --gray:  #8C887E;
-    --gray-dark: #4A4844;
-    --serif: 'Fraunces', Georgia, serif;
-    --mono:  'JetBrains Mono', 'Courier New', monospace;
-    --ease:  cubic-bezier(.16,1,.3,1);
+    --gd:    #4A4844;
+    --s: 'Fraunces', Georgia, serif;
+    --m: 'JetBrains Mono', 'Courier New', monospace;
+    --e: cubic-bezier(.16,1,.3,1);
   }
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  body {
-    background: #111;
+  html, body {
+    width: 100%; height: 100%;
+    background: var(--bg);
+    overflow: hidden;
+  }
+
+  /* Full-screen stage, true 9:16 centered */
+  .stage {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
-    font-family: var(--mono);
   }
 
-  /* ── Stage 1080×1920 scaled to fit screen ── */
-  .stage {
-    position: relative;
-    width: 1080px;
-    height: 1920px;
-    background: var(--bg);
-    overflow: hidden;
-    transform-origin: top center;
-  }
-
-  /* Grain */
+  /* Grain overlay */
   .stage::after {
     content: '';
     position: absolute;
     inset: 0;
-    z-index: 200;
     pointer-events: none;
     opacity: .035;
     mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
     background-size: 200px 200px;
+    z-index: 50;
   }
 
   /* ── Scenes ── */
@@ -61,235 +57,200 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 80px;
+    padding: 8vw;
     opacity: 0;
-    pointer-events: none;
+    z-index: 1;
   }
+  .scene.left { align-items: flex-start; }
 
-  /* ── Animations ── */
-  @keyframes fadeIn  { from {opacity:0} to {opacity:1} }
-  @keyframes fadeOut { from {opacity:1} to {opacity:0} }
-  @keyframes slideUp { from {transform:translateY(40px);opacity:0} to {transform:translateY(0);opacity:1} }
-  @keyframes growW   { from {width:0} to {width:var(--target-w,100px)} }
-  @keyframes growH   { from {scaleX:0} to {scaleX:1} }
+  /* ── Keyframes ── */
+  @keyframes fi   { from{opacity:0}         to{opacity:1} }
+  @keyframes fo   { from{opacity:1}         to{opacity:0} }
+  @keyframes su   { from{transform:translateY(6vw);opacity:0} to{transform:translateY(0);opacity:1} }
+  @keyframes gw   { from{width:0}           to{width:var(--w)} }
 
-  /* ────────────────────────────────────────
-     SCENE 1 — Logo  (0s → 3s)
-  ──────────────────────────────────────── */
-  .s1 {
-    animation: fadeIn .6s var(--ease) .1s both,
-               fadeOut .5s var(--ease) 2.6s both;
-  }
-  .s1 .rule-top {
-    --target-w: 100px;
-    width: 0; height: 1px; background: var(--gold);
-    margin-bottom: 36px;
-    animation: growW .7s var(--ease) .3s both;
+  /* ══════════════════════════════════════
+     S1 — Logo   0s → 3.1s
+  ══════════════════════════════════════ */
+  .s1 { animation: fi .6s var(--e) .1s both, fo .5s var(--e) 2.7s both; }
+
+  .s1 .rl {
+    --w: 12vw; width:0; height:1px; background:var(--gold);
+    margin-bottom: 5vw;
+    animation: gw .7s var(--e) .3s both;
   }
   .s1 .logo {
-    font-family: var(--serif);
-    font-style: italic; font-weight: 200;
-    font-size: 160px; color: var(--gold);
-    letter-spacing: .06em; line-height: 1;
-    animation: slideUp .7s var(--ease) .4s both;
+    font-family: var(--s); font-style:italic; font-weight:200;
+    font-size: 20vw; color: var(--gold); letter-spacing:.05em; line-height:1;
+    animation: su .7s var(--e) .4s both;
   }
   .s1 .sub {
-    font-family: var(--mono);
-    font-size: 26px; letter-spacing: .28em;
-    text-transform: uppercase; color: var(--gray);
-    margin-top: 28px;
-    animation: fadeIn .6s var(--ease) 1s both;
+    font-family: var(--m); font-size:3.5vw; letter-spacing:.28em;
+    text-transform:uppercase; color:var(--gray);
+    margin-top: 4vw;
+    animation: fi .6s var(--e) 1s both;
   }
-  .s1 .rule-bot {
-    --target-w: 55px;
-    width: 0; height: 1px; background: var(--gold);
-    margin-top: 36px;
-    animation: growW .5s var(--ease) 1.1s both;
+  .s1 .rb {
+    --w: 7vw; width:0; height:1px; background:var(--gold);
+    margin-top: 5vw;
+    animation: gw .5s var(--e) 1.1s both;
   }
 
-  /* ────────────────────────────────────────
-     SCENE 2 — Promesse  (2.8s → 7.2s)
-  ──────────────────────────────────────── */
-  .s2 {
-    align-items: flex-start;
-    animation: fadeIn .5s var(--ease) 2.8s both,
-               fadeOut .5s var(--ease) 6.8s both;
+  /* ══════════════════════════════════════
+     S2 — Promesse   2.9s → 7.3s
+  ══════════════════════════════════════ */
+  .s2 { animation: fi .5s var(--e) 2.9s both, fo .5s var(--e) 6.9s both; }
+
+  .s2 .ey {
+    font-family:var(--m); font-size:3vw; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--gold);
+    margin-bottom:6vw; align-self:flex-start;
+    animation: fi .5s var(--e) 3.1s both;
   }
-  .s2 .eyebrow {
-    font-size: 22px; letter-spacing: .2em;
-    text-transform: uppercase; color: var(--gold);
-    margin-bottom: 52px;
-    animation: fadeIn .5s var(--ease) 3s both;
-  }
-  .s2 .line { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 108px; line-height: 1.05; }
-  .s2 .l1 { color: var(--cream); animation: slideUp .6s var(--ease) 3.1s both; }
-  .s2 .l2 { color: var(--gold);  animation: slideUp .6s var(--ease) 3.25s both; }
-  .s2 .l3 { color: var(--cream); animation: slideUp .6s var(--ease) 3.4s both; }
-  .s2 .l4 { color: var(--gold);  animation: slideUp .6s var(--ease) 3.55s both; }
-  .s2 .l5 { color: var(--cream); animation: slideUp .6s var(--ease) 3.7s both; }
-  .s2 .tagline {
-    font-size: 24px; letter-spacing: .12em;
-    color: var(--gray); margin-top: 52px;
-    animation: fadeIn .6s var(--ease) 4.8s both;
+  .big { font-family:var(--s); font-style:italic; font-weight:300; font-size:14vw; line-height:1.08; }
+  .s2 .l1{color:var(--cream); animation:su .6s var(--e) 3.2s both;}
+  .s2 .l2{color:var(--gold);  animation:su .6s var(--e) 3.35s both;}
+  .s2 .l3{color:var(--cream); animation:su .6s var(--e) 3.5s both;}
+  .s2 .l4{color:var(--gold);  animation:su .6s var(--e) 3.65s both;}
+  .s2 .l5{color:var(--cream); animation:su .6s var(--e) 3.8s both;}
+  .s2 .tag {
+    font-family:var(--m); font-size:3.2vw; letter-spacing:.12em;
+    color:var(--gray); margin-top:5vw; align-self:flex-start;
+    animation: fi .6s var(--e) 5s both;
   }
 
-  /* ────────────────────────────────────────
-     SCENE 3 — Packs  (7s → 12.5s)
-  ──────────────────────────────────────── */
-  .s3 {
-    align-items: flex-start;
-    animation: fadeIn .5s var(--ease) 7s both,
-               fadeOut .5s var(--ease) 12.1s both;
-  }
-  .s3 .eyebrow {
-    font-size: 22px; letter-spacing: .2em;
-    text-transform: uppercase; color: var(--gold);
-    margin-bottom: 56px;
-    animation: fadeIn .5s var(--ease) 7.2s both;
-  }
-  .s3 .packs { width: 100%; display: flex; flex-direction: column; gap: 6px; }
+  /* ══════════════════════════════════════
+     S3 — Packs   7.1s → 12.6s
+  ══════════════════════════════════════ */
+  .s3 { animation: fi .5s var(--e) 7.1s both, fo .5s var(--e) 12.2s both; }
 
-  .pack-row {
-    border-left: 2px solid var(--gray-dark);
-    padding: 28px 0 28px 36px;
-    opacity: 0;
+  .s3 .ey {
+    font-family:var(--m); font-size:3vw; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--gold);
+    margin-bottom:5vw; align-self:flex-start;
+    animation: fi .5s var(--e) 7.3s both;
   }
-  .pack-row.featured { border-color: var(--gold); }
-  .pack-row .badge {
-    font-size: 20px; letter-spacing: .2em;
-    text-transform: uppercase; color: var(--gold);
-    margin-bottom: 10px;
+  .packs { width:100%; display:flex; flex-direction:column; gap:1.5vw; }
+  .pk {
+    border-left:2px solid var(--gd);
+    padding:3vw 0 3vw 5vw;
+    opacity:0;
   }
-  .pack-row .name {
-    font-size: 30px; letter-spacing: .16em;
-    text-transform: uppercase; color: var(--cream);
+  .pk.ft { border-color:var(--gold); }
+  .pk .badge {
+    font-family:var(--m); font-size:2.8vw; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--gold); margin-bottom:1.5vw;
   }
-  .pack-row.featured .name { color: var(--gold); }
-  .pack-row .desc {
-    font-family: var(--serif); font-style: italic;
-    font-size: 30px; color: var(--gray);
-    margin-top: 8px; line-height: 1.4;
+  .pk .nm {
+    font-family:var(--m); font-size:4.5vw; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--cream);
   }
-
-  .p1 { animation: slideUp .6s var(--ease) 7.4s both; }
-  .p2 { animation: slideUp .6s var(--ease) 7.7s both; }
-  .p3 { animation: slideUp .6s var(--ease) 8s both; }
-
+  .pk.ft .nm { color:var(--gold); }
+  .pk .ds {
+    font-family:var(--s); font-style:italic;
+    font-size:4vw; color:var(--gray); margin-top:1vw; line-height:1.4;
+  }
+  .p1{animation:su .6s var(--e) 7.5s both;}
+  .p2{animation:su .6s var(--e) 7.8s both;}
+  .p3{animation:su .6s var(--e) 8.1s both;}
   .s3 .note {
-    font-size: 22px; letter-spacing: .14em;
-    text-transform: uppercase; color: var(--gray);
-    margin-top: 52px;
-    animation: fadeIn .6s var(--ease) 9.2s both;
+    font-family:var(--m); font-size:2.8vw; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--gray);
+    margin-top:5vw; align-self:flex-start;
+    animation: fi .6s var(--e) 9.4s both;
   }
 
-  /* ────────────────────────────────────────
-     SCENE 4 — CTA  (12.3s → 16s)
-  ──────────────────────────────────────── */
-  .s4 {
-    animation: fadeIn .5s var(--ease) 12.3s both,
-               fadeOut .5s var(--ease) 15.6s both;
+  /* ══════════════════════════════════════
+     S4 — CTA   12.4s → 16.2s
+  ══════════════════════════════════════ */
+  .s4 { animation: fi .5s var(--e) 12.4s both, fo .5s var(--e) 15.8s both; }
+
+  .s4 .rt {
+    --w: 26vw; width:0; height:1px; background:var(--gold);
+    margin-bottom:7vw;
+    animation: gw .7s var(--e) 12.6s both;
   }
-  .s4 .rule {
-    --target-w: 220px;
-    width: 0; height: 1px; background: var(--gold);
-    margin-bottom: 56px;
-    animation: growW .7s var(--ease) 12.5s both;
-  }
-  .s4 .cta-line { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 116px; line-height: 1.05; }
-  .s4 .c1 { color: var(--cream); animation: slideUp .6s var(--ease) 12.7s both; }
-  .s4 .c2 { color: var(--gold);  animation: slideUp .6s var(--ease) 12.85s both; }
-  .s4 .rule-bot {
-    --target-w: 120px;
-    width: 0; height: 1px; background: var(--gold);
-    margin-top: 56px; margin-bottom: 44px;
-    animation: growW .5s var(--ease) 13.4s both;
+  .s4 .c1{color:var(--cream); animation:su .6s var(--e) 12.8s both;}
+  .s4 .c2{color:var(--gold);  animation:su .6s var(--e) 12.95s both;}
+  .s4 .rb {
+    --w:14vw; width:0; height:1px; background:var(--gold);
+    margin-top:7vw; margin-bottom:5vw;
+    animation: gw .5s var(--e) 13.5s both;
   }
   .s4 .url {
-    font-size: 24px; letter-spacing: .14em;
-    color: var(--gray);
-    animation: fadeIn .6s var(--ease) 13.8s both;
+    font-family:var(--m); font-size:3vw; letter-spacing:.14em;
+    color:var(--gray);
+    animation: fi .6s var(--e) 13.9s both;
   }
 
-  /* ────────────────────────────────────────
-     SCENE 5 — Outro  (15.5s → 17s)
-  ──────────────────────────────────────── */
-  .s5 {
-    animation: fadeIn .5s var(--ease) 15.5s both,
-               fadeOut .6s var(--ease) 16.6s both;
-  }
+  /* ══════════════════════════════════════
+     S5 — Outro   15.7s → 17s
+  ══════════════════════════════════════ */
+  .s5 { animation: fi .5s var(--e) 15.7s both, fo .6s var(--e) 16.5s both; }
   .s5 .logo {
-    font-family: var(--serif); font-style: italic; font-weight: 200;
-    font-size: 120px; color: var(--gold); letter-spacing: .06em;
-    animation: fadeIn .7s var(--ease) 15.6s both;
+    font-family:var(--s); font-style:italic; font-weight:200;
+    font-size:16vw; color:var(--gold); letter-spacing:.05em;
+    animation: fi .7s var(--e) 15.8s both;
   }
   .s5 .sub {
-    font-size: 22px; letter-spacing: .24em;
-    text-transform: uppercase; color: var(--gray);
-    margin-top: 20px;
-    animation: fadeIn .7s var(--ease) 15.8s both;
+    font-family:var(--m); font-size:3vw; letter-spacing:.24em;
+    text-transform:uppercase; color:var(--gray); margin-top:3vw;
+    animation: fi .7s var(--e) 16s both;
   }
 
-  /* ── Controls (hidden on record) ── */
-  .controls {
-    position: fixed; bottom: 20px; left: 50%;
-    transform: translateX(-50%);
-    display: flex; gap: 12px; z-index: 999;
-  }
-  .controls button {
-    background: #222; color: #fff; border: 1px solid #444;
-    padding: 8px 20px; border-radius: 4px;
-    font-size: 13px; cursor: pointer;
-  }
-  .controls button:hover { background: #333; }
-  .hint {
-    position: fixed; top: 12px; left: 50%;
-    transform: translateX(-50%);
-    font-family: monospace; font-size: 11px;
-    color: #666; z-index: 999; white-space: nowrap;
+  /* ── Replay button ── */
+  .replay {
+    position:fixed; bottom:max(20px, env(safe-area-inset-bottom));
+    left:50%; transform:translateX(-50%);
+    z-index:100;
+    background:rgba(255,255,255,.08);
+    color:var(--cream); border:1px solid var(--gd);
+    font-family:var(--m); font-size:12px; letter-spacing:.15em;
+    text-transform:uppercase; padding:10px 24px;
+    border-radius:2px; cursor:pointer;
+    animation: fi .5s 17s both;
   }
 </style>
 </head>
 <body>
 
-<p class="hint">Zoom navigateur à 40–50% pour voir le format 9:16 complet · Press R pour relancer</p>
-
-<div class="stage" id="stage">
+<div class="stage">
 
   <!-- S1: Logo -->
   <div class="scene s1">
-    <div class="rule-top"></div>
+    <div class="rl"></div>
     <div class="logo">Zorfix</div>
     <div class="sub">Atelier suisse romand</div>
-    <div class="rule-bot"></div>
+    <div class="rb"></div>
   </div>
 
   <!-- S2: Promesse -->
-  <div class="scene s2">
-    <div class="eyebrow">● Pourquoi Zorfix</div>
-    <div class="line l1">Votre</div>
-    <div class="line l2">présence</div>
-    <div class="line l3">doit vous</div>
-    <div class="line l4">amener</div>
-    <div class="line l5">des clients.</div>
-    <div class="tagline">Pas juste exister.</div>
+  <div class="scene s2 left">
+    <div class="ey">● Pourquoi Zorfix</div>
+    <div class="big l1">Votre</div>
+    <div class="big l2">présence</div>
+    <div class="big l3">doit vous</div>
+    <div class="big l4">amener</div>
+    <div class="big l5">des clients.</div>
+    <div class="tag">Pas juste exister.</div>
   </div>
 
   <!-- S3: Packs -->
-  <div class="scene s3">
-    <div class="eyebrow">● 3 packs mensuels</div>
+  <div class="scene s3 left">
+    <div class="ey">● 3 packs mensuels</div>
     <div class="packs">
-      <div class="pack-row p1">
-        <div class="name">Présence</div>
-        <div class="desc">Pour crédibiliser votre image.</div>
+      <div class="pk p1">
+        <div class="nm">Présence</div>
+        <div class="ds">Pour crédibiliser votre image.</div>
       </div>
-      <div class="pack-row featured p2">
+      <div class="pk ft p2">
         <div class="badge">— Recommandé</div>
-        <div class="name">Croissance</div>
-        <div class="desc">Pour attirer des clients.</div>
+        <div class="nm">Croissance</div>
+        <div class="ds">Pour attirer des clients.</div>
       </div>
-      <div class="pack-row p3">
-        <div class="name">Signature</div>
-        <div class="desc">Pour dominer votre marché.</div>
+      <div class="pk p3">
+        <div class="nm">Signature</div>
+        <div class="ds">Pour dominer votre marché.</div>
       </div>
     </div>
     <div class="note">— Accompagnement sur 3 mois</div>
@@ -297,10 +258,10 @@
 
   <!-- S4: CTA -->
   <div class="scene s4">
-    <div class="rule"></div>
-    <div class="cta-line c1">Demandez</div>
-    <div class="cta-line c2">votre devis.</div>
-    <div class="rule-bot"></div>
+    <div class="rt"></div>
+    <div class="big c1">Demandez</div>
+    <div class="big c2">votre devis.</div>
+    <div class="rb"></div>
     <div class="url">zorfix-atelier.github.io</div>
   </div>
 
@@ -312,41 +273,7 @@
 
 </div>
 
-<div class="controls">
-  <button onclick="restart()">↺ Relancer</button>
-  <button onclick="toggleHints()">Masquer UI (avant enregistrement)</button>
-</div>
+<button class="replay" onclick="location.reload()">↺ Rejouer</button>
 
-<script>
-  // Scale stage to fit viewport
-  function scale() {
-    const s = document.getElementById('stage');
-    const scaleX = (window.innerWidth * 0.9) / 1080;
-    const scaleY = (window.innerHeight * 0.95) / 1920;
-    const sc = Math.min(scaleX, scaleY);
-    s.style.transform = `scale(${sc})`;
-    s.style.marginTop = `${((1920 * sc) - 1920) / 2}px`;
-  }
-  scale();
-  window.addEventListener('resize', scale);
-
-  function restart() {
-    const stage = document.getElementById('stage');
-    const clone = stage.cloneNode(true);
-    stage.parentNode.replaceChild(clone, stage);
-    scale();
-  }
-
-  function toggleHints() {
-    document.querySelector('.hint').style.display =
-      document.querySelector('.hint').style.display === 'none' ? '' : 'none';
-    document.querySelector('.controls').style.display =
-      document.querySelector('.controls').style.display === 'none' ? '' : 'none';
-  }
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'r' || e.key === 'R') restart();
-  });
-</script>
 </body>
 </html>
