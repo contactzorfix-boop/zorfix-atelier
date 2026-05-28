@@ -207,7 +207,7 @@
       align-items: center;
       gap: .6em;
       font-family: var(--mono);
-      font-size: .6rem;
+      font-size: .7rem;
       font-weight: 400;
       letter-spacing: .22em;
       text-transform: uppercase;
@@ -263,7 +263,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 1.6rem var(--pad-x);
-      transition: background .5s var(--ease), backdrop-filter .5s var(--ease);
+      transition: background .5s var(--ease), backdrop-filter .5s var(--ease), -webkit-backdrop-filter .5s var(--ease);
     }
     .nav.is-scrolled {
       background: rgba(10,9,7,.9);
@@ -493,100 +493,6 @@
     .offre__heading { color: var(--cream); margin: 1.5rem 0 1.2rem; }
     .offre__intro   { font-size: .85rem; max-width: 500px; }
 
-    /* Carte de l'offre encadrée en or */
-    .offre__card {
-      position: relative;
-      border: 1px solid var(--gold);
-      padding: clamp(2rem, 5vw, 4rem);
-      max-width: 700px;
-    }
-    /* Étiquette flottante sur la bordure */
-    .offre__card::before {
-      content: '— OFFRE FONDATEUR';
-      position: absolute;
-      top: -.58rem;
-      left: 2rem;
-      background: var(--bg);
-      padding: 0 .75rem;
-      font-family: var(--mono);
-      font-size: .55rem;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    .offre__spots {
-      font-family: var(--mono);
-      font-size: .6rem;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 2rem;
-    }
-    .offre__spots::before { content: '●  '; font-size: .4rem; vertical-align: middle; }
-
-    .offre__price {
-      font-family: var(--serif);
-      font-style: italic;
-      font-weight: 200;
-      font-size: clamp(3rem, 8vw, 5.5rem);
-      color: var(--cream);
-      line-height: 1;
-    }
-    .offre__currency {
-      font-family: var(--mono);
-      font-size: 1rem;
-      font-weight: 300;
-      font-style: normal;
-      color: var(--gray);
-      margin-left: .25em;
-    }
-    .offre__period {
-      font-family: var(--mono);
-      font-size: .65rem;
-      letter-spacing: .1em;
-      color: var(--gray);
-      margin-top: .3rem;
-    }
-
-    /* Conditions */
-    .offre__conditions {
-      margin: 2.5rem 0;
-      padding: 2rem 0;
-      border-top: 1px solid var(--gray-dark);
-      border-bottom: 1px solid var(--gray-dark);
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
-    .offre__cond {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-    }
-    .offre__cond-dot {
-      flex-shrink: 0;
-      width: 4px; height: 4px;
-      background: var(--gold);
-      border-radius: 50%;
-      margin-top: .55rem;
-    }
-    .offre__cond p {
-      font-size: .8rem;
-      color: var(--cream);
-    }
-
-    /* Grille 3 packs */
-    .offre__accomp {
-      font-family: var(--mono);
-      font-size: .6rem;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: clamp(2rem, 5vw, 3.5rem);
-    }
-    .offre__accomp::before { content: '— '; }
-
     .packs {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -753,9 +659,6 @@
       line-height: 1.7;
     }
 
-    /* ================================================
-       SECTION RÉALISATIONS — à ajouter en V2
-    ================================================ */
 
     /* ================================================
        11. SECTION VI — APPEL À L'ACTION FINAL
@@ -817,7 +720,9 @@
     .footer__social-link {
       display: flex;
       align-items: center;
-      color: var(--gold);   /* #E8B53C — variable CSS existante */
+      padding: .75rem;
+      margin: -.75rem;
+      color: var(--gold);
       opacity: .6;
       transition: opacity .25s ease;
       text-decoration: none;
@@ -881,7 +786,7 @@
         padding: 3rem 0;
       }
 
-      .offre__card { max-width: 100%; }
+
 
       .footer__inner { flex-direction: column; align-items: flex-start; }
     }
@@ -905,7 +810,7 @@
   <header class="nav" id="nav" role="banner">
     <a href="#hero" class="nav__logo" aria-label="Zorfix — retour en haut">Zorfix</a>
     <!-- Horloge suisse en live — masquée sur mobile via CSS -->
-    <span class="nav__clock" id="clock" aria-hidden="true">——:—— CET</span>
+    <span class="nav__clock" id="clock" aria-hidden="true">——:——</span>
     <a href="https://tally.so/r/VLbq5l"
        class="btn"
        target="_blank"
@@ -1288,32 +1193,6 @@
     </section>
 
 
-    <!-- ================================================
-         SECTION RÉALISATIONS — à ajouter en V2
-
-         Insérer ici la section "Réalisations" lors de la V2,
-         entre l'offre (section V) et l'appel à
-         l'action final (section VI, à renuméroter VII).
-
-         Structure suggérée :
-
-         <section class="realisations" id="realisations"
-                  aria-label="Réalisations">
-           <div class="wrap">
-             <span class="rule"></span>
-             <p class="eyebrow">
-               <span class="pip"></span>
-               VI · Réalisations
-             </p>
-             <h2>Ce que nous avons bâti.</h2>
-             ... galerie de cas clients, résultats chiffrés,
-                 témoignages ...
-           </div>
-         </section>
-
-         Mettre à jour le numéro de la section CTA finale
-         de VI → VII en conséquence.
-    ================================================ -->
 
 
     <!-- ================================================
@@ -1459,7 +1338,7 @@
       /* ---- 1. Navigation scrollée ---- */
       var nav = document.getElementById('nav');
       function onScroll() {
-        nav.classList.toggle('is-scrolled', window.scrollY > 60);
+        if (nav) nav.classList.toggle('is-scrolled', window.scrollY > 60);
       }
       window.addEventListener('scroll', onScroll, { passive: true });
 
@@ -1500,13 +1379,19 @@
         });
 
         /* Le ring suit avec inertie (boucle RAF) */
-        (function loop() {
+        var rafId;
+        function loop() {
           rx += (mx - rx) * 0.14;
           ry += (my - ry) * 0.14;
           curRing.style.transform =
             'translate3d(' + rx + 'px,' + ry + 'px,0) translate(-50%,-50%)';
-          requestAnimationFrame(loop);
-        })();
+          rafId = requestAnimationFrame(loop);
+        }
+        rafId = requestAnimationFrame(loop);
+        document.addEventListener('visibilitychange', function () {
+          if (document.hidden) { cancelAnimationFrame(rafId); }
+          else { rafId = requestAnimationFrame(loop); }
+        });
 
         /* Agrandissement au survol des éléments interactifs */
         document.querySelectorAll('a, button, .btn').forEach(function (el) {
@@ -1518,17 +1403,23 @@
       /* ---- 4. Horloge suisse en live ---- */
       var clock = document.getElementById('clock');
       if (clock) {
+        var clockInterval;
         function tick() {
           try {
+            var now = new Date();
             var t = new Intl.DateTimeFormat('fr-CH', {
               hour: '2-digit',
               minute: '2-digit',
               timeZone: 'Europe/Zurich',
               hour12: false
-            }).format(new Date());
-            clock.textContent = t + ' CET';
+            }).format(now);
+            var parts = new Intl.DateTimeFormat('fr-CH', {
+              timeZone: 'Europe/Zurich',
+              timeZoneName: 'short'
+            }).formatToParts(now);
+            var tz = (parts.find(function (p) { return p.type === 'timeZoneName'; }) || {}).value || 'CET';
+            clock.textContent = t + ' ' + tz;
           } catch (e) {
-            /* Fallback si Intl ou le fuseau n'est pas supporté */
             var d = new Date();
             clock.textContent =
               String(d.getHours()).padStart(2, '0') + ':' +
@@ -1536,7 +1427,7 @@
           }
         }
         tick();
-        setInterval(tick, 30000);
+        clockInterval = setInterval(tick, 30000);
       }
 
     })();
