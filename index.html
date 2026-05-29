@@ -40,6 +40,8 @@
     --or-soft:#c79528;
     --serif:'Cormorant Garamond',serif;
     --mono:'JetBrains Mono',monospace;
+    --sg:clamp(80px,11vh,120px); /* section-gap : espacement uniforme haut+bas */
+    --px:clamp(18px,5vw,32px);  /* padding horizontal uniforme */
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -57,7 +59,8 @@
   }
   .mono{font-family:var(--mono);letter-spacing:.25em;text-transform:uppercase;font-size:.72rem;color:var(--creme-dim)}
   .or{color:var(--or)}
-  .container{max-width:1100px;margin:0 auto;padding:0 32px}
+  /* padding-left/right en longhands → ne conflicte JAMAIS avec padding-top/bottom des sections */
+  .container{max-width:1100px;margin:0 auto;padding-left:var(--px);padding-right:var(--px)}
   section{position:relative}
 
   /* reveal */
@@ -70,8 +73,8 @@
   nav .brand span{color:var(--or);mix-blend-mode:normal}
   nav a.cta-nav{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.35);padding:10px 18px;border-radius:40px;transition:.4s;white-space:nowrap}
 
-  /* HERO */
-  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;padding-bottom:clamp(60px,10vh,100px)}
+  /* HERO — padding-bottom décale le centre optique vers le haut (compense la nav fixe) */
+  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;padding-left:var(--px);padding-right:var(--px);padding-bottom:var(--sg)}
   .hero .glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(224,169,46,.13),transparent 65%);filter:blur(20px);z-index:0}
   .hero .tag{margin-bottom:38px;z-index:2}
   .hero h1{font-size:clamp(3.4rem,9vw,7.5rem);line-height:.94;font-weight:500;z-index:2;letter-spacing:-.01em}
@@ -83,13 +86,13 @@
   .btn-ghost{background:transparent;border:1px solid rgba(233,227,212,.3);color:var(--creme)}
   .btn-ghost:hover{background:var(--creme);color:var(--noir);box-shadow:none}
 
-  /* CONSTAT */
-  .constat{padding:18vh 0;text-align:center}
+  /* CONSTAT — longhands vertical : pas de conflit avec .container */
+  .constat{padding-top:var(--sg);padding-bottom:var(--sg);text-align:center}
   .constat p{font-size:clamp(2rem,5.5vw,4rem);line-height:1.12;font-weight:500}
   .constat p em{font-style:italic;color:var(--or)}
 
   /* SERVICES */
-  .services{padding:12vh 0 16vh}
+  .services{padding-top:var(--sg);padding-bottom:var(--sg)}
   .sec-head{text-align:center;margin-bottom:70px}
   .sec-head h2{font-size:clamp(2.2rem,5vw,3.4rem);font-weight:500;font-style:italic;margin-top:14px}
   .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
@@ -104,20 +107,20 @@
   .card li:last-child{border:none}
 
   /* METHODE */
-  .methode{padding:48vh 0 16vh;text-align:center}
+  .methode{padding-top:var(--sg);padding-bottom:var(--sg);text-align:center}
   .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(2rem,4vw,3.5rem);margin-top:64px}
   .step .n{font-size:clamp(1.8rem,3.5vw,2.4rem);font-style:italic;color:var(--or);line-height:1;margin-bottom:.6rem}
   .step h4{font-family:var(--mono);font-size:clamp(.72rem,1.1vw,.86rem);letter-spacing:.2em;text-transform:uppercase;margin:.9rem 0 .8rem}
   .step p{color:var(--creme-dim);font-size:clamp(1rem,1.6vw,1.1rem);line-height:1.6}
 
   /* POURQUOI */
-  .pourquoi{padding:20vh 0 14vh;text-align:center}
+  .pourquoi{padding-top:var(--sg);padding-bottom:var(--sg);text-align:center}
   .pourquoi .big{font-size:clamp(1.4rem,3.2vw,2.4rem);line-height:1.2;font-weight:500;max-width:720px;margin:0 auto}
   .pourquoi .big em{font-style:italic;color:var(--or)}
   .pourquoi .tags{margin-top:46px;font-family:var(--mono);font-size:.8rem;letter-spacing:.3em;color:var(--creme-dim);text-transform:uppercase}
 
   /* FONDATEUR */
-  .fondateur{padding:16vh 0;text-align:center;position:relative}
+  .fondateur{padding-top:var(--sg);padding-bottom:var(--sg);text-align:center;position:relative}
   .fondateur .glow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(224,169,46,.1),transparent 60%);filter:blur(10px);z-index:0}
   .fondateur .number{font-size:clamp(7rem,18vw,13rem);font-style:italic;color:var(--or);line-height:.8;position:relative;z-index:2}
   .fondateur .label{font-family:var(--mono);letter-spacing:.34em;text-transform:uppercase;font-size:.9rem;margin-top:8px;position:relative;z-index:2}
@@ -126,7 +129,7 @@
   .divider{width:60px;height:1px;background:rgba(233,227,212,.3);margin:32px auto;position:relative;z-index:2}
 
   /* CONTACT */
-  .contact{padding:14vh 0 10vh;text-align:center}
+  .contact{padding-top:var(--sg);padding-bottom:var(--sg);text-align:center}
   .contact h2{font-size:clamp(2.6rem,6vw,4.5rem);font-weight:500;line-height:1}
   .contact h2 em{font-style:italic;color:var(--or)}
   .contact p{color:var(--creme-dim);font-size:1.2rem;margin-top:24px;font-style:italic}
@@ -143,24 +146,23 @@
 
   /* TABLETTE */
   @media(max-width:1024px){
-    .container{padding:0 28px}
+    :root{--px:28px}
     .card{padding:36px 30px}
   }
   /* MOBILE */
   @media(max-width:760px){
+    :root{--px:22px;--sg:clamp(70px,10vh,100px)}
     .grid{grid-template-columns:1fr}
     .steps{grid-template-columns:1fr;gap:clamp(3.5rem,8vh,5rem)}
     nav{padding:18px 22px}
     nav .brand{font-size:1.25rem}
     nav a.cta-nav{padding:9px 14px;font-size:.62rem}
-    .container{padding:0 22px}
     .hero .glow{width:90vw;height:90vw}
-    .constat{padding:14vh 0}
     .btn{padding:15px 28px}
   }
   /* PETIT MOBILE */
   @media(max-width:380px){
-    .container{padding:0 18px}
+    :root{--px:18px}
     nav a.cta-nav{font-size:.58rem;letter-spacing:.12em;padding:8px 12px}
     .card{padding:30px 24px}
     .card h3{font-size:1.6rem}
