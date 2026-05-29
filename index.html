@@ -3,32 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Zorfix — Atelier suisse romand. Stratégie social media sur mesure. 3 packs mensuels : Présence, Croissance, Signature. Accompagnement 3 mois, 1er mois offert.">
-  <meta name="theme-color" content="#0A0907">
-  <title>Zorfix — Atelier de croissance</title>
+  <meta name="description" content="Zorfix — Atelier suisse romand. Votre présence en ligne, façonnée à la main. 3 packs mensuels : Présence, Croissance, Signature.">
+  <meta name="theme-color" content="#0c0b09">
+  <title>Zorfix — Atelier suisse romand</title>
 
-  <!-- ================================================
-       FAVICON — SVG inline (fonctionne sans fichier externe)
-       Un "Z" italique doré sur fond noir.
-       Remplacer par un vrai fichier /favicon.svg en V2
-       si une icône plus élaborée est souhaitée.
-  ================================================ -->
   <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0907' rx='4'/%3E%3Ctext x='16' y='25' font-family='Georgia%2C serif' font-size='23' font-style='italic' fill='%23E8B53C' text-anchor='middle'%3EZ%3C/text%3E%3C/svg%3E">
-  <!-- Icône iOS (fond plein, pas de transparence) -->
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230c0b09' rx='4'/%3E%3Ctext x='16' y='25' font-family='Georgia%2Cserif' font-size='23' font-style='italic' fill='%23e0a92e' text-anchor='middle'%3EZ%3C/text%3E%3C/svg%3E">
   <link rel="apple-touch-icon"
-        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' fill='%230A0907'/%3E%3Ctext x='90' y='138' font-family='Georgia%2C serif' font-size='130' font-style='italic' fill='%23E8B53C' text-anchor='middle'%3EZ%3C/text%3E%3C/svg%3E">
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' fill='%230c0b09'/%3E%3Ctext x='90' y='138' font-family='Georgia%2Cserif' font-size='130' font-style='italic' fill='%23e0a92e' text-anchor='middle'%3EZ%3C/text%3E%3C/svg%3E">
 
-  <!-- ================================================
-       OPEN GRAPH — prévisualisation lors du partage
-       ⚠️  Mettre à jour og:url avec le vrai domaine.
-       ⚠️  Créer og.jpg (1200×630 px) et l'héberger à
-           la racine du site, puis mettre à jour og:image.
-           Taille recommandée : 1200 × 630 px, < 300 Ko.
-  ================================================ -->
   <meta property="og:type"        content="website">
-  <meta property="og:title"       content="Zorfix — Atelier de croissance">
-  <meta property="og:description" content="Zorfix — Atelier suisse romand. Stratégie social media sur mesure. 3 packs mensuels : Présence, Croissance, Signature. Accompagnement 3 mois, 1er mois offert.">
+  <meta property="og:title"       content="Zorfix — Atelier suisse romand">
+  <meta property="og:description" content="Votre présence en ligne, façonnée à la main. 3 packs mensuels sur mesure.">
   <meta property="og:url"         content="https://contactzorfix-boop.github.io/zorfix-atelier/">
   <meta property="og:image"       content="https://contactzorfix-boop.github.io/zorfix-atelier/og.jpg">
   <meta property="og:image:width"  content="1200">
@@ -36,1390 +22,1014 @@
   <meta property="og:locale"      content="fr_CH">
   <meta property="og:site_name"   content="Zorfix">
 
-  <!-- Twitter / X Card -->
   <meta name="twitter:card"        content="summary_large_image">
-  <meta name="twitter:title"       content="Zorfix — Atelier de croissance">
-  <meta name="twitter:description" content="Zorfix — Stratégie social media sur mesure. 3 packs mensuels : Présence, Croissance, Signature. Accompagnement 3 mois, 1er mois offert.">
+  <meta name="twitter:title"       content="Zorfix — Atelier suisse romand">
+  <meta name="twitter:description" content="Votre présence en ligne, façonnée à la main.">
   <meta name="twitter:image"       content="https://contactzorfix-boop.github.io/zorfix-atelier/og.jpg">
 
-  <!-- ================================================
-       Google Fonts
-       · Fraunces (serif, italic) → titres
-       · JetBrains Mono           → labels, détails
-  ================================================ -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,200;1,9..144,300;1,9..144,400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
-
-  <style>
-    /* ================================================
-       0. DESIGN TOKENS & RESET
-    ================================================ */
-    :root {
-      --bg:         #0A0907;   /* fond principal       */
-      --bg-soft:    #11100D;   /* fond sections paires */
-      --gold:       #E8B53C;   /* or, accent unique    */
-      --cream:      #E8E2D2;   /* texte principal      */
-      --gray:       #8C887E;   /* texte secondaire     */
-      --gray-dark:  #4A4844;   /* séparateurs, détails */
-
-      --serif: 'Fraunces', Georgia, serif;
-      --mono:  'JetBrains Mono', 'Courier New', monospace;
-
-      --ease: cubic-bezier(.16, 1, .3, 1);
-      --pad-x: clamp(1.5rem, 5vw, 3rem);
-      --pad-y: clamp(5rem, 10vh, 9rem);
-    }
-
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--cream);
-      font-family: var(--mono);
-      font-weight: 300;
-      font-size: 14px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    /* Sélection */
-    ::selection { background: var(--gold); color: var(--bg); }
-
-    /* ================================================
-       GRAIN — texture papier en overlay fixe
-       SVG fractalNoise, opacité ~3%, mix-blend overlay
-       Donne la profondeur "atelier · imprimé" que la
-       dalle noire plate ne possède pas.
-    ================================================ */
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 9000;
-      opacity: .032;
-      mix-blend-mode: overlay;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
-      background-size: 200px 200px;
-    }
-
-    /* ================================================
-       CURSEUR PERSONNALISÉ — desktop uniquement
-       · .cur-dot  : point 5px or, suit la souris à l'exacte
-       · .cur-ring : anneau 30px, suit avec inertie (lag 14%)
-       · .cur-ring.grow : s'agrandit au survol des liens
-       Caché sur tactile via (hover:none) / (pointer:coarse)
-    ================================================ */
-    @media (hover: hover) and (pointer: fine) {
-      body, a, button, .btn { cursor: none; }
-    }
-
-    .cur-dot {
-      position: fixed;
-      width: 5px; height: 5px;
-      background: var(--gold);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      will-change: transform;
-      mix-blend-mode: difference;
-    }
-
-    .cur-ring {
-      position: fixed;
-      width: 30px; height: 30px;
-      border: 1px solid rgba(232,181,60,.5);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9998;
-      transform: translate(-50%, -50%);
-      will-change: transform;
-      transition: width .45s var(--ease), height .45s var(--ease), border-color .3s;
-    }
-    .cur-ring.grow {
-      width: 62px; height: 62px;
-      border-color: var(--gold);
-    }
-
-    @media (hover: none), (pointer: coarse) {
-      .cur-dot, .cur-ring { display: none; }
-    }
-
-    /* ================================================
-       HORLOGE — nav · desktop uniquement
-    ================================================ */
-    .nav__clock {
-      font-family: var(--mono);
-      font-size: .6rem;
-      letter-spacing: .2em;
-      color: var(--gold);
-      opacity: .85;
-    }
-    @media (max-width: 820px) { .nav__clock { display: none; } }
-
-    /* ================================================
-       1. TYPOGRAPHIE
-    ================================================ */
-    h1, h2, h3 {
-      font-family: var(--serif);
-      font-style: italic;
-      font-weight: 300;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-    }
-
-    h1 { font-size: clamp(4.5rem, 13vw, 10.5rem); line-height: 0.92; }
-    h2 { font-size: clamp(2.4rem, 6vw,  4.5rem);  }
-    h3 { font-size: clamp(1.5rem, 3vw,  2.2rem);  }
-
-    p  { color: var(--gray); line-height: 1.85; font-weight: 300; }
-    a  { color: inherit; text-decoration: none; }
-
-    /* Titres avec accent or */
-    .gold  { color: var(--gold); }
-    .cream { color: var(--cream); }
-
-    /* ================================================
-       2. LAYOUT
-    ================================================ */
-    .wrap {
-      max-width: 1100px;
-      margin-inline: auto;
-      padding-inline: var(--pad-x);
-    }
-
-    /* ================================================
-       3. MICRO-COMPOSANTS TYPOGRAPHIQUES
-    ================================================ */
-
-    /* Label monospace — section marker */
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: .6em;
-      font-family: var(--mono);
-      font-size: .7rem;
-      font-weight: 400;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--gray);
-    }
-    .eyebrow .pip {
-      display: inline-block;
-      width: 4px; height: 4px;
-      background: var(--gold);
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    /* Règle dorée avant les en-têtes */
-    .rule {
-      display: block;
-      width: 2.5rem; height: 1px;
-      background: var(--gold);
-      margin-bottom: 1.8rem;
-    }
-
-    /* Séparateur médian · */
-    .sep { color: var(--gold); margin-inline: .35em; }
-
-    /* ================================================
-       4. BOUTON CTA
-    ================================================ */
-    .btn {
-      display: inline-block;
-      font-family: var(--mono);
-      font-size: .76rem;   /* était .65rem — +17 % */
-      font-weight: 400;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--bg);
-      background: var(--gold);
-      padding: 1.05em 2.6em;  /* était .9em 2.2em — +17 % */
-      transition: opacity .25s var(--ease);
-      cursor: pointer;
-      border: none;
-      white-space: nowrap;
-    }
-    .btn:hover { opacity: .82; }
-
-    /* ================================================
-       5. NAVIGATION
-    ================================================ */
-    .nav {
-      position: fixed;
-      inset: 0 0 auto;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.6rem var(--pad-x);
-      transition: background .5s var(--ease), backdrop-filter .5s var(--ease), -webkit-backdrop-filter .5s var(--ease);
-    }
-    .nav.is-scrolled {
-      background: rgba(10,9,7,.9);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-    }
-    .nav__logo {
-      font-family: var(--mono);
-      font-size: .75rem;
-      letter-spacing: .25em;
-      text-transform: uppercase;
-      color: var(--cream);
-    }
-
-    /* ================================================
-       6. SECTION I — ACCROCHE (HÉRO)
-    ================================================ */
-    .hero {
-      min-height: 100svh;
-      min-height: 100vh; /* fallback */
-      position: relative;
-      display: flex;
-      align-items: flex-end;
-      overflow: hidden;
-    }
-
-    .hero__inner {
-      width: 100%;
-      max-width: 1100px;
-      margin-inline: auto;
-      padding: 0 var(--pad-x) clamp(3.5rem, 9vh, 6.5rem);
-    }
-
-    /* Coordonnées discrètes coin haut-droit */
-    .hero__corner {
-      position: absolute;
-      top: 6.5rem;
-      right: var(--pad-x);
-      font-family: var(--mono);
-      font-size: .55rem;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--gray-dark);
-      text-align: right;
-      line-height: 1.9;
-    }
-
-    .hero__eyebrow { margin-bottom: 2.2rem; }
-
-    .hero__title {
-      color: var(--cream);
-      margin-bottom: 2.5rem;
-    }
-    /* La ligne en or dans le titre */
-    .hero__title .gold { display: block; }
-
-    .hero__tagline {
-      font-size: clamp(.82rem, 1.4vw, .98rem);
-      color: var(--gray);
-      max-width: 460px;
-      margin-bottom: 3rem;
-      line-height: 1.9;
-    }
-
-    /* Indication de scroll verticale — desktop */
-    .hero__scroll {
-      position: absolute;
-      bottom: 2rem;
-      right: var(--pad-x);
-      font-family: var(--mono);
-      font-size: .5rem;
-      letter-spacing: .28em;
-      text-transform: uppercase;
-      color: var(--gray-dark);
-      writing-mode: vertical-rl;
-      animation: blink 3.5s ease-in-out infinite;
-    }
-    @keyframes blink {
-      0%, 100% { opacity: .35; }
-      50%       { opacity: 1;   }
-    }
-
-    /* ================================================
-       7. SECTION II — LE CONSTAT
-    ================================================ */
-    .constat {
-      background: var(--bg-soft);
-      padding: var(--pad-y) 0;
-    }
-    .constat__grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(3rem, 7vw, 8rem);
-      align-items: start;
-    }
-    .constat__heading {
-      color: var(--cream);
-      margin-top: 1.8rem;
-    }
-    /* Mise en évidence du mot-clé */
-    .constat__heading em {
-      font-style: inherit;
-      color: var(--gold);
-    }
-    .constat__list {
-      display: flex;
-      flex-direction: column;
-      gap: 2.5rem;
-      padding-top: .5rem;
-    }
-    .constat__item {
-      border-left: 1px solid var(--gray-dark);
-      padding-left: 1.5rem;
-    }
-    .constat__item-num {
-      display: block;
-      font-family: var(--mono);
-      font-size: .55rem;
-      letter-spacing: .18em;
-      color: var(--gold);
-      margin-bottom: .6rem;
-    }
-    .constat__item p { font-size: .82rem; }
-
-    /* ================================================
-       8. SECTION III — CE QU'EST ZORFIX
-    ================================================ */
-    .manifeste { padding: var(--pad-y) 0; }
-
-    .manifeste__header {
-      max-width: 640px;
-      margin-bottom: clamp(4rem, 8vw, 7rem);
-    }
-    .manifeste__heading {
-      color: var(--cream);
-      margin: 1.5rem 0 1.5rem;
-    }
-    .manifeste__lead { font-size: .88rem; }
-
-    /* Grille 3 piliers */
-    .pillars {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border-top: 1px solid var(--gray-dark);
-    }
-    .pillar {
-      padding: 3.5rem 2rem 3.5rem 0;
-      border-right: 1px solid var(--gray-dark);
-    }
-    .pillar:last-child { border-right: none; padding-right: 0; }
-    .pillar:not(:first-child) { padding-left: 2rem; }
-
-    .pillar__num {
-      display: block;
-      font-family: var(--mono);
-      font-size: .55rem;
-      letter-spacing: .18em;
-      color: var(--gold);
-      margin-bottom: 1.8rem;
-    }
-    .pillar__title { color: var(--cream); margin-bottom: 1.2rem; }
-    .pillar p      { font-size: .8rem; }
-
-    /* ================================================
-       9. SECTION IV — LA MÉTHODE
-    ================================================ */
-    .methode {
-      background: var(--bg-soft);
-      padding: var(--pad-y) 0;
-    }
-    .methode__header { margin-bottom: clamp(3rem, 7vw, 6rem); }
-    .methode__heading { color: var(--cream); margin-top: 1.5rem; }
-
-    .steps { display: flex; flex-direction: column; }
-
-    .step {
-      display: grid;
-      grid-template-columns: 170px 1fr;
-      gap: 3.5rem;
-      padding: 4rem 0;
-      border-top: 1px solid var(--gray-dark);
-    }
-    .step:last-child { border-bottom: 1px solid var(--gray-dark); }
-
-    .step__num {
-      display: block;
-      font-family: var(--mono);
-      font-size: 2.6rem;
-      font-weight: 300;
-      color: var(--gray-dark);
-      line-height: 1;
-      margin-bottom: .5rem;
-    }
-    .step__label {
-      font-family: var(--mono);
-      font-size: .55rem;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--gray);
-    }
-    .step__title { color: var(--cream); margin-bottom: 1rem; }
-    .step__desc   { font-size: .82rem; max-width: 500px; }
-
-    /* Tags techniques sous chaque étape */
-    .step__tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .4rem;
-      margin-top: 1.5rem;
-    }
-    .step__tag {
-      font-family: var(--mono);
-      font-size: .58rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--gray-dark);
-      border: 1px solid var(--gray-dark);
-      padding: .25rem .65rem;
-    }
-
-    /* ================================================
-       10. SECTION V — L'OFFRE FONDATEUR
-    ================================================ */
-    .offre { padding: var(--pad-y) 0; }
-
-    .offre__header { margin-bottom: clamp(3rem, 6vw, 5rem); }
-    .offre__heading { color: var(--cream); margin: 1.5rem 0 1.2rem; }
-    .offre__intro   { font-size: .85rem; max-width: 500px; }
-
-    .packs {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      max-width: 1100px;
-    }
-
-    .pack {
-      position: relative;
-      border: 1px solid var(--gray-dark);
-      padding: clamp(1.5rem, 4vw, 2.5rem);
-      display: flex;
-      flex-direction: column;
-      transition: border-color .35s var(--ease);
-    }
-    .pack:hover { border-color: #6E6A5E; }
-    .pack--featured {
-      border-color: var(--gold);
-    }
-    .pack--featured:hover { border-color: var(--gold); }
-    .pack__badge {
-      position: absolute;
-      top: -.58rem;
-      left: 1.5rem;
-      background: var(--bg);
-      padding: 0 .6rem;
-      font-family: var(--mono);
-      font-size: .5rem;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-    .pack__name {
-      font-family: var(--mono);
-      font-size: .65rem;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: .75rem;
-    }
-    .pack__subtitle {
-      font-size: .76rem;
-      color: var(--gray);
-      font-style: italic;
-      line-height: 1.55;
-      margin-bottom: 1.8rem;
-    }
-    .pack__price {
-      font-family: var(--serif);
-      font-style: italic;
-      font-weight: 200;
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
-      color: var(--cream);
-      line-height: 1;
-    }
-    .pack__currency {
-      font-family: var(--mono);
-      font-size: .9rem;
-      font-weight: 300;
-      font-style: normal;
-      color: var(--gray);
-      margin-left: .2em;
-    }
-    .pack__period {
-      font-family: var(--mono);
-      font-size: .6rem;
-      letter-spacing: .1em;
-      color: var(--gray);
-      margin-top: .3rem;
-      margin-bottom: 1.8rem;
-    }
-    .pack__features {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: .9rem;
-      flex: 1;
-    }
-    .pack__features li {
-      display: flex;
-      align-items: flex-start;
-      gap: .8rem;
-      font-size: .78rem;
-      color: var(--cream);
-      line-height: 1.5;
-    }
-    .pack__features li::before {
-      content: '';
-      flex-shrink: 0;
-      width: 4px; height: 4px;
-      background: var(--gold);
-      border-radius: 50%;
-      margin-top: .5rem;
-    }
-    .packs__note {
-      font-family: var(--mono);
-      font-size: .58rem;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: var(--gray);
-      margin-top: 2.5rem;
-    }
-    .packs__note::before { content: '— '; }
-
-    @media (max-width: 860px) {
-      .packs { grid-template-columns: 1fr; max-width: 520px; }
-    }
-
-    /* ================================================
-       BLOC OFFRE FONDATEUR — juste après le hero
-    ================================================ */
-    .fondateur { padding: clamp(3.5rem, 7vw, 6rem) 0; background: var(--bg-soft); }
-    .fondateur__card {
-      position: relative;
-      border: 1px solid var(--gold);
-      padding: clamp(2rem, 5vw, 3.5rem);
-      max-width: 720px;
-    }
-    .fondateur__card::before {
-      content: '— OFFRE FONDATEUR';
-      position: absolute;
-      top: -.58rem;
-      left: 2rem;
-      background: var(--bg-soft);
-      padding: 0 .75rem;
-      font-family: var(--mono);
-      font-size: .55rem;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-    .fondateur__places {
-      font-family: var(--mono);
-      font-size: .6rem;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.6rem;
-    }
-    .fondateur__places::before { content: '●  '; font-size: .4rem; vertical-align: middle; }
-    .fondateur__title {
-      font-family: var(--serif);
-      font-style: italic;
-      font-weight: 300;
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      color: var(--cream);
-      line-height: 1.08;
-      margin-bottom: 1.6rem;
-    }
-    .fondateur__body {
-      font-size: .82rem;
-      color: var(--cream);
-      line-height: 1.85;
-      max-width: 560px;
-    }
-    .fondateur__note {
-      font-size: .72rem;
-      color: var(--gray);
-      font-style: italic;
-      margin-top: 1.6rem;
-      padding-top: 1.4rem;
-      border-top: 1px solid var(--gray-dark);
-      max-width: 560px;
-      line-height: 1.7;
-    }
-
-
-    /* ================================================
-       11. SECTION VI — APPEL À L'ACTION FINAL
-    ================================================ */
-    .cta-finale {
-      background: var(--bg-soft);
-      padding: var(--pad-y) 0;
-      text-align: center;
-    }
-    .cta-finale__inner {
-      max-width: 600px;
-      margin-inline: auto;
-    }
-    .cta-finale__rule { margin-inline: auto; margin-bottom: 1.8rem; }
-    .cta-finale__eyebrow { justify-content: center; }
-    .cta-finale__heading { color: var(--cream); margin: 1.5rem 0 1.5rem; }
-    .cta-finale__lead     { font-size: .88rem; margin-bottom: 3rem; }
-    .cta-finale__note {
-      display: block;
-      font-family: var(--mono);
-      font-size: .58rem;
-      letter-spacing: .14em;
-      color: var(--gray-dark);
-      margin-top: 1.5rem;
-    }
-
-    /* ================================================
-       12. FOOTER
-    ================================================ */
-    .footer {
-      padding: 2.5rem var(--pad-x);
-      border-top: 1px solid var(--gray-dark);
-    }
-    .footer__inner {
-      max-width: 1100px;
-      margin-inline: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .footer__brand,
-    .footer__copy,
-    .footer__origin {
-      font-family: var(--mono);
-      font-size: .58rem;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--gray-dark);
-    }
-
-    /* Icônes réseaux sociaux dans le footer */
-    .footer__social {
-      display: flex;
-      align-items: center;
-      gap: 1.1rem;   /* ~18 px entre les icônes */
-    }
-    .footer__social-link {
-      display: flex;
-      align-items: center;
-      padding: .75rem;
-      margin: -.75rem;
-      color: var(--gold);
-      opacity: .6;
-      transition: opacity .25s ease;
-      text-decoration: none;
-    }
-    .footer__social-link:hover { opacity: 1; }
-    .footer__social-link svg   { display: block; }
-
-    /* ================================================
-       13. ANIMATIONS AU SCROLL
-       Chaque élément marqué [data-reveal] part invisible
-       et monte doucement quand il entre dans le viewport.
-    ================================================ */
-    [data-reveal] {
-      opacity: 0;
-      transform: translateY(26px);
-      transition:
-        opacity   .9s var(--ease),
-        transform .9s var(--ease);
-    }
-    [data-reveal].is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Délais échelonnés pour les enfants d'une même entrée */
-    [data-delay="1"] { transition-delay: .1s; }
-    [data-delay="2"] { transition-delay: .2s; }
-    [data-delay="3"] { transition-delay: .32s; }
-    [data-delay="4"] { transition-delay: .44s; }
-    [data-delay="5"] { transition-delay: .56s; }
-
-    /* ================================================
-       14. RESPONSIVE — MOBILE D'ABORD
-    ================================================ */
-
-    /* Tablette et inférieur */
-    @media (max-width: 820px) {
-
-      .hero__scroll  { display: none; }
-      .hero__corner  { display: none; }
-
-      .constat__grid {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-      }
-
-      .pillars {
-        grid-template-columns: 1fr;
-      }
-      .pillar {
-        border-right: none;
-        border-bottom: 1px solid var(--gray-dark);
-        padding: 2.5rem 0;
-      }
-      .pillar:last-child { border-bottom: none; }
-      .pillar:not(:first-child) { padding-left: 0; }
-
-      .step {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        padding: 3rem 0;
-      }
-
-
-
-      .footer__inner { flex-direction: column; align-items: flex-start; }
-    }
-
-    /* Mobile étroit */
-    @media (max-width: 480px) {
-      h1 { font-size: clamp(3.2rem, 15vw, 4.8rem); }
-    }
-
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300;1,400;1,500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+/* ─── TOKENS ─────────────────────────────────────────── */
+:root {
+  --bg:     #0c0b09;
+  --bg2:    #100f0c;
+  --cream:  #e9e3d4;
+  --sec:    #a59f90;
+  --gold:   #e0a92e;
+  --gd:     #3d3a34;
+
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --mono:  'JetBrains Mono', 'Courier New', monospace;
+  --ease:  cubic-bezier(.16,1,.3,1);
+
+  --px: clamp(1.25rem, 5vw, 3.5rem);
+  --py: clamp(5rem, 11vh, 9rem);
+}
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--cream);
+  font-family: var(--mono);
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection { background:var(--gold); color:var(--bg); }
+
+/* Grain */
+body::after {
+  content:'';
+  position:fixed; inset:0;
+  pointer-events:none; z-index:9000;
+  opacity:.03; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:200px 200px;
+}
+
+/* Custom cursor */
+@media (hover:hover) and (pointer:fine) {
+  body,a,button,.btn { cursor:none; }
+}
+.cur-dot {
+  position:fixed; width:5px; height:5px;
+  background:var(--gold); border-radius:50%;
+  pointer-events:none; z-index:9999;
+  transform:translate(-50%,-50%); will-change:transform;
+  mix-blend-mode:difference;
+}
+.cur-ring {
+  position:fixed; width:28px; height:28px;
+  border:1px solid rgba(224,169,46,.45); border-radius:50%;
+  pointer-events:none; z-index:9998;
+  transform:translate(-50%,-50%); will-change:transform;
+  transition:width .42s var(--ease),height .42s var(--ease),border-color .28s;
+}
+.cur-ring.grow { width:58px; height:58px; border-color:var(--gold); }
+@media (hover:none),(pointer:coarse) { .cur-dot,.cur-ring { display:none; } }
+
+/* ─── TYPOGRAPHY ─────────────────────────────────────── */
+h1,h2,h3 {
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:300;
+  line-height:1.04;
+  letter-spacing:-.01em;
+}
+h1 { font-size: clamp(4rem,12vw,10rem); line-height:.94; }
+h2 { font-size: clamp(2.6rem,6vw,5rem); }
+h3 { font-size: clamp(1.4rem,2.8vw,2rem); }
+
+p { color:var(--sec); line-height:1.9; }
+a { color:inherit; text-decoration:none; }
+
+.gold  { color:var(--gold); }
+.cream { color:var(--cream); }
+
+/* ─── LAYOUT ─────────────────────────────────────────── */
+.wrap {
+  max-width:1120px;
+  margin-inline:auto;
+  padding-inline:var(--px);
+}
+
+/* ─── EYEBROW ─────────────────────────────────────────── */
+.ey {
+  display:inline-flex; align-items:center; gap:.55em;
+  font-family:var(--mono); font-size:.65rem; font-weight:400;
+  letter-spacing:.24em; text-transform:uppercase; color:var(--sec);
+  margin-bottom:2.2rem;
+}
+.ey::before {
+  content:''; display:block;
+  width:3.5px; height:3.5px;
+  background:var(--gold); border-radius:50%; flex-shrink:0;
+}
+
+/* ─── RULE ───────────────────────────────────────────── */
+.rule {
+  display:block; width:2.2rem; height:1px;
+  background:var(--gold); margin-bottom:2rem;
+}
+
+/* ─── BUTTON ─────────────────────────────────────────── */
+.btn {
+  display:inline-block;
+  font-family:var(--mono); font-size:.72rem; font-weight:400;
+  letter-spacing:.2em; text-transform:uppercase;
+  color:var(--bg); background:var(--gold);
+  padding:1.1em 2.8em;
+  border:none; cursor:pointer;
+  transition:opacity .22s var(--ease), transform .22s var(--ease);
+  white-space:nowrap;
+}
+.btn:hover { opacity:.82; transform:translateY(-1px); }
+
+.btn--ghost {
+  background:transparent;
+  color:var(--gold);
+  border:1px solid rgba(224,169,46,.4);
+  padding:1em 2.4em;
+}
+.btn--ghost:hover { border-color:var(--gold); opacity:1; background:rgba(224,169,46,.05); transform:translateY(-1px); }
+
+/* ─── NAV ────────────────────────────────────────────── */
+.nav {
+  position:fixed; inset:0 0 auto; z-index:100;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:1.5rem var(--px);
+  transition:background .5s var(--ease), backdrop-filter .5s var(--ease), -webkit-backdrop-filter .5s var(--ease);
+}
+.nav.is-scrolled {
+  background:rgba(12,11,9,.92);
+  backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+}
+.nav__logo {
+  font-family:var(--serif); font-style:italic; font-weight:300;
+  font-size:1.5rem; letter-spacing:.04em; color:var(--cream);
+}
+.nav__logo .dot { color:var(--gold); }
+.nav__clock {
+  font-family:var(--mono); font-size:.58rem;
+  letter-spacing:.2em; color:var(--gold); opacity:.8;
+}
+@media (max-width:640px) { .nav__clock { display:none; } }
+.nav__cta {
+  font-family:var(--mono); font-size:.6rem;
+  letter-spacing:.18em; text-transform:uppercase;
+  color:var(--sec);
+  transition:color .2s;
+}
+.nav__cta:hover { color:var(--gold); }
+
+/* ─── SCROLL REVEAL ──────────────────────────────────── */
+.reveal {
+  opacity:0;
+  transform:translateY(22px);
+  transition:opacity .75s var(--ease), transform .75s var(--ease);
+}
+.reveal.is-visible {
+  opacity:1;
+  transform:translateY(0);
+}
+.reveal-d1 { transition-delay:.1s; }
+.reveal-d2 { transition-delay:.2s; }
+.reveal-d3 { transition-delay:.3s; }
+.reveal-d4 { transition-delay:.4s; }
+.reveal-d5 { transition-delay:.5s; }
+
+/* ════════════════════════════════════════════════════════
+   S1 — HERO
+════════════════════════════════════════════════════════ */
+.hero {
+  min-height:100svh; min-height:100vh;
+  position:relative;
+  display:flex; align-items:flex-end;
+  overflow:hidden;
+}
+
+/* Radial gold glow */
+.hero::before {
+  content:'';
+  position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(ellipse 70% 55% at 50% 38%, rgba(224,169,46,.09) 0%, transparent 65%);
+  z-index:0;
+}
+
+.hero__inner {
+  position:relative; z-index:1;
+  width:100%; max-width:1120px;
+  margin-inline:auto;
+  padding:0 var(--px) clamp(3rem,8vh,6rem);
+}
+
+.hero__tag {
+  font-family:var(--mono); font-size:.65rem;
+  letter-spacing:.28em; text-transform:uppercase;
+  color:var(--gold); opacity:.9;
+  margin-bottom:2.4rem;
+}
+
+.hero__title { color:var(--cream); margin-bottom:2.2rem; }
+.hero__title em { font-style:italic; color:var(--gold); }
+
+.hero__sub {
+  max-width:440px;
+  font-family:var(--mono); font-size:.78rem;
+  letter-spacing:.06em; line-height:1.85;
+  color:var(--sec);
+  margin-bottom:3rem;
+}
+
+.hero__actions { display:flex; flex-wrap:wrap; align-items:center; gap:1.2rem; }
+
+.hero__scroll {
+  font-family:var(--mono); font-size:.6rem;
+  letter-spacing:.22em; text-transform:uppercase; color:var(--gd);
+  display:flex; align-items:center; gap:.7rem;
+}
+.hero__scroll::before {
+  content:''; display:block; width:1px; height:2rem; background:var(--gd);
+}
+
+/* ════════════════════════════════════════════════════════
+   S2 — CONSTAT
+════════════════════════════════════════════════════════ */
+.constat {
+  padding:var(--py) 0;
+  background:var(--bg2);
+  overflow:hidden;
+}
+
+.constat__inner {
+  display:grid;
+  grid-template-columns:1fr;
+  gap:3.5rem;
+}
+@media (min-width:760px) {
+  .constat__inner { grid-template-columns:1fr 1fr; align-items:center; gap:5rem; }
+}
+
+.constat__stat {
+  font-family:var(--serif); font-style:italic; font-weight:300;
+  font-size: clamp(5rem,16vw,13rem);
+  line-height:.9; color:var(--cream);
+  letter-spacing:-.02em;
+}
+.constat__stat span { color:var(--gold); }
+
+.constat__body h2 { color:var(--cream); margin-bottom:1.6rem; }
+.constat__body h2 em { color:var(--gold); }
+.constat__body p { margin-bottom:1.1rem; font-size:.82rem; }
+.constat__body p:last-of-type { margin-bottom:0; }
+
+/* ════════════════════════════════════════════════════════
+   S3 — SERVICES
+════════════════════════════════════════════════════════ */
+.services { padding:var(--py) 0; }
+
+.services__head { margin-bottom:clamp(2.5rem,5vw,4rem); }
+.services__head h2 { color:var(--cream); }
+
+.services__grid {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1px;
+  background:var(--gd);
+  border:1px solid var(--gd);
+}
+@media (max-width:640px) {
+  .services__grid { grid-template-columns:1fr; }
+}
+
+.svc {
+  background:var(--bg);
+  padding:clamp(2rem,4vw,3rem);
+  transition:background .3s var(--ease);
+  position:relative;
+  overflow:hidden;
+}
+.svc::before {
+  content:'';
+  position:absolute; bottom:0; left:0;
+  width:0; height:1px; background:var(--gold);
+  transition:width .5s var(--ease);
+}
+.svc:hover { background:var(--bg2); }
+.svc:hover::before { width:100%; }
+
+.svc__num {
+  font-family:var(--mono); font-size:.58rem;
+  letter-spacing:.22em; color:var(--gold);
+  opacity:.7; margin-bottom:1.8rem;
+}
+.svc__title {
+  font-family:var(--serif); font-style:italic; font-weight:300;
+  font-size:clamp(1.5rem,3vw,2.1rem);
+  color:var(--cream); line-height:1.1;
+  margin-bottom:1rem;
+}
+.svc__desc {
+  font-size:.75rem; line-height:1.85;
+  color:var(--sec);
+}
+
+/* ════════════════════════════════════════════════════════
+   S4 — MÉTHODE
+════════════════════════════════════════════════════════ */
+.methode {
+  padding:var(--py) 0;
+  background:var(--bg2);
+}
+
+.methode__head { margin-bottom:clamp(2.5rem,5vw,4rem); }
+.methode__head h2 { color:var(--cream); }
+
+.methode__grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:clamp(1.5rem,3vw,2.5rem);
+}
+@media (max-width:820px) {
+  .methode__grid { grid-template-columns:1fr; }
+}
+
+.step {
+  position:relative;
+  padding-top:3rem;
+  border-top:1px solid var(--gd);
+  transition:border-color .3s var(--ease);
+}
+.step:hover { border-color:var(--gold); }
+
+.step__num {
+  position:absolute; top:-1px; right:0;
+  font-family:var(--serif); font-style:italic; font-weight:300;
+  font-size:clamp(3.5rem,7vw,5.5rem);
+  color:var(--cream); line-height:1;
+  opacity:.06;
+  user-select:none;
+}
+.step__label {
+  font-family:var(--mono); font-size:.6rem;
+  letter-spacing:.24em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:1rem;
+}
+.step__title {
+  font-family:var(--serif); font-style:italic; font-weight:300;
+  font-size:clamp(1.4rem,2.5vw,1.9rem);
+  color:var(--cream); line-height:1.1;
+  margin-bottom:.9rem;
+}
+.step__desc { font-size:.75rem; line-height:1.85; color:var(--sec); }
+
+/* ════════════════════════════════════════════════════════
+   S5 — POURQUOI ZORFIX
+════════════════════════════════════════════════════════ */
+.pourquoi { padding:var(--py) 0; }
+
+.pourquoi__inner {
+  display:grid;
+  grid-template-columns:1fr;
+  gap:3rem;
+}
+@media (min-width:860px) {
+  .pourquoi__inner { grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
+}
+
+.pourquoi__left h2 { color:var(--cream); margin-bottom:1.6rem; }
+.pourquoi__left h2 em { color:var(--gold); }
+.pourquoi__left p { font-size:.8rem; }
+
+.pourquoi__list { display:flex; flex-direction:column; gap:0; }
+
+.pq {
+  display:flex; align-items:flex-start; gap:1.5rem;
+  padding:1.6rem 0;
+  border-bottom:1px solid var(--gd);
+  transition:border-color .3s;
+}
+.pq:first-child { border-top:1px solid var(--gd); }
+.pq:hover { border-color:rgba(224,169,46,.25); }
+
+.pq__num {
+  font-family:var(--mono); font-size:.6rem;
+  letter-spacing:.14em; color:var(--gold);
+  opacity:.65; padding-top:.2rem; flex-shrink:0;
+  min-width:2rem;
+}
+.pq__body {}
+.pq__title {
+  font-family:var(--mono); font-size:.75rem;
+  letter-spacing:.1em; color:var(--cream);
+  margin-bottom:.4rem;
+}
+.pq__desc { font-size:.74rem; line-height:1.8; color:var(--sec); }
+
+/* ════════════════════════════════════════════════════════
+   S6 — PACKS
+════════════════════════════════════════════════════════ */
+.packs {
+  padding:var(--py) 0;
+  background:var(--bg2);
+}
+
+.packs__head { margin-bottom:clamp(2.5rem,5vw,4rem); }
+.packs__head h2 { color:var(--cream); }
+.packs__head p { margin-top:1rem; font-size:.8rem; max-width:520px; }
+
+.packs__grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:var(--gd);
+  border:1px solid var(--gd);
+}
+@media (max-width:820px) {
+  .packs__grid { grid-template-columns:1fr; }
+}
+
+.pack {
+  background:var(--bg);
+  padding:clamp(2rem,4vw,3rem);
+  display:flex; flex-direction:column;
+  position:relative; overflow:hidden;
+  transition:background .3s var(--ease);
+}
+.pack:hover { background:rgba(16,15,12,1); }
+
+.pack--featured {
+  background:rgba(224,169,46,.04);
+  border-top:2px solid var(--gold);
+}
+
+.pack__badge {
+  font-family:var(--mono); font-size:.56rem;
+  letter-spacing:.22em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:1.8rem;
+  height:1.2rem;
+}
+.pack__name {
+  font-family:var(--serif); font-style:italic; font-weight:300;
+  font-size:clamp(1.8rem,3.5vw,2.6rem);
+  color:var(--cream); line-height:1; margin-bottom:1rem;
+}
+.pack--featured .pack__name { color:var(--gold); }
+
+.pack__desc {
+  font-size:.74rem; line-height:1.85;
+  color:var(--sec); flex:1; margin-bottom:2rem;
+}
+
+.pack__features {
+  list-style:none; margin-bottom:2.2rem;
+  display:flex; flex-direction:column; gap:.65rem;
+}
+.pack__features li {
+  font-size:.7rem; letter-spacing:.04em; color:var(--sec);
+  display:flex; align-items:flex-start; gap:.6rem;
+}
+.pack__features li::before {
+  content:'—'; color:var(--gold); opacity:.6;
+  flex-shrink:0; margin-top:.05rem;
+}
+
+.pack__cta {
+  margin-top:auto;
+  font-family:var(--mono); font-size:.65rem;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--gold); display:flex; align-items:center; gap:.5rem;
+  transition:gap .2s var(--ease);
+}
+.pack__cta::after { content:'→'; }
+.pack:hover .pack__cta { gap:.9rem; }
+
+/* ════════════════════════════════════════════════════════
+   S7 — ÉDITION FONDATEUR
+════════════════════════════════════════════════════════ */
+.fondateur {
+  padding:var(--py) 0;
+  position:relative; overflow:hidden;
+}
+.fondateur::before {
+  content:'';
+  position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(ellipse 60% 50% at 50% 50%, rgba(224,169,46,.07) 0%, transparent 65%);
+}
+
+.fondateur__inner {
+  position:relative; z-index:1;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:3rem;
+}
+@media (min-width:860px) {
+  .fondateur__inner { grid-template-columns:auto 1fr; align-items:center; gap:6rem; }
+}
+
+.fondateur__num {
+  font-family:var(--serif); font-style:italic; font-weight:300;
+  font-size: clamp(8rem,24vw,18rem);
+  line-height:.85;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(224,169,46,.35);
+  text-stroke:1px rgba(224,169,46,.35);
+  user-select:none;
+  letter-spacing:-.03em;
+}
+
+.fondateur__body {}
+.fondateur__body h2 { color:var(--cream); margin-bottom:1.4rem; }
+.fondateur__body h2 em { color:var(--gold); }
+.fondateur__body > p { font-size:.8rem; margin-bottom:1.8rem; }
+
+.fondateur__list {
+  list-style:none;
+  display:flex; flex-direction:column; gap:.7rem;
+  margin-bottom:2.4rem;
+}
+.fondateur__list li {
+  font-size:.72rem; letter-spacing:.05em; color:var(--sec);
+  display:flex; align-items:flex-start; gap:.6rem;
+}
+.fondateur__list li::before {
+  content:'✦'; color:var(--gold); font-size:.5rem;
+  flex-shrink:0; margin-top:.2rem;
+}
+
+.fondateur__note {
+  font-family:var(--mono); font-size:.63rem;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--sec); margin-top:1.6rem; opacity:.7;
+}
+
+/* ════════════════════════════════════════════════════════
+   S8 — CONTACT
+════════════════════════════════════════════════════════ */
+.contact {
+  padding:var(--py) 0;
+  background:var(--bg2);
+  text-align:center;
+}
+.contact h2 { color:var(--cream); margin-bottom:1.2rem; }
+.contact h2 em { color:var(--gold); }
+.contact p {
+  max-width:480px; margin-inline:auto;
+  font-size:.8rem; margin-bottom:3rem;
+}
+.contact__actions {
+  display:flex; flex-wrap:wrap;
+  justify-content:center; gap:1rem;
+}
+
+/* ════════════════════════════════════════════════════════
+   FOOTER
+════════════════════════════════════════════════════════ */
+.footer {
+  padding:clamp(2.5rem,5vh,4rem) 0;
+  border-top:1px solid var(--gd);
+}
+.footer__inner {
+  display:flex; flex-wrap:wrap;
+  align-items:center; justify-content:space-between;
+  gap:1.5rem;
+}
+.footer__logo {
+  font-family:var(--serif); font-style:italic; font-weight:300;
+  font-size:1.3rem; letter-spacing:.04em; color:var(--cream);
+}
+.footer__logo .dot { color:var(--gold); }
+
+.footer__social {
+  display:flex; align-items:center; gap:.2rem;
+}
+.footer__social a {
+  display:flex; align-items:center; justify-content:center;
+  width:38px; height:38px;
+  padding:.55rem; margin:-.55rem;
+  color:var(--sec);
+  transition:color .2s var(--ease);
+}
+.footer__social a:hover { color:var(--gold); }
+.footer__social svg { width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+
+.footer__copy {
+  font-family:var(--mono); font-size:.6rem;
+  letter-spacing:.16em; color:var(--sec); opacity:.6;
+  width:100%;
+}
+@media (min-width:640px) {
+  .footer__copy { width:auto; }
+}
+</style>
 </head>
 <body>
 
-  <!-- Curseur personnalisé (desktop) — masqué sur tactile via CSS -->
-  <div class="cur-dot" id="curDot"  aria-hidden="true"></div>
-  <div class="cur-ring" id="curRing" aria-hidden="true"></div>
+<!-- Custom cursor -->
+<div class="cur-dot" id="curDot"></div>
+<div class="cur-ring" id="curRing"></div>
 
-  <!-- ================================================
-       NAVIGATION FIXE
-  ================================================ -->
-  <header class="nav" id="nav" role="banner">
-    <a href="#hero" class="nav__logo" aria-label="Zorfix — retour en haut">Zorfix</a>
-    <!-- Horloge suisse en live — masquée sur mobile via CSS -->
-    <span class="nav__clock" id="clock" aria-hidden="true">——:——</span>
-    <a href="https://tally.so/r/VLbq5l"
-       class="btn"
-       target="_blank"
-       rel="noopener noreferrer"
-       aria-label="Choisir un pack Zorfix">
-      Postuler
-    </a>
-  </header>
+<!-- ─── NAV ──────────────────────────────────────────── -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav__logo">Zorfix<span class="dot">.</span></a>
+  <span class="nav__clock" id="clock" aria-live="polite"></span>
+  <a href="https://tally.so/r/VLbq5l" target="_blank" rel="noopener" class="nav__cta">Devis →</a>
+</nav>
 
-  <main>
+<!-- ─── S1 HERO ───────────────────────────────────────── -->
+<section class="hero" id="hero">
+  <div class="hero__inner">
+    <p class="hero__tag reveal">Atelier suisse romand · façonné à la main</p>
 
-    <!-- ================================================
-         I. ACCROCHE
-         Le nom de marque et la promesse centrale.
-    ================================================ -->
-    <section class="hero" id="hero" aria-label="Accroche">
+    <h1 class="hero__title reveal reveal-d1">
+      Votre présence<br>
+      doit vous<br>
+      <em>amener des clients.</em>
+    </h1>
 
-      <!-- Coordonnées coin haut-droit (desktop) -->
-      <div class="hero__corner" aria-hidden="true">
-        Atelier<br>
-        Suisse romande<br>
-        MMXXVI
+    <p class="hero__sub reveal reveal-d2">
+      Pas juste exister. Une présence en ligne qui travaille pour vous — identité, contenu, réseaux — conçue sur mesure par un atelier qui ne prend pas tout le monde.
+    </p>
+
+    <div class="hero__actions reveal reveal-d3">
+      <a href="https://tally.so/r/VLbq5l" target="_blank" rel="noopener" class="btn">Demander un devis</a>
+      <span class="hero__scroll">Défiler</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── S2 CONSTAT ────────────────────────────────────── -->
+<section class="constat" id="constat">
+  <div class="wrap">
+    <div class="constat__inner">
+      <div class="reveal">
+        <div class="constat__stat">9<span>/10</span></div>
       </div>
-
-      <div class="hero__inner">
-
-        <p class="eyebrow hero__eyebrow" data-reveal>
-          <span class="pip" aria-hidden="true"></span>
-          Atelier suisse romand
-          <span class="sep" aria-hidden="true">·</span>
-          Depuis 2026
+      <div class="constat__body">
+        <span class="ey reveal">Le constat</span>
+        <h2 class="reveal reveal-d1">
+          La plupart des PME paraissent <em>amateur</em> en ligne.
+        </h2>
+        <p class="reveal reveal-d2">
+          Un logo douteux, des réseaux fantômes, un site qui date de 2017. Votre concurrent du bout de la rue — qui travaille peut-être moins bien que vous — donne l'impression d'être deux fois plus professionnel.
         </p>
-
-        <h1 class="hero__title" data-reveal data-delay="1">
-          Votre présence<br>
-          <span class="gold">devrait vous amener<br>des clients.</span><br>
-          Pas juste exister.
-        </h1>
-
-        <p class="hero__tagline" data-reveal data-delay="2">
-          Zorfix transforme votre image sur les réseaux<br>
-          en véritable outil d'acquisition.
+        <p class="reveal reveal-d3">
+          La perception, c'est la réalité. Et en Suisse romande, où la confiance se construit avant même le premier appel, votre image vaut de l'argent.
         </p>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <a href="https://tally.so/r/VLbq5l"
-           class="btn"
-           data-reveal data-delay="3"
-           target="_blank"
-           rel="noopener noreferrer">
-          Réserver ma place
-        </a>
+<!-- ─── S3 SERVICES ───────────────────────────────────── -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="services__head">
+      <span class="ey reveal">Ce qu'on fait</span>
+      <h2 class="reveal reveal-d1">Quatre piliers.<br>Une cohérence.</h2>
+    </div>
 
+    <div class="services__grid">
+
+      <div class="svc reveal">
+        <div class="svc__num">01</div>
+        <div class="svc__title">Identité visuelle</div>
+        <p class="svc__desc">Logo, palette, typographies, charte graphique. Une image qui inspire confiance dès le premier regard et qui tient la route sur tous les supports.</p>
       </div>
 
-      <span class="hero__scroll" aria-hidden="true">Découvrir</span>
+      <div class="svc reveal reveal-d1">
+        <div class="svc__num">02</div>
+        <div class="svc__title">Site web</div>
+        <p class="svc__desc">Un site pensé pour convertir, pas juste pour exister. Rapide, élégant, mobile — conçu autour de vos objectifs commerciaux, pas des tendances du moment.</p>
+      </div>
 
-    </section>
+      <div class="svc reveal reveal-d2">
+        <div class="svc__num">03</div>
+        <div class="svc__title">Réseaux sociaux</div>
+        <p class="svc__desc">Stratégie de contenu, création et planification. Instagram, TikTok, LinkedIn — selon votre cible. On construit une communauté qui achète.</p>
+      </div>
 
+      <div class="svc reveal reveal-d3">
+        <div class="svc__num">04</div>
+        <div class="svc__title">Stratégie de marque</div>
+        <p class="svc__desc">Positionnement, messages clés, ton éditorial. On définit ce qui vous rend unique et on s'assure que ça transparaît partout — online et offline.</p>
+      </div>
 
-    <!-- ================================================
-         II. LE CONSTAT
-         Pourquoi une présence amateur dessert une entreprise.
-    ================================================ -->
-    <section class="constat" id="constat" aria-label="Le constat">
-      <div class="wrap">
-        <div class="constat__grid">
+    </div>
+  </div>
+</section>
 
-          <!-- Gauche : titre -->
-          <div>
-            <span class="rule" data-reveal aria-hidden="true"></span>
-            <p class="eyebrow" data-reveal>
-              <span class="pip" aria-hidden="true"></span>
-              II <span class="sep" aria-hidden="true">·</span> Le constat
-            </p>
-            <h2 class="constat__heading" data-reveal data-delay="1">
-              Une présence<br>
-              <em>amateur</em><br>
-              nuit.
-            </h2>
+<!-- ─── S4 MÉTHODE ────────────────────────────────────── -->
+<section class="methode" id="methode">
+  <div class="wrap">
+    <div class="methode__head">
+      <span class="ey reveal">Comment on travaille</span>
+      <h2 class="reveal reveal-d1">Trois étapes.<br>Zéro improvisation.</h2>
+    </div>
+
+    <div class="methode__grid">
+
+      <div class="step reveal">
+        <div class="step__num">01</div>
+        <div class="step__label">Diagnostic</div>
+        <div class="step__title">On comprend votre marché</div>
+        <p class="step__desc">Audit de votre présence actuelle, analyse de vos concurrents, identification de vos avantages concurrentiels. On ne crée rien avant de tout avoir compris.</p>
+      </div>
+
+      <div class="step reveal reveal-d2">
+        <div class="step__num">02</div>
+        <div class="step__label">Création</div>
+        <div class="step__title">On façonne votre image</div>
+        <p class="step__desc">Chaque élément est conçu à la main, pour vous. Pas de template génériques. Pas de raccourcis. Un travail artisanal qui se voit dans les détails.</p>
+      </div>
+
+      <div class="step reveal reveal-d4">
+        <div class="step__num">03</div>
+        <div class="step__label">Déploiement</div>
+        <div class="step__title">On mesure les résultats</div>
+        <p class="step__desc">Mise en ligne, suivi des performances, ajustements en continu. L'accompagnement ne s'arrête pas à la livraison — on reste à vos côtés pendant 3 mois.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── S5 POURQUOI ZORFIX ────────────────────────────── -->
+<section class="pourquoi" id="pourquoi">
+  <div class="wrap">
+    <div class="pourquoi__inner">
+
+      <div class="pourquoi__left">
+        <span class="ey reveal">Pourquoi Zorfix</span>
+        <h2 class="reveal reveal-d1">
+          Un atelier, pas<br>une <em>agence</em>.
+        </h2>
+        <p class="reveal reveal-d2">
+          Chez Zorfix, vous avez un seul interlocuteur — pas un chef de projet qui dispatche à une équipe de sous-traitants. Chaque client est un choix délibéré, pas un numéro dans un CRM.
+        </p>
+      </div>
+
+      <div class="pourquoi__list reveal reveal-d1">
+
+        <div class="pq">
+          <div class="pq__num">01</div>
+          <div class="pq__body">
+            <div class="pq__title">Spécialisés Suisse romande</div>
+            <p class="pq__desc">On connaît le marché, les codes locaux, les attentes des clients romands. Pas une agence parisienne qui adapte ses tarifs.</p>
           </div>
+        </div>
 
-          <!-- Droite : trois points -->
-          <div class="constat__list">
-
-            <div class="constat__item" data-reveal>
-              <span class="constat__item-num">— I</span>
-              <p>
-                Vos concurrents publient. S'ils le font mieux,
-                ils prennent vos clients. Pas demain — maintenant.
-              </p>
-            </div>
-
-            <div class="constat__item" data-reveal data-delay="1">
-              <span class="constat__item-num">— II</span>
-              <p>
-                Un contenu mal cadré, flou ou incohérent ne détruit
-                pas seulement votre image. Il détruit la confiance
-                que vos clients pourraient vous accorder.
-              </p>
-            </div>
-
-            <div class="constat__item" data-reveal data-delay="2">
-              <span class="constat__item-num">— III</span>
-              <p>
-                La question n'est pas « faut-il publier ? ».
-                La question est : avez-vous les moyens de publier mal ?
-              </p>
-            </div>
-
+        <div class="pq">
+          <div class="pq__num">02</div>
+          <div class="pq__body">
+            <div class="pq__title">Façonné à la main</div>
+            <p class="pq__desc">Chaque livrable est créé sur mesure. On refuse les templates et les solutions industrielles qui donnent le même résultat à tout le monde.</p>
           </div>
-
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ================================================
-         III. CE QU'EST ZORFIX
-         Atelier, pas agence — trois piliers.
-    ================================================ -->
-    <section class="manifeste" id="manifeste" aria-label="L'atelier Zorfix">
-      <div class="wrap">
-
-        <div class="manifeste__header">
-          <span class="rule" data-reveal aria-hidden="true"></span>
-          <p class="eyebrow" data-reveal>
-            <span class="pip" aria-hidden="true"></span>
-            III <span class="sep" aria-hidden="true">·</span> L'atelier
-          </p>
-          <h2 class="manifeste__heading" data-reveal data-delay="1">
-            Comment Zorfix<br>
-            vous fait grandir.
-          </h2>
-          <p class="manifeste__lead" data-reveal data-delay="2">
-            Captation, façonnage, stratégie éditoriale — trois leviers
-            coordonnés pour transformer votre présence en source
-            d'acquisition de clients.
-          </p>
-          <!-- "Pas une agence. Un atelier." descendu comme titre secondaire,
-               juste avant les piliers qui en apportent la preuve. -->
-          <h3 class="manifeste__heading" data-reveal data-delay="3">
-            Pas une agence. Un atelier.
-          </h3>
         </div>
 
-        <!-- Trois piliers -->
-        <div class="pillars">
-
-          <div class="pillar" data-reveal>
-            <span class="pillar__num">I · Pilier</span>
-            <h3 class="pillar__title">Atelier.</h3>
-            <p>
-              Rien n'est produit en série ici. Chaque image, chaque
-              séquence, chaque mot est pensé pour votre métier, votre
-              clientèle, votre territoire.
-            </p>
+        <div class="pq">
+          <div class="pq__num">03</div>
+          <div class="pq__body">
+            <div class="pq__title">Sélection rigoureuse</div>
+            <p class="pq__desc">On choisit nos clients. Pas par arrogance, mais parce qu'un bon partenariat se construit sur l'alignement — de valeurs, d'objectifs, d'ambition.</p>
           </div>
+        </div>
 
-          <div class="pillar" data-reveal data-delay="1">
-            <span class="pillar__num">II · Pilier</span>
-            <h3 class="pillar__title">Stratégie.</h3>
-            <p>
-              Publier sans plan, c'est crier dans le vide. Nous
-              construisons la colonne vertébrale éditoriale qui oriente
-              chaque publication vers un seul but : attirer des clients.
-            </p>
+        <div class="pq">
+          <div class="pq__num">04</div>
+          <div class="pq__body">
+            <div class="pq__title">Résultats mesurables</div>
+            <p class="pq__desc">Portée, leads, conversions. On définit des KPIs dès le départ et on rend des comptes à chaque fin de mois, chiffres à l'appui.</p>
           </div>
-
-          <div class="pillar" data-reveal data-delay="2">
-            <span class="pillar__num">III · Pilier</span>
-            <h3 class="pillar__title">Croissance.</h3>
-            <p>
-              Abonnés, portée, engagement — ce sont des indicateurs,
-              pas des buts. Le vrai but : transformer votre présence
-              en source de revenus durable.
-            </p>
-          </div>
-
         </div>
-
-      </div>
-    </section>
-
-
-    <!-- ================================================
-         IV. LA MÉTHODE EN 3 ÉTAPES
-         Captation · Façonnage · Stratégie
-    ================================================ -->
-    <section class="methode" id="methode" aria-label="La méthode Zorfix">
-      <div class="wrap">
-
-        <div class="methode__header">
-          <span class="rule" data-reveal aria-hidden="true"></span>
-          <p class="eyebrow" data-reveal>
-            <span class="pip" aria-hidden="true"></span>
-            IV <span class="sep" aria-hidden="true">·</span> La méthode
-          </p>
-          <h2 class="methode__heading" data-reveal data-delay="1">
-            Trois étapes.<br>
-            Aucun compromis.
-          </h2>
-        </div>
-
-        <div class="steps">
-
-          <!-- Étape I : Captation -->
-          <article class="step" data-reveal>
-            <div>
-              <span class="step__num">I</span>
-              <span class="step__label">Captation</span>
-            </div>
-            <div>
-              <h3 class="step__title">Sur le terrain,<br>chez vous.</h3>
-              <p class="step__desc">
-                Nous venons à vous. Tournage dans votre espace de travail,
-                avec votre équipe, vos outils, votre réalité. Ce que nous
-                capturons, c'est ce qui vous rend irremplaçable — pas une
-                mise en scène générique.
-              </p>
-              <div class="step__tags">
-                <span class="step__tag">Tournage sur site</span>
-                <span class="step__tag">Photo &amp; vidéo</span>
-                <span class="step__tag">Atmosphère authentique</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Étape II : Façonnage -->
-          <article class="step" data-reveal>
-            <div>
-              <span class="step__num">II</span>
-              <span class="step__label">Façonnage</span>
-            </div>
-            <div>
-              <h3 class="step__title">Monté.<br>Retouché. Affiné.</h3>
-              <p class="step__desc">
-                Le brut devient net. Chaque séquence est montée, chaque
-                image est retouchée avec soin. Nous façonnons jusqu'à ce
-                que le rendu soit à la hauteur de ce que vous valez.
-              </p>
-              <div class="step__tags">
-                <span class="step__tag">Montage vidéo</span>
-                <span class="step__tag">Retouche photo</span>
-                <span class="step__tag">Direction artistique</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Étape III : Stratégie -->
-          <article class="step" data-reveal>
-            <div>
-              <span class="step__num">III</span>
-              <span class="step__label">Stratégie</span>
-            </div>
-            <div>
-              <h3 class="step__title">Un plan éditorial<br>qui convertit.</h3>
-              <p class="step__desc">
-                Quoi publier, quand, et pourquoi. Nous construisons le plan
-                éditorial mensuel qui transforme chaque publication en point
-                de contact avec un client potentiel. La régularité est notre
-                engagement.
-              </p>
-              <div class="step__tags">
-                <span class="step__tag">Plan éditorial mensuel</span>
-                <span class="step__tag">Calendrier de publication</span>
-                <span class="step__tag">Suivi &amp; ajustements</span>
-              </div>
-            </div>
-          </article>
-
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- ================================================
-         V. L'OFFRE — 3 PACKS MENSUELS
-         Présence · Croissance · Signature
-    ================================================ -->
-    <section class="offre" id="offre" aria-label="Nos offres">
-      <div class="wrap">
-
-        <div class="offre__header">
-          <span class="rule" data-reveal aria-hidden="true"></span>
-          <p class="eyebrow" data-reveal>
-            <span class="pip" aria-hidden="true"></span>
-            V <span class="sep" aria-hidden="true">·</span> L'offre
-          </p>
-          <h2 class="offre__heading" data-reveal data-delay="1">
-            Choisissez votre rythme.
-          </h2>
-          <p class="offre__intro" data-reveal data-delay="2">
-            Trois packs mensuels. Un seul objectif : vous amener des clients.
-          </p>
-        </div>
-
-        <div class="packs" data-reveal>
-
-          <!-- Pack Présence -->
-          <article class="pack" aria-label="Pack Présence">
-            <p class="pack__name">Présence</p>
-            <p class="pack__subtitle">Pour crédibiliser votre image et avoir un rendu pro.</p>
-            <ul class="pack__features">
-              <li>4 réels (TikTok + Insta)</li>
-              <li>8 photos</li>
-              <li>Stories incluses</li>
-              <li>½ journée de tournage sur place</li>
-            </ul>
-          </article>
-
-          <!-- Pack Croissance — mis en avant -->
-          <article class="pack pack--featured" aria-label="Pack Croissance, recommandé">
-            <span class="pack__badge">— Recommandé</span>
-            <p class="pack__name">Croissance</p>
-            <p class="pack__subtitle">Pour attirer des clients grâce à vos réseaux.</p>
-            <ul class="pack__features">
-              <li>6 réels (TikTok + Insta)</li>
-              <li>12 photos</li>
-              <li>Stories incluses</li>
-              <li>Campagnes ads (TikTok + Insta)</li>
-              <li>1 journée de tournage sur place</li>
-            </ul>
-          </article>
-
-          <!-- Pack Signature -->
-          <article class="pack" aria-label="Pack Signature">
-            <p class="pack__name">Signature</p>
-            <p class="pack__subtitle">Pour dominer votre marché local.</p>
-            <ul class="pack__features">
-              <li>8 réels (TikTok + Insta)</li>
-              <li>16 photos</li>
-              <li>Stories incluses</li>
-              <li>Campagnes ads (TikTok + Insta)</li>
-              <li>SEO</li>
-              <li>1,5 journée de tournage sur place</li>
-            </ul>
-          </article>
-
-        </div>
-
-        <p class="packs__note" data-reveal>Accompagnement sur 3 mois.</p>
-
-      </div>
-    </section>
-
-
-    <!-- ================================================
-         V-BIS. OFFRE FONDATEUR
-         3 places · 1er mois Croissance offert
-    ================================================ -->
-    <section class="fondateur" id="fondateur" aria-label="Offre fondateur">
-      <div class="wrap">
-        <div class="fondateur__card" data-reveal>
-          <p class="fondateur__places">10 places seulement</p>
-          <h2 class="fondateur__title">
-            1<sup>er</sup> mois offert.
-          </h2>
-          <p class="fondateur__body">
-            Le 1<sup>er</sup> mois du pack Croissance offert.<br>
-            En échange : un témoignage et l'autorisation d'utiliser les contenus créés.
-          </p>
-          <p class="fondateur__note">
-            L'objectif — prouver, sur de vrais cas, que Zorfix fait grandir une entreprise sur les réseaux.
-          </p>
-        </div>
-      </div>
-    </section>
-
-
-
-
-    <!-- ================================================
-         VI. APPEL À L'ACTION FINAL
-         Invitation à postuler.
-    ================================================ -->
-    <section class="cta-finale" id="contact" aria-label="Postuler">
-      <div class="wrap">
-        <div class="cta-finale__inner">
-
-          <span class="rule cta-finale__rule" data-reveal aria-hidden="true"></span>
-
-          <p class="eyebrow cta-finale__eyebrow" data-reveal>
-            <span class="pip" aria-hidden="true"></span>
-            VI <span class="sep" aria-hidden="true">·</span> Postuler
-          </p>
-
-          <h2 class="cta-finale__heading" data-reveal data-delay="1">
-            Votre métier<br>
-            mérite mieux.
-          </h2>
-
-          <p class="cta-finale__lead" data-reveal data-delay="2">
-            Choisissez le pack qui correspond à vos ambitions.
-            Accompagnement de 3 mois, premier mois offert.
-            Réservez votre place maintenant.
-          </p>
-
-          <a href="https://tally.so/r/VLbq5l"
-             class="btn"
-             data-reveal data-delay="3"
-             target="_blank"
-             rel="noopener noreferrer">
-            Postuler
-          </a>
-
-          <span class="cta-finale__note" data-reveal data-delay="4">
-            Zorfix
-            <span class="sep">·</span>
-            Suisse romande
-            <span class="sep">·</span>
-            1er mois offert
-          </span>
-
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-
-  <!-- ================================================
-       FOOTER
-  ================================================ -->
-  <footer class="footer" role="contentinfo">
-    <div class="footer__inner">
-      <span class="footer__brand">Zorfix</span>
-      <span class="footer__copy">© MMXXVI — Tous droits réservés</span>
-      <span class="footer__origin">Suisse romande</span>
-      <!-- Icônes réseaux sociaux -->
-      <div class="footer__social">
-
-        <!-- TikTok — 18×20 px (légèrement moins large qu'Instagram
-             pour compenser la densité visuelle du logo plein) -->
-        <a href="https://www.tiktok.com/@atelier.zorfix"
-           class="footer__social-link"
-           target="_blank"
-           rel="noopener noreferrer"
-           aria-label="TikTok Zorfix">
-          <svg width="18" height="20" viewBox="0 0 24 24"
-               fill="currentColor" aria-hidden="true">
-            <path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/>
-          </svg>
-        </a>
-
-        <!-- Instagram — 20×20 px, tracé (stroke) pour équilibrer
-             visuellement le logo TikTok en aplat (fill) -->
-        <a href="https://www.instagram.com/atelier.zorfix"
-           class="footer__social-link"
-           target="_blank"
-           rel="noopener noreferrer"
-           aria-label="Instagram Zorfix">
-          <svg width="20" height="20" viewBox="0 0 24 24"
-               fill="none" stroke="currentColor"
-               stroke-width="1.5" stroke-linecap="round"
-               stroke-linejoin="round" aria-hidden="true">
-            <rect x="2" y="2" width="20" height="20" rx="5"/>
-            <circle cx="12" cy="12" r="4.5"/>
-            <circle cx="17.5" cy="6.5" r=".9"
-                    fill="currentColor" stroke="none"/>
-          </svg>
-        </a>
-
-        <!-- Facebook — 20×20 px, tracé, cohérent avec Instagram -->
-        <a href="https://www.facebook.com/share/1Npf8fN7yo/?mibextid=wwXIfr"
-           class="footer__social-link"
-           target="_blank"
-           rel="noopener noreferrer"
-           aria-label="Facebook Zorfix">
-          <svg width="20" height="20" viewBox="0 0 24 24"
-               fill="none" stroke="currentColor"
-               stroke-width="1.5" stroke-linecap="round"
-               stroke-linejoin="round" aria-hidden="true">
-            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-          </svg>
-        </a>
-
-        <!-- E-mail — 20×20 px, tracé, cohérent avec Instagram -->
-        <a href="mailto:contact.zorfix@gmail.com"
-           class="footer__social-link"
-           aria-label="E-mail Zorfix">
-          <svg width="20" height="20" viewBox="0 0 24 24"
-               fill="none" stroke="currentColor"
-               stroke-width="1.5" stroke-linecap="round"
-               stroke-linejoin="round" aria-hidden="true">
-            <rect x="2" y="4" width="20" height="16" rx="2"/>
-            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-          </svg>
-        </a>
 
       </div>
     </div>
-  </footer>
+  </div>
+</section>
 
+<!-- ─── S6 PACKS ──────────────────────────────────────── -->
+<section class="packs" id="packs">
+  <div class="wrap">
+    <div class="packs__head">
+      <span class="ey reveal">L'offre</span>
+      <h2 class="reveal reveal-d1">3 packs mensuels.</h2>
+      <p class="reveal reveal-d2">Un accompagnement de 3 mois, avec un pack taillé pour vos objectifs. Tarifs sur devis — parce que chaque client est différent.</p>
+    </div>
 
-  <!-- ================================================
-       JAVASCRIPT
+    <div class="packs__grid">
 
-       1. Navigation   : .is-scrolled après 60 px de défilement
-       2. Scroll reveal : IntersectionObserver sur [data-reveal]
-          → ajoute .is-visible à l'entrée dans le viewport
-            (une seule fois, puis unobserve pour les perfs)
-          Fallback : visibilité immédiate si API absente
-       3. Curseur       : dot + ring or, inertie 14%, grow au survol
-          Actif uniquement sur (hover:hover) and (pointer:fine)
-       4. Horloge       : HH:MM CET en live, mise à jour toutes
-          les 30 s via Intl.DateTimeFormat sur Europe/Zurich
-  ================================================ -->
-  <script>
-    (function () {
-      'use strict';
+      <div class="pack reveal">
+        <div class="pack__badge"></div>
+        <div class="pack__name">Présence</div>
+        <p class="pack__desc">Pour crédibiliser votre image et poser les fondations d'une présence professionnelle durable.</p>
+        <ul class="pack__features">
+          <li>Identité visuelle complète</li>
+          <li>Site vitrine sur mesure</li>
+          <li>Mise en place réseaux sociaux</li>
+          <li>Charte éditoriale</li>
+        </ul>
+        <a href="https://tally.so/r/VLbq5l" target="_blank" rel="noopener" class="pack__cta">Demander un devis</a>
+      </div>
 
-      /* ---- 1. Navigation scrollée ---- */
-      var nav = document.getElementById('nav');
-      function onScroll() {
-        if (nav) nav.classList.toggle('is-scrolled', window.scrollY > 60);
+      <div class="pack pack--featured reveal reveal-d2">
+        <div class="pack__badge">— Recommandé</div>
+        <div class="pack__name">Croissance</div>
+        <p class="pack__desc">Pour attirer des clients en continu. Création de contenu régulière, stratégie et suivi de performance inclus.</p>
+        <ul class="pack__features">
+          <li>Tout le pack Présence</li>
+          <li>Contenu mensuel (12 posts)</li>
+          <li>Stories &amp; formats courts</li>
+          <li>Reporting mensuel</li>
+        </ul>
+        <a href="https://tally.so/r/VLbq5l" target="_blank" rel="noopener" class="pack__cta">Demander un devis</a>
+      </div>
+
+      <div class="pack reveal reveal-d4">
+        <div class="pack__badge"></div>
+        <div class="pack__name">Signature</div>
+        <p class="pack__desc">Pour dominer votre marché. Présence omnicanale, contenu premium et stratégie de croissance avancée.</p>
+        <ul class="pack__features">
+          <li>Tout le pack Croissance</li>
+          <li>Contenu mensuel (24 posts)</li>
+          <li>Vidéos courtes &amp; reels</li>
+          <li>Stratégie publicitaire</li>
+        </ul>
+        <a href="https://tally.so/r/VLbq5l" target="_blank" rel="noopener" class="pack__cta">Demander un devis</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── S7 ÉDITION FONDATEUR ──────────────────────────── -->
+<section class="fondateur" id="fondateur">
+  <div class="wrap">
+    <div class="fondateur__inner">
+      <div class="fondateur__num reveal">10</div>
+      <div class="fondateur__body">
+        <span class="ey reveal">Édition fondateur</span>
+        <h2 class="reveal reveal-d1">
+          10 places.<br><em>Conditions exceptionnelles.</em>
+        </h2>
+        <p class="reveal reveal-d2">
+          Pour les premiers clients qui font confiance à Zorfix, on offre un accompagnement hors norme à des conditions que vous ne retrouverez plus ensuite.
+        </p>
+        <ul class="fondateur__list reveal reveal-d3">
+          <li>1er mois offert</li>
+          <li>Accès prioritaire aux nouvelles offres</li>
+          <li>Tarif fondateur garanti à vie</li>
+          <li>Implication directe dans l'évolution de l'atelier</li>
+        </ul>
+        <a href="https://tally.so/r/VLbq5l" target="_blank" rel="noopener" class="btn reveal reveal-d4">Réserver ma place</a>
+        <p class="fondateur__note reveal reveal-d5">Places limitées · Sans engagement d'un an</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── S8 CONTACT ────────────────────────────────────── -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <span class="ey reveal" style="justify-content:center;">Prêt à commencer ?</span>
+    <h2 class="reveal reveal-d1">
+      Demandez votre<br><em>devis gratuit.</em>
+    </h2>
+    <p class="reveal reveal-d2">
+      Un échange de 20 minutes suffit pour comprendre vos objectifs et vous proposer la solution adaptée.
+    </p>
+    <div class="contact__actions reveal reveal-d3">
+      <a href="https://tally.so/r/VLbq5l" target="_blank" rel="noopener" class="btn">Remplir le formulaire</a>
+      <a href="mailto:atelier.zorfix@gmail.com" class="btn btn--ghost">Écrire un e-mail</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__inner">
+      <div class="footer__logo">Zorfix<span class="dot">.</span></div>
+
+      <div class="footer__social">
+        <!-- Instagram -->
+        <a href="https://instagram.com/atelier.zorfix" target="_blank" rel="noopener" aria-label="Instagram @atelier.zorfix">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4.5"/>
+            <circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <!-- TikTok -->
+        <a href="https://tiktok.com/@atelier.zorfix" target="_blank" rel="noopener" aria-label="TikTok @atelier.zorfix">
+          <svg viewBox="0 0 24 24" aria-hidden="true" stroke="none" fill="currentColor">
+            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.75a8.23 8.23 0 0 0 4.84 1.56V6.88a4.85 4.85 0 0 1-1.07-.19z"/>
+          </svg>
+        </a>
+        <!-- Email -->
+        <a href="mailto:atelier.zorfix@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <polyline points="2,4 12,13 22,4"/>
+          </svg>
+        </a>
+      </div>
+
+      <p class="footer__copy">
+        © <span id="year"></span> Zorfix — Atelier suisse romand · Tous droits réservés
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ─── Custom cursor ─────────────────────────────────── */
+  var dot  = document.getElementById('curDot');
+  var ring = document.getElementById('curRing');
+  var mx = 0, my = 0, rx = 0, ry = 0;
+  var rafId = null;
+
+  function tick() {
+    rx += (mx - rx) * .14;
+    ry += (my - ry) * .14;
+    ring.style.left = rx + 'px';
+    ring.style.top  = ry + 'px';
+    rafId = requestAnimationFrame(tick);
+  }
+
+  document.addEventListener('mousemove', function (e) {
+    mx = e.clientX; my = e.clientY;
+    dot.style.left = mx + 'px';
+    dot.style.top  = my + 'px';
+  });
+
+  document.querySelectorAll('a,button,.btn').forEach(function (el) {
+    el.addEventListener('mouseenter', function () { ring.classList.add('grow'); });
+    el.addEventListener('mouseleave', function () { ring.classList.remove('grow'); });
+  });
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) { if (rafId) { cancelAnimationFrame(rafId); rafId = null; } }
+    else { tick(); }
+  });
+  tick();
+
+  /* ─── Clock ─────────────────────────────────────────── */
+  var clock = document.getElementById('clock');
+  function updateClock() {
+    var now = new Date();
+    var t = now.toLocaleTimeString('fr-CH', {
+      timeZone: 'Europe/Zurich', hour: '2-digit', minute: '2-digit'
+    });
+    var parts = new Intl.DateTimeFormat('fr-CH', {
+      timeZone: 'Europe/Zurich', timeZoneName: 'short'
+    }).formatToParts(now);
+    var tz = (parts.find(function (p) { return p.type === 'timeZoneName'; }) || {}).value || 'CET';
+    if (clock) clock.textContent = t + ' ' + tz;
+  }
+  updateClock();
+  setInterval(updateClock, 30000);
+
+  /* ─── Nav scroll ────────────────────────────────────── */
+  var nav = document.getElementById('nav');
+  function onScroll() {
+    if (window.scrollY > 40) nav.classList.add('is-scrolled');
+    else nav.classList.remove('is-scrolled');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ─── Scroll reveal ─────────────────────────────────── */
+  var revealObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObs.unobserve(entry.target);
       }
-      window.addEventListener('scroll', onScroll, { passive: true });
+    });
+  }, { threshold: 0.12 });
 
-      /* ---- 2. Animations au scroll ---- */
-      var targets = document.querySelectorAll('[data-reveal]');
+  document.querySelectorAll('.reveal').forEach(function (el) {
+    revealObs.observe(el);
+  });
 
-      if ('IntersectionObserver' in window) {
-        var observer = new IntersectionObserver(
-          function (entries) {
-            entries.forEach(function (entry) {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.12, rootMargin: '0px 0px -50px 0px' }
-        );
-        targets.forEach(function (el) { observer.observe(el); });
-      } else {
-        targets.forEach(function (el) { el.classList.add('is-visible'); });
-      }
+  /* ─── Year ──────────────────────────────────────────── */
+  var yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-      /* ---- 3. Curseur personnalisé (desktop uniquement) ---- */
-      var curDot  = document.getElementById('curDot');
-      var curRing = document.getElementById('curRing');
-      var isDesktop = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
-
-      if (curDot && curRing && isDesktop) {
-        var mx = 0, my = 0, rx = 0, ry = 0;
-
-        window.addEventListener('mousemove', function (e) {
-          mx = e.clientX;
-          my = e.clientY;
-          /* Le dot suit instantanément */
-          curDot.style.transform =
-            'translate3d(' + mx + 'px,' + my + 'px,0) translate(-50%,-50%)';
-        });
-
-        /* Le ring suit avec inertie (boucle RAF) */
-        var rafId;
-        function loop() {
-          rx += (mx - rx) * 0.14;
-          ry += (my - ry) * 0.14;
-          curRing.style.transform =
-            'translate3d(' + rx + 'px,' + ry + 'px,0) translate(-50%,-50%)';
-          rafId = requestAnimationFrame(loop);
-        }
-        rafId = requestAnimationFrame(loop);
-        document.addEventListener('visibilitychange', function () {
-          if (document.hidden) { cancelAnimationFrame(rafId); }
-          else { rafId = requestAnimationFrame(loop); }
-        });
-
-        /* Agrandissement au survol des éléments interactifs */
-        document.querySelectorAll('a, button, .btn').forEach(function (el) {
-          el.addEventListener('mouseenter', function () { curRing.classList.add('grow'); });
-          el.addEventListener('mouseleave', function () { curRing.classList.remove('grow'); });
-        });
-      }
-
-      /* ---- 4. Horloge suisse en live ---- */
-      var clock = document.getElementById('clock');
-      if (clock) {
-        var clockInterval;
-        function tick() {
-          try {
-            var now = new Date();
-            var t = new Intl.DateTimeFormat('fr-CH', {
-              hour: '2-digit',
-              minute: '2-digit',
-              timeZone: 'Europe/Zurich',
-              hour12: false
-            }).format(now);
-            var parts = new Intl.DateTimeFormat('fr-CH', {
-              timeZone: 'Europe/Zurich',
-              timeZoneName: 'short'
-            }).formatToParts(now);
-            var tz = (parts.find(function (p) { return p.type === 'timeZoneName'; }) || {}).value || 'CET';
-            clock.textContent = t + ' ' + tz;
-          } catch (e) {
-            var d = new Date();
-            clock.textContent =
-              String(d.getHours()).padStart(2, '0') + ':' +
-              String(d.getMinutes()).padStart(2, '0') + ' CET';
-          }
-        }
-        tick();
-        clockInterval = setInterval(tick, 30000);
-      }
-
-    })();
-  </script>
+})();
+</script>
 
 </body>
 </html>
