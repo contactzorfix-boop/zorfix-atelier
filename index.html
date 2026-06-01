@@ -3,299 +3,677 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Zorfix · Atelier — Identité, contenu et croissance, façonnés à la main pour les marques qui veulent compter.">
-<meta name="theme-color" content="#0c0b09">
-<title>Zorfix · Atelier — Suisse Romande</title>
-
-<link rel="icon" type="image/svg+xml"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230c0b09' rx='4'/%3E%3Ctext x='16' y='25' font-family='Georgia%2Cserif' font-size='23' font-style='italic' fill='%23e0a92e' text-anchor='middle'%3EZ%3C/text%3E%3C/svg%3E">
-<link rel="apple-touch-icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' fill='%230c0b09'/%3E%3Ctext x='90' y='138' font-family='Georgia%2Cserif' font-size='130' font-style='italic' fill='%23e0a92e' text-anchor='middle'%3EZ%3C/text%3E%3C/svg%3E">
-
-<meta property="og:type"        content="website">
-<meta property="og:title"       content="Zorfix · Atelier — Suisse Romande">
-<meta property="og:description" content="Identité, contenu et croissance — façonnés à la main pour les marques qui veulent compter.">
-<meta property="og:url"         content="https://contactzorfix-boop.github.io/zorfix-atelier/">
-<meta property="og:image"       content="https://contactzorfix-boop.github.io/zorfix-atelier/og.jpg">
-<meta property="og:image:width"  content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:locale"      content="fr_CH">
-<meta property="og:site_name"   content="Zorfix">
-
-<meta name="twitter:card"        content="summary_large_image">
-<meta name="twitter:title"       content="Zorfix · Atelier — Suisse Romande">
-<meta name="twitter:description" content="Identité, contenu et croissance — façonnés à la main.">
-<meta name="twitter:image"       content="https://contactzorfix-boop.github.io/zorfix-atelier/og.jpg">
-
+<title>Atelier Zorfix — Production de contenu vidéo pour entreprises romandes</title>
+<meta name="description" content="Atelier Zorfix — Production de contenu vidéo pour entreprises romandes. On met en lumière ce que votre entreprise a de mieux.">
+<meta property="og:title" content="Atelier Zorfix — Production de contenu vidéo pour entreprises romandes">
+<meta property="og:description" content="On met en lumière ce que votre entreprise a de mieux.">
+<meta property="og:image" content="https://zorfix.ch/og.jpg">
+<meta property="og:url" content="https://zorfix.ch">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Atelier Zorfix — Production de contenu vidéo pour entreprises romandes">
+<meta name="twitter:description" content="On met en lumière ce que votre entreprise a de mieux.">
+<meta name="twitter:image" content="https://zorfix.ch/og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 <style>
-  :root{
-    --noir:#0c0b09;
-    --noir-soft:#141210;
-    --creme:#e9e3d4;
-    --creme-dim:#a59f90;
-    --or:#e0a92e;
-    --or-soft:#c79528;
-    --serif:'Cormorant Garamond',serif;
-    --mono:'JetBrains Mono',monospace;
-    --sg:clamp(80px,11vh,120px); /* section-gap : espacement uniforme haut+bas */
-    --px:clamp(18px,5vw,32px);  /* padding horizontal uniforme */
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    background:var(--noir);
-    color:var(--creme);
-    font-family:var(--serif);
-    overflow-x:hidden;
-    -webkit-font-smoothing:antialiased;
-  }
-  /* grain overlay */
-  body::after{
-    content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.035;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-  .mono{font-family:var(--mono);letter-spacing:.25em;text-transform:uppercase;font-size:.72rem;color:var(--creme-dim)}
-  .or{color:var(--or)}
-  /* padding-left/right en longhands → ne conflicte JAMAIS avec padding-top/bottom des sections */
-  .container{max-width:1100px;margin:0 auto;padding-left:var(--px);padding-right:var(--px)}
-  section{position:relative}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --noir:#080604;
+  --noir-soft:#0c0a07;
+  --creme:#E9E2D2;
+  --creme-dim:#8a8070;
+  --or:#E7B53C;
+  --or-light:#F4D175;
+  --serif:'Cormorant Garamond',serif;
+  --body:'Lora',serif;
+  --mono:'Courier Prime',monospace;
+  --sg:clamp(80px,11vh,120px);
+  --px:clamp(20px,5vw,80px);
+  --ease:cubic-bezier(0.4,0,0.2,1);
+}
+html{scroll-behavior:auto}
+body{background:var(--noir);color:var(--creme);font-family:var(--body);overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 
-  /* reveal */
-  .reveal{opacity:0;transform:translateY(28px);transition:opacity 1.1s cubic-bezier(.16,1,.3,1),transform 1.1s cubic-bezier(.16,1,.3,1)}
-  .reveal.in{opacity:1;transform:none}
+/* GRAIN */
+.grain{position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.04;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px 200px}
 
-  /* NAV */
-  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:22px 32px;mix-blend-mode:difference}
-  nav .brand{font-size:1.5rem;font-style:italic;font-weight:600;color:#fff;letter-spacing:.02em}
-  nav .brand span{color:var(--or);mix-blend-mode:normal}
-  nav a.cta-nav{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.35);padding:10px 18px;border-radius:40px;transition:.4s;white-space:nowrap}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:22px var(--px);display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--serif);font-size:1.15rem;font-weight:500;letter-spacing:.1em;color:var(--creme);text-decoration:none}
+.nav-logo span{color:var(--or)}
+.nav-cta{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--noir);background:var(--or);padding:10px 22px;text-decoration:none;border:1px solid transparent;transition:all .3s var(--ease)}
+.nav-cta:hover{background:transparent;color:var(--or);border-color:var(--or)}
 
-  /* HERO — padding-bottom décale le centre optique vers le haut (compense la nav fixe) */
-  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;padding-left:var(--px);padding-right:var(--px);padding-bottom:var(--sg)}
-  .hero .glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(224,169,46,.13),transparent 65%);filter:blur(20px);z-index:0}
-  .hero .tag{margin-bottom:38px;z-index:2}
-  .hero h1{font-size:clamp(3.4rem,9vw,7.5rem);line-height:.94;font-weight:500;z-index:2;letter-spacing:-.01em}
-  .hero h1 em{font-style:italic;color:var(--or)}
-  .hero .sub{margin-top:30px;font-size:clamp(1.05rem,2vw,1.35rem);color:var(--creme-dim);font-style:italic;max-width:480px;z-index:2}
-  .hero .scroll-i{position:absolute;bottom:34px;font-family:var(--mono);font-size:.62rem;letter-spacing:.3em;color:var(--creme-dim);text-transform:uppercase;z-index:2}
-  .btn{display:inline-block;margin-top:42px;font-family:var(--mono);font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--noir);background:var(--or);text-decoration:none;padding:16px 34px;border-radius:46px;z-index:2;transition:.45s cubic-bezier(.16,1,.3,1);font-weight:500}
-  .btn:hover{background:var(--creme);transform:translateY(-2px);box-shadow:0 18px 40px -12px rgba(224,169,46,.4)}
-  .btn-ghost{background:transparent;border:1px solid rgba(233,227,212,.3);color:var(--creme)}
-  .btn-ghost:hover{background:var(--creme);color:var(--noir);box-shadow:none}
+/* HERO */
+#hero{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#hero-canvas{position:absolute;top:0;left:0;width:100%;height:100%;display:block;pointer-events:none;z-index:0}
+.hero-vignette{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at center,transparent 25%,rgba(8,6,4,.75) 100%)}
+.hero-content{position:relative;z-index:2;text-align:center;padding:0 var(--px);max-width:920px}
+.hero-logo{width:clamp(64px,8vw,88px);height:clamp(64px,8vw,88px);border-radius:50%;border:1.5px solid rgba(231,181,60,.35);display:flex;align-items:center;justify-content:center;margin:0 auto 28px;background:rgba(231,181,60,.05);opacity:0;transform:scale(.85)}
+.hero-logo span{font-family:var(--serif);font-size:clamp(1rem,2vw,1.4rem);color:var(--or);letter-spacing:.05em}
+.hero-kicker{font-family:var(--mono);font-size:clamp(.6rem,1.2vw,.72rem);letter-spacing:.3em;text-transform:uppercase;color:var(--or);margin-bottom:28px;display:block;opacity:0;transform:translateY(16px)}
+.hero-title{font-family:var(--serif);font-size:clamp(2.6rem,6.5vw,6rem);font-weight:300;line-height:1.08;color:var(--creme);letter-spacing:-.01em;margin-bottom:24px;opacity:0;transform:translateY(40px)}
+.hero-title em{font-style:italic;color:var(--or)}
+.hero-subtitle{font-family:var(--body);font-size:clamp(.9rem,1.6vw,1.1rem);color:var(--creme-dim);line-height:1.75;max-width:520px;margin:0 auto 44px;font-weight:400;opacity:0;transform:translateY(20px)}
+.hero-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;opacity:0;transform:translateY(20px)}
+.btn-primary{font-family:var(--mono);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;background:var(--or);color:var(--noir);padding:15px 34px;text-decoration:none;display:inline-block;border:1px solid var(--or);transition:all .3s var(--ease)}
+.btn-primary:hover{background:transparent;color:var(--or)}
+.btn-secondary{font-family:var(--mono);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;background:transparent;color:var(--creme);padding:15px 34px;text-decoration:none;display:inline-block;border:1px solid rgba(233,226,210,.2);transition:all .3s var(--ease)}
+.btn-secondary:hover{border-color:var(--creme)}
+.hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0}
+.hero-scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,var(--or),transparent);animation:lineBreath 2.2s ease-in-out infinite}
+.hero-scroll-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.25em;color:var(--or);text-transform:uppercase}
+@keyframes lineBreath{0%,100%{opacity:.4;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.08)}}
 
-  /* CONSTAT — longhands vertical : pas de conflit avec .container */
-  .constat{padding-top:var(--sg);padding-bottom:var(--sg);text-align:center}
-  .constat p{font-size:clamp(2rem,5.5vw,4rem);line-height:1.12;font-weight:500}
-  .constat p em{font-style:italic;color:var(--or)}
+/* SECTIONS */
+section:not(#hero){padding-top:var(--sg);padding-bottom:var(--sg)}
+.container{max-width:1200px;margin:0 auto;padding-left:var(--px);padding-right:var(--px)}
+.section-kicker{font-family:var(--mono);font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;color:var(--or);display:block;margin-bottom:20px}
+.divider-or{width:36px;height:1px;background:var(--or);margin-bottom:28px}
 
-  /* SERVICES */
-  .services{padding-top:var(--sg);padding-bottom:var(--sg)}
-  .sec-head{text-align:center;margin-bottom:70px}
-  .sec-head h2{font-size:clamp(2.2rem,5vw,3.4rem);font-weight:500;font-style:italic;margin-top:14px}
-  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
-  .card{border:1px solid rgba(233,227,212,.1);border-radius:18px;padding:42px 38px;background:linear-gradient(160deg,rgba(20,18,16,.6),rgba(12,11,9,.2));transition:.5s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden}
-  .card::before{content:"";position:absolute;top:0;left:0;width:0;height:2px;background:var(--or);transition:width .6s cubic-bezier(.16,1,.3,1)}
-  .card:hover{border-color:rgba(224,169,46,.35);transform:translateY(-5px)}
-  .card:hover::before{width:100%}
-  .card .num{font-family:var(--mono);font-size:.7rem;color:var(--or);letter-spacing:.2em}
-  .card h3{font-size:1.9rem;font-weight:600;margin:14px 0 18px}
-  .card ul{list-style:none}
-  .card li{font-size:1.15rem;color:var(--creme-dim);padding:7px 0;border-bottom:1px solid rgba(233,227,212,.06)}
-  .card li:last-child{border:none}
+/* 2. CONSTAT */
+#constat{background:var(--noir);text-align:center}
+.constat-text{font-family:var(--serif);font-size:clamp(2rem,5vw,4.2rem);font-weight:300;line-height:1.15;color:var(--creme);max-width:780px;margin:0 auto;letter-spacing:-.01em}
+.constat-text em{font-style:italic;color:var(--or)}
+.constat-sub{font-family:var(--body);font-size:clamp(.9rem,1.4vw,1rem);color:var(--creme-dim);margin-top:28px;max-width:460px;margin-left:auto;margin-right:auto;line-height:1.85}
 
-  /* METHODE */
-  .methode{padding-top:var(--sg);padding-bottom:var(--sg);text-align:center}
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(2rem,4vw,3.5rem);margin-top:64px}
-  .step .n{font-size:clamp(1.8rem,3.5vw,2.4rem);font-style:italic;color:var(--or);line-height:1;margin-bottom:.6rem}
-  .step h4{font-family:var(--mono);font-size:clamp(.72rem,1.1vw,.86rem);letter-spacing:.2em;text-transform:uppercase;margin:.9rem 0 .8rem}
-  .step p{color:var(--creme-dim);font-size:clamp(1rem,1.6vw,1.1rem);line-height:1.6}
+/* 3. MANIFESTE */
+#manifeste{background:var(--noir-soft)}
+.manifeste-inner{max-width:680px}
+.manifeste-title{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,3rem);font-weight:300;color:var(--creme);line-height:1.2;margin-bottom:28px}
+.manifeste-body{font-family:var(--body);font-size:clamp(.95rem,1.4vw,1.05rem);color:var(--creme-dim);line-height:1.9}
+.manifeste-body p+p{margin-top:1.2em}
+.manifeste-body strong{color:var(--creme);font-weight:500}
+.manifeste-sig{margin-top:44px;padding-top:28px;border-top:1px solid rgba(231,181,60,.18);font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;color:var(--or);text-transform:uppercase}
 
-  /* POURQUOI */
-  .pourquoi{padding-top:var(--sg);padding-bottom:var(--sg);text-align:center}
-  .pourquoi .big{font-size:clamp(1.4rem,3.2vw,2.4rem);line-height:1.2;font-weight:500;max-width:720px;margin:0 auto}
-  .pourquoi .big em{font-style:italic;color:var(--or)}
-  .pourquoi .tags{margin-top:46px;font-family:var(--mono);font-size:.8rem;letter-spacing:.3em;color:var(--creme-dim);text-transform:uppercase}
+/* AMBIENT LIGHT — projecteur qui illumine chaque section */
+.sl{position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(720px,130%);height:320px;background:radial-gradient(ellipse at 50% 0%,rgba(231,181,60,.07) 0%,transparent 68%);pointer-events:none;z-index:0}
+/* sections must be positioned for the light overlay */
+section:not(#hero),#fondateur{position:relative}
+section:not(#hero)>.container,#fondateur>.fondateur-inner,#fondateur>.fondateur-bg-num{position:relative;z-index:1}
+/* accent line left of section kicker */
+.section-kicker{display:flex;align-items:center;gap:12px}
+.section-kicker::before{content:'';display:inline-block;width:24px;height:1px;background:var(--or);flex-shrink:0}
 
-  /* FONDATEUR */
-  .fondateur{padding-top:var(--sg);padding-bottom:var(--sg);text-align:center;position:relative}
-  .fondateur .glow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(224,169,46,.1),transparent 60%);filter:blur(10px);z-index:0}
-  .fondateur .number{font-size:clamp(7rem,18vw,13rem);font-style:italic;color:var(--or);line-height:.8;position:relative;z-index:2}
-  .fondateur .label{font-family:var(--mono);letter-spacing:.34em;text-transform:uppercase;font-size:.9rem;margin-top:8px;position:relative;z-index:2}
-  .fondateur .desc{font-size:clamp(1.5rem,3.5vw,2.3rem);font-style:italic;margin-top:40px;position:relative;z-index:2}
-  .fondateur .desc em{color:var(--or)}
-  .divider{width:60px;height:1px;background:rgba(233,227,212,.3);margin:32px auto;position:relative;z-index:2}
+/* 4. PRESTATIONS */
+#prestations{background:var(--noir)}
+.prestations-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:clamp(40px,5vw,72px);flex-wrap:wrap;gap:12px}
+.prestations-title{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;color:var(--creme)}
+/* Prestation items with filigrane number replacing video */
+.prestation-item{display:grid;grid-template-columns:clamp(100px,18vw,220px) 1fr;gap:clamp(28px,5vw,72px);align-items:center;padding:56px 0;border-bottom:1px solid rgba(233,226,210,.06)}
+.prestation-item:first-of-type{border-top:1px solid rgba(233,226,210,.06)}
+.prestation-item.rev{grid-template-areas:'txt num';grid-template-columns:1fr clamp(100px,18vw,220px)}
+.prestation-item.rev .prestation-filigranne{grid-area:num}
+.prestation-item.rev .prestation-content{grid-area:txt}
+/* Filigrane number — large translucent accent */
+.prestation-filigranne{font-family:var(--serif);font-size:clamp(90px,14vw,170px);font-weight:300;color:transparent;-webkit-text-stroke:1px rgba(231,181,60,.18);line-height:1;text-align:center;user-select:none;transition:-webkit-text-stroke-color .5s,filter .5s;filter:drop-shadow(0 0 24px rgba(231,181,60,.07))}
+.prestation-item:hover .prestation-filigranne{-webkit-text-stroke-color:rgba(231,181,60,.45);filter:drop-shadow(0 0 48px rgba(231,181,60,.22))}
+.prestation-number{font-family:var(--mono);font-size:.63rem;letter-spacing:.28em;color:var(--or);margin-bottom:14px;text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.prestation-name{font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:300;color:var(--creme);line-height:1.15;margin-bottom:18px}
+.prestation-desc{font-family:var(--body);font-size:.9rem;color:var(--creme-dim);line-height:1.8}
+.badge{display:inline-block;font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;margin-left:10px;vertical-align:middle;position:relative;top:-2px}
+.badge-soon{background:rgba(231,181,60,.1);color:var(--or);border:1px solid rgba(231,181,60,.3)}
+.badge-option{background:rgba(233,226,210,.06);color:var(--creme-dim);border:1px solid rgba(233,226,210,.14)}
 
-  /* CONTACT */
-  .contact{padding-top:var(--sg);padding-bottom:var(--sg);text-align:center}
-  .contact h2{font-size:clamp(2.6rem,6vw,4.5rem);font-weight:500;line-height:1}
-  .contact h2 em{font-style:italic;color:var(--or)}
-  .contact p{color:var(--creme-dim);font-size:1.2rem;margin-top:24px;font-style:italic}
+/* 5. FORMULES */
+#formules{background:var(--noir-soft);text-align:center}
+.formules-title{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;color:var(--creme);margin-bottom:clamp(40px,5vw,64px)}
+.formules-grid{display:grid;grid-template-columns:1fr 1.1fr 1fr;gap:20px;align-items:center;max-width:1040px;margin:0 auto}
+.formule-card{padding:44px 32px;border:1px solid rgba(233,226,210,.09);text-align:left;position:relative;background:rgba(8,6,4,.5);transition:border-color .3s var(--ease)}
+.formule-card:hover{border-color:rgba(231,181,60,.2)}
+.formule-card.featured{border-color:rgba(231,181,60,.32);background:rgba(231,181,60,.03);box-shadow:0 0 60px rgba(231,181,60,.07),0 0 120px rgba(231,181,60,.03);transform:scale(1.03)}
+.formule-badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;background:var(--or);color:var(--noir);padding:5px 14px;white-space:nowrap}
+.formule-name{font-family:var(--serif);font-size:1.7rem;font-weight:300;color:var(--creme);margin-bottom:6px}
+.formule-price{font-family:var(--mono);font-size:.65rem;letter-spacing:.15em;color:var(--or);text-transform:uppercase;margin-bottom:24px}
+.formule-features{list-style:none;margin-bottom:32px}
+.formule-features li{font-family:var(--body);font-size:.85rem;color:var(--creme-dim);padding:9px 0;border-bottom:1px solid rgba(233,226,210,.05);display:flex;align-items:flex-start;gap:11px;line-height:1.5}
+.formule-features li::before{content:'—';color:var(--or);flex-shrink:0;font-family:var(--mono);font-size:.65rem;margin-top:2px}
+.btn-formule{display:block;width:100%;text-align:center;font-family:var(--mono);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;padding:13px;text-decoration:none;transition:all .3s var(--ease);border:1px solid rgba(233,226,210,.18);color:var(--creme)}
+.formule-card.featured .btn-formule{background:var(--or);color:var(--noir);border-color:var(--or)}
+.formule-card.featured .btn-formule:hover{background:transparent;color:var(--or)}
+.btn-formule:hover{border-color:var(--creme)}
 
-  /* FOOTER */
-  footer{border-top:1px solid rgba(233,227,212,.08);padding:48px 0;text-align:center}
-  footer .logo{font-size:1.6rem;font-style:italic;font-weight:600}
-  footer .logo span{color:var(--or)}
-  footer .links{margin:22px 0;display:flex;flex-wrap:wrap;gap:32px;justify-content:center;row-gap:14px}
-  footer .links a{color:var(--creme-dim);text-decoration:none;display:flex;align-items:center;transition:color .3s cubic-bezier(.16,1,.3,1),transform .3s cubic-bezier(.16,1,.3,1)}
-  footer .links a:hover{color:var(--or);transform:translateY(-2px)}
-  footer .links svg{width:24px;height:24px;display:block}
-  footer .fine{font-family:var(--mono);font-size:.62rem;letter-spacing:.25em;color:var(--creme-dim);text-transform:uppercase}
+/* 6. MÉTHODE */
+#methode{background:var(--noir)}
+.methode-header{text-align:center;margin-bottom:clamp(48px,6vw,88px)}
+.methode-title{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;color:var(--creme)}
+.methode-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative;max-width:860px;margin:0 auto}
+.methode-line{position:absolute;top:31px;left:calc(100%/6);right:calc(100%/6);height:1px;background:rgba(231,181,60,.12);z-index:0}
+.methode-line-fill{height:100%;background:linear-gradient(to right,var(--or),var(--or-light));width:0}
+.methode-step{text-align:center;padding:0 20px}
+.step-roman{font-family:var(--serif);font-size:1.3rem;font-weight:400;color:var(--or);width:62px;height:62px;border-radius:50%;border:1px solid rgba(231,181,60,.28);display:flex;align-items:center;justify-content:center;margin:0 auto 26px;position:relative;z-index:1;background:var(--noir)}
+.step-name{font-family:var(--serif);font-size:clamp(1.1rem,1.8vw,1.4rem);font-weight:400;color:var(--creme);margin-bottom:12px}
+.step-desc{font-family:var(--body);font-size:.87rem;color:var(--creme-dim);line-height:1.75}
 
-  /* TABLETTE */
-  @media(max-width:1024px){
-    :root{--px:28px}
-    .card{padding:36px 30px}
-  }
-  /* MOBILE */
-  @media(max-width:760px){
-    :root{--px:22px;--sg:clamp(70px,10vh,100px)}
-    .grid{grid-template-columns:1fr}
-    .steps{grid-template-columns:1fr;gap:clamp(3.5rem,8vh,5rem)}
-    nav{padding:18px 22px}
-    nav .brand{font-size:1.25rem}
-    nav a.cta-nav{padding:9px 14px;font-size:.62rem}
-    .hero .glow{width:90vw;height:90vw}
-    .btn{padding:15px 28px}
-  }
-  /* PETIT MOBILE */
-  @media(max-width:380px){
-    :root{--px:18px}
-    nav a.cta-nav{font-size:.58rem;letter-spacing:.12em;padding:8px 12px}
-    .card{padding:30px 24px}
-    .card h3{font-size:1.6rem}
-  }
+/* 7. SIGNATURE */
+#signature{background:var(--noir-soft);overflow:hidden}
+.signature-quote{font-family:var(--serif);font-size:clamp(1.3rem,2.8vw,2.2rem);font-weight:300;font-style:italic;color:var(--creme);text-align:center;max-width:660px;margin:0 auto clamp(48px,5vw,72px);line-height:1.55}
+.signature-quote em{font-style:normal;color:var(--or)}
+.sig-banner{overflow:hidden;padding:22px 0;border-top:1px solid rgba(231,181,60,.12);border-bottom:1px solid rgba(231,181,60,.12);display:flex}
+.sig-track{display:flex;gap:48px;align-items:center;animation:marquee 22s linear infinite;white-space:nowrap;flex-shrink:0;padding-right:48px}
+.sig-item{font-family:var(--mono);font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;color:var(--or)}
+.sig-dot{color:rgba(231,181,60,.3);font-size:.8rem}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+
+/* 8. FONDATEUR */
+#fondateur{background:var(--noir);text-align:center;position:relative;overflow:hidden;min-height:580px;display:flex;align-items:center}
+.fondateur-bg-num{font-family:var(--serif);font-size:clamp(180px,28vw,320px);font-weight:300;color:transparent;-webkit-text-stroke:1px rgba(231,181,60,.15);line-height:1;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);animation:breathe 4.5s ease-in-out infinite;user-select:none;pointer-events:none;z-index:0}
+@keyframes breathe{0%,100%{opacity:.5;text-shadow:0 0 80px rgba(231,181,60,.08)}50%{opacity:1;text-shadow:0 0 140px rgba(231,181,60,.22),0 0 280px rgba(231,181,60,.07)}}
+.fondateur-inner{position:relative;z-index:1;width:100%}
+.fondateur-kicker{font-family:var(--mono);font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--or);display:block;margin-bottom:44px}
+.fondateur-title{font-family:var(--serif);font-size:clamp(1.7rem,3.2vw,2.8rem);font-weight:300;color:var(--creme);max-width:560px;margin:0 auto 28px;line-height:1.3}
+.fondateur-jauge{display:flex;align-items:center;justify-content:center;gap:18px;margin-bottom:44px;flex-wrap:wrap}
+.jauge-label{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;color:var(--creme-dim)}
+.jauge-count{color:var(--or)}
+.jauge-track{width:180px;height:2px;background:rgba(233,226,210,.08);position:relative;flex-shrink:0}
+.jauge-fill{position:absolute;left:0;top:0;height:100%;width:30%;background:var(--or);box-shadow:0 0 14px rgba(231,181,60,.5)}
+.fondateur-desc{font-family:var(--body);font-size:.97rem;color:var(--creme-dim);max-width:460px;margin:0 auto 44px;line-height:1.85}
+
+/* 9. CTA FINAL */
+#cta-final{background:var(--noir);text-align:center}
+.cta-title{font-family:var(--serif);font-size:clamp(2rem,5vw,4.8rem);font-weight:300;color:var(--creme);line-height:1.1;margin-bottom:16px}
+.cta-title em{color:var(--or);font-style:italic}
+.cta-sub{font-family:var(--body);font-size:.97rem;color:var(--creme-dim);margin-bottom:44px;line-height:1.7}
+
+/* 10. FOOTER */
+footer{background:var(--noir);padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:28px;text-align:center}
+.footer-logo{font-family:var(--serif);font-size:1.2rem;font-weight:500;letter-spacing:.1em;color:var(--creme)}
+.footer-logo span{color:var(--or)}
+.footer-icons{display:flex;gap:26px;align-items:center}
+.footer-icon{color:var(--creme-dim);transition:color .3s;text-decoration:none}
+.footer-icon:hover{color:var(--or)}
+.footer-icon svg{width:19px;height:19px;fill:currentColor;display:block}
+.footer-email{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;color:var(--creme-dim);text-decoration:none;transition:color .3s}
+.footer-email:hover{color:var(--or)}
+.footer-credit{font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(138,128,112,.4)}
+
+/* SCROLL REVEAL BASE STATE */
+.reveal{opacity:0;transform:translateY(32px)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .prestation-item,.prestation-item.rev{grid-template-columns:1fr;grid-template-areas:none;gap:24px}
+  .prestation-item.rev .prestation-filigranne,.prestation-item.rev .prestation-content{grid-area:unset}
+  .prestation-filigranne{font-size:clamp(70px,20vw,120px)}
+  .formules-grid{grid-template-columns:1fr;max-width:380px}
+  .formule-card.featured{transform:none}
+  .methode-steps{grid-template-columns:1fr;gap:44px;max-width:280px}
+  .methode-line{display:none}
+  .prestations-header{flex-direction:column}
+}
+@media(max-width:600px){
+  :root{--sg:clamp(60px,10vh,90px);--px:20px}
+  .hero-buttons{flex-direction:column;align-items:center}
+  .btn-primary,.btn-secondary{width:100%;max-width:260px;text-align:center}
+}
+@media(max-width:380px){:root{--px:16px}}
 </style>
 </head>
 <body>
 
+<div class="grain" aria-hidden="true"></div>
+
 <nav>
-  <div class="brand">Zorfix<span>.</span></div>
-  <a href="https://tally.so/r/LZkbM2" target="_blank" rel="noopener" class="cta-nav">Demander un devis</a>
+  <a href="#" class="nav-logo">Atelier <span>Zorfix</span></a>
+  <a href="https://tally.so/r/LZkbM2" class="nav-cta" target="_blank" rel="noopener">Demander un devis</a>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="glow"></div>
-  <div class="tag mono reveal">Atelier · Suisse Romande</div>
-  <h1 class="reveal">L'art de faire<br><em>grandir</em> votre<br>entreprise.</h1>
-  <p class="sub reveal">Identité, contenu et croissance — façonnés à la main pour les marques qui veulent compter.</p>
-  <a href="https://tally.so/r/LZkbM2" target="_blank" rel="noopener" class="btn reveal">Demander un devis</a>
-  <div class="scroll-i">↓ Défiler</div>
-</section>
-
-<!-- CONSTAT -->
-<section class="constat container">
-  <p class="reveal">Votre entreprise mérite mieux<br>qu'une présence <em>amateur.</em></p>
-</section>
-
-<!-- SERVICES -->
-<section class="services container" id="services">
-  <div class="sec-head reveal">
-    <div class="mono">Ce que nous faisons</div>
-    <h2>Nos prestations</h2>
+<!-- 1. HERO -->
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-vignette"></div>
+  <div class="hero-content">
+    <div class="hero-logo" id="hl-logo"><span>Z</span></div>
+    <span class="hero-kicker" id="hl-kicker">Atelier · Suisse Romande</span>
+    <h1 class="hero-title" id="hl-title">
+      On met en lumière ce que<br>votre entreprise a de <em>mieux.</em>
+    </h1>
+    <p class="hero-subtitle" id="hl-sub">
+      Production de contenu vidéo pour les entreprises de Suisse romande.
+    </p>
+    <div class="hero-buttons" id="hl-btns">
+      <a href="https://tally.so/r/LZkbM2" class="btn-primary" target="_blank" rel="noopener">Demander un devis</a>
+      <a href="#formules" class="btn-secondary">Voir les formules</a>
+    </div>
   </div>
-  <div class="grid">
-    <div class="card reveal">
-      <div class="num">01</div>
-      <h3>Identité & Image</h3>
-      <ul><li>Création de logo</li><li>Rebranding complet</li><li>Direction artistique</li></ul>
-    </div>
-    <div class="card reveal">
-      <div class="num">02</div>
-      <h3>Web & Visibilité</h3>
-      <ul><li>Création de site web</li><li>Référencement SEO</li><li>Présence en ligne</li></ul>
-    </div>
-    <div class="card reveal">
-      <div class="num">03</div>
-      <h3>Réseaux Sociaux</h3>
-      <ul><li>Gestion Instagram / TikTok</li><li>Campagnes Meta & TikTok Ads</li><li>Contenu UGC</li></ul>
-    </div>
-    <div class="card reveal">
-      <div class="num">04</div>
-      <h3>Production</h3>
-      <ul><li>Vidéo corporate</li><li>Événements & chantiers</li><li>Interview entreprise</li></ul>
-    </div>
+  <div class="hero-scroll" id="hl-scroll">
+    <div class="hero-scroll-line"></div>
+    <span class="hero-scroll-label">Scroll</span>
   </div>
 </section>
 
-<!-- METHODE -->
-<section class="methode container">
-  <div class="sec-head reveal">
-    <div class="mono">La méthode</div>
-    <h2>Simple. Précise. Efficace.</h2>
-  </div>
-  <div class="steps">
-    <div class="step reveal"><div class="n">I</div><h4>Devis sur mesure</h4><p>On échange, on comprend vos besoins, on chiffre avec justesse.</p></div>
-    <div class="step reveal"><div class="n">II</div><h4>Création façonnée</h4><p>Chaque contenu est façonné à la main, jamais en série.</p></div>
-    <div class="step reveal"><div class="n">III</div><h4>Croissance</h4><p>Une présence qui attire vraiment des clients.</p></div>
-  </div>
-</section>
-
-<!-- POURQUOI -->
-<section class="pourquoi container">
-  <p class="big reveal">Pas du contenu en série.<br>Du contenu <em>façonné à la main</em> — pensé pour vous amener des clients.</p>
-  <div class="tags reveal">Atelier · Stratégie · Croissance</div>
-</section>
-
-<!-- FONDATEUR -->
-<section class="fondateur container">
-  <div class="glow"></div>
-  <div class="mono reveal" style="position:relative;z-index:2">L'édition fondateur</div>
-  <div class="number reveal">10</div>
-  <div class="label reveal">Entreprises seulement</div>
-  <div class="divider reveal"></div>
-  <p class="desc reveal">La place de votre secteur<br>est peut-être encore <em>libre.</em></p>
-</section>
-
-<!-- CONTACT -->
-<section class="contact container" id="contact">
-  <h2 class="reveal">Parlons de<br>votre <em>projet.</em></h2>
-  <p class="reveal">Décrivez votre besoin, recevez un devis sur mesure.</p>
-  <a href="https://tally.so/r/LZkbM2" target="_blank" rel="noopener" class="btn reveal">Demander mon devis</a>
-</section>
-
-<!-- FOOTER -->
-<footer>
+<!-- 2. CONSTAT -->
+<section id="constat">
+  <div class="sl" aria-hidden="true"></div>
   <div class="container">
-    <div class="logo reveal">Zorfix<span>.</span></div>
-    <div class="links reveal">
-      <a href="https://www.instagram.com/atelier.zorfix" target="_blank" rel="noopener" aria-label="Instagram @atelier.zorfix">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    <span class="section-kicker reveal">Constat</span>
+    <div class="divider-or reveal"></div>
+    <p class="constat-text reveal">
+      Votre entreprise mérite mieux<br>qu'une présence <em>amateur.</em>
+    </p>
+    <p class="constat-sub reveal">
+      Chaque jour, des entreprises romandes perdent en crédibilité faute d'un contenu visuel à la hauteur de leur ambition.
+    </p>
+  </div>
+</section>
+
+<!-- 3. MANIFESTE -->
+<section id="manifeste">
+  <div class="sl" aria-hidden="true"></div>
+  <div class="container">
+    <div class="manifeste-inner">
+      <span class="section-kicker reveal">Notre vision</span>
+      <h2 class="manifeste-title reveal">
+        Nous filmons les histoires<br>qui font avancer<br>les entreprises.
+      </h2>
+      <div class="manifeste-body reveal">
+        <p>Nous croyons que chaque entreprise a une histoire qui mérite d'être racontée avec soin, avec force, avec lumière. Pas du contenu en série. Pas de la vidéo pour remplir un calendrier éditorial.</p>
+        <p><strong>Du contenu conçu pour que votre entreprise rayonne.</strong> Pour que vos clients vous voient tels que vous êtes vraiment : sérieux, compétents, dignes de confiance.</p>
+        <p>Nous travaillons avec les entreprises de Suisse romande qui veulent prendre leur image au sérieux — et la faire grandir.</p>
+      </div>
+      <div class="manifeste-sig reveal">
+        Atelier Zorfix · Production vidéo · Suisse Romande
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. PRESTATIONS -->
+<section id="prestations">
+  <div class="sl" aria-hidden="true"></div>
+  <div class="container">
+    <div class="prestations-header">
+      <span class="section-kicker">Ce que nous faisons</span>
+      <h2 class="prestations-title">Prestations</h2>
+    </div>
+
+    <div class="prestation-item" data-p>
+      <div class="prestation-filigranne" aria-hidden="true">01</div>
+      <div class="prestation-content">
+        <p class="prestation-number">01 · Vidéo d'entreprise</p>
+        <h3 class="prestation-name">Votre identité<br>en mouvement.</h3>
+        <p class="prestation-desc">Vidéos institutionnelles, présentations d'équipe, témoignages clients. Nous capturons l'essence de votre entreprise avec une direction artistique soignée.</p>
+      </div>
+    </div>
+
+    <div class="prestation-item rev" data-p>
+      <div class="prestation-filigranne" aria-hidden="true">02</div>
+      <div class="prestation-content">
+        <p class="prestation-number">02 · Photo &amp; Drone <span class="badge badge-soon">Bientôt</span></p>
+        <h3 class="prestation-name">Le grand angle<br>de votre activité.</h3>
+        <p class="prestation-desc">Prises de vue aériennes, reportages photo corporate, visuels immersifs. Une perspective nouvelle sur votre entreprise et ses lieux de vie.</p>
+      </div>
+    </div>
+
+    <div class="prestation-item" data-p>
+      <div class="prestation-filigranne" aria-hidden="true">03</div>
+      <div class="prestation-content">
+        <p class="prestation-number">03 · Montage &amp; Post-production</p>
+        <h3 class="prestation-name">La précision<br>dans chaque coupe.</h3>
+        <p class="prestation-desc">Montage professionnel, étalonnage colorimétrique, motion design, habillage sonore. Votre contenu révélé dans sa meilleure lumière.</p>
+      </div>
+    </div>
+
+    <div class="prestation-item rev" data-p>
+      <div class="prestation-filigranne" aria-hidden="true">04</div>
+      <div class="prestation-content">
+        <p class="prestation-number">04 · Diffusion &amp; Stratégie <span class="badge badge-option">Option</span></p>
+        <h3 class="prestation-name">Diffuser pour<br>mieux rayonner.</h3>
+        <p class="prestation-desc">Stratégie de diffusion sur les réseaux sociaux, formats adaptés à chaque plateforme, suivi des performances et de l'engagement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. FORMULES -->
+<section id="formules">
+  <div class="sl" aria-hidden="true"></div>
+  <div class="container">
+    <span class="section-kicker reveal">Investissement</span>
+    <h2 class="formules-title reveal">Choisissez votre formule</h2>
+    <div class="formules-grid">
+      <div class="formule-card" data-fc>
+        <h3 class="formule-name">Présence</h3>
+        <p class="formule-price">Sur devis</p>
+        <ul class="formule-features">
+          <li>1 vidéo corporate</li>
+          <li>Montage professionnel</li>
+          <li>Étalonnage colorimétrique</li>
+          <li>1 format Reels / Shorts</li>
+          <li>Livraison en 10 jours</li>
+        </ul>
+        <a href="https://tally.so/r/LZkbM2" class="btn-formule" target="_blank" rel="noopener">Demander un devis</a>
+      </div>
+      <div class="formule-card featured" data-fc>
+        <span class="formule-badge">La plus choisie</span>
+        <h3 class="formule-name">Croissance</h3>
+        <p class="formule-price">Sur devis</p>
+        <ul class="formule-features">
+          <li>3 vidéos par mois</li>
+          <li>Montage + post-production</li>
+          <li>Motion design &amp; titrage</li>
+          <li>Formats multi-plateformes</li>
+          <li>Consultation stratégique</li>
+          <li>Suivi mensuel personnalisé</li>
+        </ul>
+        <a href="https://tally.so/r/LZkbM2" class="btn-formule" target="_blank" rel="noopener">Demander un devis</a>
+      </div>
+      <div class="formule-card" data-fc>
+        <h3 class="formule-name">Signature</h3>
+        <p class="formule-price">Sur devis</p>
+        <ul class="formule-features">
+          <li>Production complète sur mesure</li>
+          <li>Film institutionnel 3–5 min</li>
+          <li>Prises de vue aériennes</li>
+          <li>Direction artistique dédiée</li>
+          <li>Déclinaisons illimitées</li>
+          <li>Accompagnement 6 mois</li>
+        </ul>
+        <a href="https://tally.so/r/LZkbM2" class="btn-formule" target="_blank" rel="noopener">Demander un devis</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. MÉTHODE -->
+<section id="methode">
+  <div class="sl" aria-hidden="true"></div>
+  <div class="container">
+    <div class="methode-header">
+      <span class="section-kicker reveal">Notre processus</span>
+      <h2 class="methode-title reveal">La méthode Zorfix</h2>
+    </div>
+    <div class="methode-steps">
+      <div class="methode-line"><div class="methode-line-fill" id="ml-fill"></div></div>
+      <div class="methode-step" data-ms>
+        <div class="step-roman">I</div>
+        <h3 class="step-name">Devis sur mesure</h3>
+        <p class="step-desc">Nous discutons de votre projet, vos objectifs, votre clientèle cible. Devis personnalisé sous 48h.</p>
+      </div>
+      <div class="methode-step" data-ms>
+        <div class="step-roman">II</div>
+        <h3 class="step-name">On filme &amp; on monte</h3>
+        <p class="step-desc">Tournage professionnel, post-production soignée. Vous validez chaque étape du processus.</p>
+      </div>
+      <div class="methode-step" data-ms>
+        <div class="step-roman">III</div>
+        <h3 class="step-name">Votre image grandit</h3>
+        <p class="step-desc">Livraison des fichiers optimisés. Votre contenu rayonne sur tous vos canaux de communication.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. SIGNATURE -->
+<section id="signature">
+  <div class="sl" aria-hidden="true"></div>
+  <div class="container">
+    <blockquote class="signature-quote reveal">
+      "Nous ne faisons pas de la vidéo pour remplir un feed.<br>
+      Nous créons du contenu qui <em>dure.</em>"
+    </blockquote>
+  </div>
+  <div class="sig-banner" aria-hidden="true">
+    <div class="sig-track">
+      <span class="sig-item">Atelier</span><span class="sig-dot">·</span>
+      <span class="sig-item">Image</span><span class="sig-dot">·</span>
+      <span class="sig-item">Croissance</span><span class="sig-dot">·</span>
+      <span class="sig-item">Suisse Romande</span><span class="sig-dot">·</span>
+      <span class="sig-item">Production Vidéo</span><span class="sig-dot">·</span>
+      <span class="sig-item">Atelier Zorfix</span><span class="sig-dot">·</span>
+      <span class="sig-item">Lumière</span><span class="sig-dot">·</span>
+      <span class="sig-item">Excellence</span><span class="sig-dot">·</span>
+    </div>
+    <div class="sig-track" aria-hidden="true">
+      <span class="sig-item">Atelier</span><span class="sig-dot">·</span>
+      <span class="sig-item">Image</span><span class="sig-dot">·</span>
+      <span class="sig-item">Croissance</span><span class="sig-dot">·</span>
+      <span class="sig-item">Suisse Romande</span><span class="sig-dot">·</span>
+      <span class="sig-item">Production Vidéo</span><span class="sig-dot">·</span>
+      <span class="sig-item">Atelier Zorfix</span><span class="sig-dot">·</span>
+      <span class="sig-item">Lumière</span><span class="sig-dot">·</span>
+      <span class="sig-item">Excellence</span><span class="sig-dot">·</span>
+    </div>
+  </div>
+</section>
+
+<!-- 8. FONDATEUR -->
+<section id="fondateur">
+  <div class="fondateur-bg-num" aria-hidden="true">10</div>
+  <div class="container fondateur-inner">
+    <span class="fondateur-kicker reveal">Édition Fondateur</span>
+    <h2 class="fondateur-title reveal">10 entreprises.<br>Une opportunité unique.</h2>
+    <div class="fondateur-jauge reveal">
+      <span class="jauge-label"><span class="jauge-count">3</span>&nbsp;/&nbsp;10 places prises</span>
+      <div class="jauge-track"><div class="jauge-fill"></div></div>
+      <span class="jauge-label">7 restantes</span>
+    </div>
+    <p class="fondateur-desc reveal">
+      Nous sélectionnons 10 entreprises fondatrices pour bâtir notre portfolio avec exigence. Conditions préférentielles, suivi personnalisé, relation sur le long terme.
+    </p>
+    <a href="https://tally.so/r/LZkbM2" class="btn-primary reveal" target="_blank" rel="noopener">Réserver ma place</a>
+  </div>
+</section>
+
+<!-- 9. CTA FINAL -->
+<section id="cta-final">
+  <div class="sl" aria-hidden="true"></div>
+  <div class="container">
+    <h2 class="cta-title reveal">Parlons de<br><em>votre projet.</em></h2>
+    <p class="cta-sub reveal">Un échange sans engagement. Une réponse sous 48h.</p>
+    <a href="https://tally.so/r/LZkbM2" class="btn-primary reveal" target="_blank" rel="noopener">Demander un devis</a>
+  </div>
+</section>
+
+<!-- 10. FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Atelier <span>Zorfix</span></div>
+    <div class="footer-icons">
+      <a href="https://instagram.com/zorfix" class="footer-icon" aria-label="Instagram" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
       </a>
-      <a href="https://www.tiktok.com/@atelier.zorfix" target="_blank" rel="noopener" aria-label="TikTok @atelier.zorfix">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.75a8.23 8.23 0 0 0 4.84 1.56V6.88a4.85 4.85 0 0 1-1.07-.19z"/></svg>
+      <a href="https://tiktok.com/@zorfix" class="footer-icon" aria-label="TikTok" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.31 6.31 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.19 8.19 0 004.79 1.54V6.78a4.85 4.85 0 01-1.02-.09z"/></svg>
       </a>
-      <a href="mailto:contact@zorfix.ch" aria-label="E-mail">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <a href="mailto:contact@zorfix.ch" class="footer-icon" aria-label="Email">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
       </a>
     </div>
-    <div class="fine reveal">Atelier Zorfix · Suisse Romande · MMXXVI</div>
+    <a href="mailto:contact@zorfix.ch" class="footer-email">contact@zorfix.ch</a>
+    <p class="footer-credit">Atelier Zorfix · Suisse Romande · MMXXVI</p>
   </div>
 </footer>
 
 <script>
-  // scroll reveal with stagger
-  const io=new IntersectionObserver((es)=>{
-    es.forEach((e)=>{
-      if(e.isIntersecting){
-        const sibs=[...e.target.parentElement.querySelectorAll('.reveal')];
-        e.target.style.transitionDelay=(sibs.indexOf(e.target)%6*90)+'ms';
-        e.target.classList.add('in');
-        io.unobserve(e.target);
-      }
-    });
-  },{threshold:.15});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+// ── LENIS ──────────────────────────────────────────────
+const lenis = new Lenis({ duration: 1.2, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+gsap.registerPlugin(ScrollTrigger);
+lenis.on('scroll', ScrollTrigger.update);
+gsap.ticker.add(t => lenis.raf(t * 1000));
+gsap.ticker.lagSmoothing(0);
 
-  // nav cta hover
-  const ctaNav=document.querySelector('.cta-nav');
-  if(ctaNav){
-    ctaNav.addEventListener('mouseenter',e=>{e.target.style.background='var(--or)';e.target.style.borderColor='var(--or)';e.target.style.color='#0c0b09'});
-    ctaNav.addEventListener('mouseleave',e=>{e.target.style.background='transparent';e.target.style.borderColor='rgba(255,255,255,.35)';e.target.style.color='#fff'});
+// ── THREE.JS — CINÉMA PROJECTEUR ──────────────────────
+(function() {
+  const canvas = document.getElementById('hero-canvas');
+  const W = window.innerWidth, H = window.innerHeight;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, W / H, 0.1, 100);
+  camera.position.z = 5;
+
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
+  renderer.setSize(W, H);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+  renderer.setClearColor(0x080604, 1);
+
+  // ── Beam helper ──
+  function makeBeam(x, w, op) {
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(new Float32Array([
+      x,       3.8, 0,
+      x - w/2, -2.8, 0,
+      x + w/2, -2.8, 0
+    ]), 3));
+    const mat = new THREE.MeshBasicMaterial({
+      color: 0xE7B53C, transparent: true, opacity: op,
+      side: THREE.DoubleSide, blending: THREE.AdditiveBlending, depthWrite: false
+    });
+    return new THREE.Mesh(geo, mat);
   }
+
+  const beam0 = makeBeam(0,    2.6, 0.07);
+  const beam1 = makeBeam(-0.2, 1.1, 0.04);
+  const beam2 = makeBeam(0.2,  1.1, 0.04);
+  scene.add(beam0, beam1, beam2);
+
+  // ── Outer halo ──
+  const haloGeo = new THREE.CircleGeometry(2, 64);
+  const haloMat = new THREE.MeshBasicMaterial({
+    color: 0xE7B53C, transparent: true, opacity: 0.035,
+    blending: THREE.AdditiveBlending, depthWrite: false
+  });
+  const halo = new THREE.Mesh(haloGeo, haloMat);
+  halo.position.y = -0.4;
+  scene.add(halo);
+
+  // ── Inner halo ──
+  const iHaloGeo = new THREE.CircleGeometry(0.65, 64);
+  const iHaloMat = new THREE.MeshBasicMaterial({
+    color: 0xF4D175, transparent: true, opacity: 0.06,
+    blending: THREE.AdditiveBlending, depthWrite: false
+  });
+  const iHalo = new THREE.Mesh(iHaloGeo, iHaloMat);
+  iHalo.position.set(0, -0.4, 0.05);
+  scene.add(iHalo);
+
+  // ── Dust particles ──
+  const N = window.innerWidth < 768 ? 100 : 220;
+  const pos = new Float32Array(N * 3);
+  const spd = new Float32Array(N);
+  for (let i = 0; i < N; i++) {
+    const t = Math.random();
+    const bw = 2.6 * (1 - t * 0.7);
+    pos[i*3]   = (Math.random() - 0.5) * bw;
+    pos[i*3+1] = 3.8 - t * 6.6;
+    pos[i*3+2] = (Math.random() - 0.5) * 0.4;
+    spd[i] = 0.002 + Math.random() * 0.0028;
+  }
+  const ptGeo = new THREE.BufferGeometry();
+  ptGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  const ptMat = new THREE.PointsMaterial({
+    color: 0xF4D175, size: 0.014, transparent: true, opacity: 0.45,
+    blending: THREE.AdditiveBlending, depthWrite: false
+  });
+  scene.add(new THREE.Points(ptGeo, ptMat));
+
+  let t = 0;
+  (function tick() {
+    requestAnimationFrame(tick);
+    t += 0.01;
+
+    // Breathe halo
+    const b = Math.sin(t * 0.5) * 0.5 + 0.5;
+    haloMat.opacity  = 0.025 + b * 0.022;
+    iHaloMat.opacity = 0.045 + b * 0.038;
+    const s = 1 + b * 0.05;
+    halo.scale.set(s, s, 1);
+
+    // Beam sway + pulse
+    const sw = Math.sin(t * 0.12) * 0.04;
+    beam0.rotation.z = sw;
+    beam1.rotation.z = sw * 0.8 - 0.015;
+    beam2.rotation.z = sw * 0.8 + 0.015;
+    beam0.material.opacity = 0.05 + (Math.sin(t * 0.28) * 0.5 + 0.5) * 0.035;
+
+    // Float particles up
+    const pa = ptGeo.attributes.position.array;
+    for (let i = 0; i < N; i++) {
+      pa[i*3+1] += spd[i];
+      if (pa[i*3+1] > 3.8) {
+        const tt = Math.random();
+        pa[i*3]   = (Math.random() - 0.5) * 2.6 * (1 - tt * 0.7);
+        pa[i*3+1] = -2.8;
+        pa[i*3+2] = (Math.random() - 0.5) * 0.4;
+      }
+    }
+    ptGeo.attributes.position.needsUpdate = true;
+    renderer.render(scene, camera);
+  })();
+
+  window.addEventListener('resize', () => {
+    const W = window.innerWidth, H = window.innerHeight;
+    camera.aspect = W / H;
+    camera.updateProjectionMatrix();
+    renderer.setSize(W, H);
+  });
+})();
+
+// ── HERO ENTRANCE ──────────────────────────────────────
+// Run directly (script is at bottom of body — DOM is ready)
+gsap.timeline({ delay: 0.3 })
+  .to('#hl-logo',   { opacity:1, scale:1,   duration:1,   ease:'power3.out' })
+  .to('#hl-kicker', { opacity:1, y:0,       duration:.8,  ease:'power3.out' }, '-=.55')
+  .to('#hl-title',  { opacity:1, y:0,       duration:1.1, ease:'power3.out' }, '-=.55')
+  .to('#hl-sub',    { opacity:1, y:0,       duration:.8,  ease:'power3.out' }, '-=.55')
+  .to('#hl-btns',   { opacity:1, y:0,       duration:.8,  ease:'power3.out' }, '-=.5')
+  .to('#hl-scroll', { opacity:1,            duration:.8,  ease:'power2.out' }, '-=.3');
+
+// ── SCROLL REVEALS ──────────────────────────────────────
+document.querySelectorAll('.reveal').forEach(el => {
+  gsap.fromTo(el, { opacity:0, y:36 }, {
+    opacity:1, y:0, duration:.9, ease:'power3.out',
+    scrollTrigger: { trigger: el, start:'top 86%', toggleActions:'play none none none' }
+  });
+});
+
+// ── PRESTATION ITEMS ──────────────────────────────────
+document.querySelectorAll('[data-p]').forEach((el, i) => {
+  gsap.fromTo(el, { opacity:0, y:56 }, {
+    opacity:1, y:0, duration:1, ease:'power3.out',
+    scrollTrigger: { trigger: el, start:'top 82%', toggleActions:'play none none none' }
+  });
+});
+
+// ── FORMULE CARDS ──────────────────────────────────────
+document.querySelectorAll('[data-fc]').forEach((card, i) => {
+  const featured = card.classList.contains('featured');
+  gsap.fromTo(card,
+    { opacity:0, y:44, scale: featured ? 1.03 : 1 },
+    {
+      opacity:1, y:0, scale: featured ? 1.03 : 1,
+      duration:.85, delay: i * .12, ease:'power3.out',
+      scrollTrigger: { trigger:'#formules', start:'top 72%', toggleActions:'play none none none' }
+    }
+  );
+});
+
+// ── MÉTHODE STEPS ──────────────────────────────────────
+document.querySelectorAll('[data-ms]').forEach((el, i) => {
+  gsap.fromTo(el, { opacity:0, y:32 }, {
+    opacity:1, y:0, duration:.8, delay: i * .18, ease:'power3.out',
+    scrollTrigger: { trigger:'#methode', start:'top 72%', toggleActions:'play none none none' }
+  });
+});
+ScrollTrigger.create({
+  trigger: '#methode', start: 'top 65%',
+  onEnter: () => gsap.to('#ml-fill', { width:'100%', duration:1.6, ease:'power2.inOut' })
+});
+
+// ── ANCHOR SCROLL ──────────────────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); lenis.scrollTo(t, { duration:1.5 }); }
+  });
+});
 </script>
 </body>
 </html>
