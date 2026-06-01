@@ -92,20 +92,29 @@ section:not(#hero){padding-top:var(--sg);padding-bottom:var(--sg)}
 .manifeste-body strong{color:var(--creme);font-weight:500}
 .manifeste-sig{margin-top:44px;padding-top:28px;border-top:1px solid rgba(231,181,60,.18);font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;color:var(--or);text-transform:uppercase}
 
+/* AMBIENT LIGHT — projecteur qui illumine chaque section */
+.sl{position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(720px,130%);height:320px;background:radial-gradient(ellipse at 50% 0%,rgba(231,181,60,.07) 0%,transparent 68%);pointer-events:none;z-index:0}
+/* sections must be positioned for the light overlay */
+section:not(#hero),#fondateur{position:relative}
+section:not(#hero)>.container,#fondateur>.fondateur-inner,#fondateur>.fondateur-bg-num{position:relative;z-index:1}
+/* accent line left of section kicker */
+.section-kicker{display:flex;align-items:center;gap:12px}
+.section-kicker::before{content:'';display:inline-block;width:24px;height:1px;background:var(--or);flex-shrink:0}
+
 /* 4. PRESTATIONS */
 #prestations{background:var(--noir)}
 .prestations-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:clamp(40px,5vw,72px);flex-wrap:wrap;gap:12px}
 .prestations-title{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;color:var(--creme)}
-.prestation-item{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:52px 0;border-bottom:1px solid rgba(233,226,210,.06)}
+/* Prestation items with filigrane number replacing video */
+.prestation-item{display:grid;grid-template-columns:clamp(100px,18vw,220px) 1fr;gap:clamp(28px,5vw,72px);align-items:center;padding:56px 0;border-bottom:1px solid rgba(233,226,210,.06)}
 .prestation-item:first-of-type{border-top:1px solid rgba(233,226,210,.06)}
-.prestation-item.rev{direction:rtl}
-.prestation-item.rev>*{direction:ltr}
-.prestation-media{aspect-ratio:16/9;background:rgba(231,181,60,.03);border:1px solid rgba(231,181,60,.1);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.prestation-media::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,rgba(231,181,60,.05),transparent 60%)}
-.play-btn{width:50px;height:50px;border-radius:50%;border:1.5px solid rgba(231,181,60,.3);display:flex;align-items:center;justify-content:center;position:relative;z-index:1;transition:all .3s var(--ease)}
-.prestation-media:hover .play-btn{border-color:var(--or);background:rgba(231,181,60,.08)}
-.play-btn::after{content:'';width:0;height:0;border-style:solid;border-width:8px 0 8px 14px;border-color:transparent transparent transparent var(--or);margin-left:3px}
-.prestation-number{font-family:var(--mono);font-size:.63rem;letter-spacing:.28em;color:var(--or);margin-bottom:14px;text-transform:uppercase}
+.prestation-item.rev{grid-template-areas:'txt num';grid-template-columns:1fr clamp(100px,18vw,220px)}
+.prestation-item.rev .prestation-filigranne{grid-area:num}
+.prestation-item.rev .prestation-content{grid-area:txt}
+/* Filigrane number — large translucent accent */
+.prestation-filigranne{font-family:var(--serif);font-size:clamp(90px,14vw,170px);font-weight:300;color:transparent;-webkit-text-stroke:1px rgba(231,181,60,.18);line-height:1;text-align:center;user-select:none;transition:-webkit-text-stroke-color .5s,filter .5s;filter:drop-shadow(0 0 24px rgba(231,181,60,.07))}
+.prestation-item:hover .prestation-filigranne{-webkit-text-stroke-color:rgba(231,181,60,.45);filter:drop-shadow(0 0 48px rgba(231,181,60,.22))}
+.prestation-number{font-family:var(--mono);font-size:.63rem;letter-spacing:.28em;color:var(--or);margin-bottom:14px;text-transform:uppercase;display:flex;align-items:center;gap:10px}
 .prestation-name{font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:300;color:var(--creme);line-height:1.15;margin-bottom:18px}
 .prestation-desc{font-family:var(--body);font-size:.9rem;color:var(--creme-dim);line-height:1.8}
 .badge{display:inline-block;font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;margin-left:10px;vertical-align:middle;position:relative;top:-2px}
@@ -190,8 +199,9 @@ footer{background:var(--noir);padding:52px var(--px) 36px;border-top:1px solid r
 
 /* RESPONSIVE */
 @media(max-width:900px){
-  .prestation-item{grid-template-columns:1fr;gap:28px}
-  .prestation-item.rev{direction:ltr}
+  .prestation-item,.prestation-item.rev{grid-template-columns:1fr;grid-template-areas:none;gap:24px}
+  .prestation-item.rev .prestation-filigranne,.prestation-item.rev .prestation-content{grid-area:unset}
+  .prestation-filigranne{font-size:clamp(70px,20vw,120px)}
   .formules-grid{grid-template-columns:1fr;max-width:380px}
   .formule-card.featured{transform:none}
   .methode-steps{grid-template-columns:1fr;gap:44px;max-width:280px}
@@ -241,6 +251,7 @@ footer{background:var(--noir);padding:52px var(--px) 36px;border-top:1px solid r
 
 <!-- 2. CONSTAT -->
 <section id="constat">
+  <div class="sl" aria-hidden="true"></div>
   <div class="container">
     <span class="section-kicker reveal">Constat</span>
     <div class="divider-or reveal"></div>
@@ -255,6 +266,7 @@ footer{background:var(--noir);padding:52px var(--px) 36px;border-top:1px solid r
 
 <!-- 3. MANIFESTE -->
 <section id="manifeste">
+  <div class="sl" aria-hidden="true"></div>
   <div class="container">
     <div class="manifeste-inner">
       <span class="section-kicker reveal">Notre vision</span>
@@ -275,6 +287,7 @@ footer{background:var(--noir);padding:52px var(--px) 36px;border-top:1px solid r
 
 <!-- 4. PRESTATIONS -->
 <section id="prestations">
+  <div class="sl" aria-hidden="true"></div>
   <div class="container">
     <div class="prestations-header">
       <span class="section-kicker">Ce que nous faisons</span>
@@ -282,7 +295,7 @@ footer{background:var(--noir);padding:52px var(--px) 36px;border-top:1px solid r
     </div>
 
     <div class="prestation-item" data-p>
-      <div class="prestation-media"><div class="play-btn"></div></div>
+      <div class="prestation-filigranne" aria-hidden="true">01</div>
       <div class="prestation-content">
         <p class="prestation-number">01 · Vidéo d'entreprise</p>
         <h3 class="prestation-name">Votre identité<br>en mouvement.</h3>
@@ -291,7 +304,7 @@ footer{background:var(--noir);padding:52px var(--px) 36px;border-top:1px solid r
     </div>
 
     <div class="prestation-item rev" data-p>
-      <div class="prestation-media"><div class="play-btn"></div></div>
+      <div class="prestation-filigranne" aria-hidden="true">02</div>
       <div class="prestation-content">
         <p class="prestation-number">02 · Photo &amp; Drone <span class="badge badge-soon">Bientôt</span></p>
         <h3 class="prestation-name">Le grand angle<br>de votre activité.</h3>
@@ -300,7 +313,7 @@ footer{background:var(--noir);padding:52px var(--px) 36px;border-top:1px solid r
     </div>
 
     <div class="prestation-item" data-p>
-      <div class="prestation-media"><div class="play-btn"></div></div>
+      <div class="prestation-filigranne" aria-hidden="true">03</div>
       <div class="prestation-content">
         <p class="prestation-number">03 · Montage &amp; Post-production</p>
         <h3 class="prestation-name">La précision<br>dans chaque coupe.</h3>
@@ -309,7 +322,7 @@ footer{background:var(--noir);padding:52px var(--px) 36px;border-top:1px solid r
     </div>
 
     <div class="prestation-item rev" data-p>
-      <div class="prestation-media"><div class="play-btn"></div></div>
+      <div class="prestation-filigranne" aria-hidden="true">04</div>
       <div class="prestation-content">
         <p class="prestation-number">04 · Diffusion &amp; Stratégie <span class="badge badge-option">Option</span></p>
         <h3 class="prestation-name">Diffuser pour<br>mieux rayonner.</h3>
@@ -321,6 +334,7 @@ footer{background:var(--noir);padding:52px var(--px) 36px;border-top:1px solid r
 
 <!-- 5. FORMULES -->
 <section id="formules">
+  <div class="sl" aria-hidden="true"></div>
   <div class="container">
     <span class="section-kicker reveal">Investissement</span>
     <h2 class="formules-title reveal">Choisissez votre formule</h2>
@@ -370,6 +384,7 @@ footer{background:var(--noir);padding:52px var(--px) 36px;border-top:1px solid r
 
 <!-- 6. MÉTHODE -->
 <section id="methode">
+  <div class="sl" aria-hidden="true"></div>
   <div class="container">
     <div class="methode-header">
       <span class="section-kicker reveal">Notre processus</span>
@@ -398,6 +413,7 @@ footer{background:var(--noir);padding:52px var(--px) 36px;border-top:1px solid r
 
 <!-- 7. SIGNATURE -->
 <section id="signature">
+  <div class="sl" aria-hidden="true"></div>
   <div class="container">
     <blockquote class="signature-quote reveal">
       "Nous ne faisons pas de la vidéo pour remplir un feed.<br>
@@ -448,6 +464,7 @@ footer{background:var(--noir);padding:52px var(--px) 36px;border-top:1px solid r
 
 <!-- 9. CTA FINAL -->
 <section id="cta-final">
+  <div class="sl" aria-hidden="true"></div>
   <div class="container">
     <h2 class="cta-title reveal">Parlons de<br><em>votre projet.</em></h2>
     <p class="cta-sub reveal">Un échange sans engagement. Une réponse sous 48h.</p>
