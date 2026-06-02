@@ -1,0 +1,8 @@
+Déposez ici les fichiers suivants :
+
+  Logo.png   → le wordmark horizontal "Zorfix." (fond noir, crème + point doré)
+  Avatar.png → le logo rond "Z." (cercle avec bordure crème)
+
+Dans preview.html et index.html, les lignes à décommenter sont indiquées par :
+  <!-- Remplacer le SVG inline par <img src="assets/Logo.png"> -->
+  <!-- Remplacer le SVG inline par <img src="assets/Avatar.png"> -->
