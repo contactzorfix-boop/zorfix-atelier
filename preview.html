@@ -240,6 +240,24 @@ nav{
 .badge-soon{background:rgba(231,181,60,.1);color:var(--or);border:1px solid rgba(231,181,60,.3)}
 .badge-opt{background:rgba(233,226,210,.06);color:var(--dim);border:1px solid rgba(233,226,210,.14)}
 
+/* PONT */
+.pont-wrap{
+  display:flex;align-items:center;gap:clamp(20px,4vw,48px);
+  max-width:760px;margin:0 auto;
+  padding:clamp(52px,8vh,80px) var(--px);
+}
+.pont-line{flex:1;height:1px;background:linear-gradient(to right,transparent,rgba(231,181,60,.25),transparent)}
+.pont-phrase{
+  font-family:var(--serif);font-style:italic;font-weight:300;
+  font-size:clamp(1.1rem,2vw,1.4rem);
+  color:var(--dim);line-height:1.6;text-align:center;
+  flex-shrink:0;max-width:min(440px,70%);
+}
+@media(max-width:640px){
+  .pont-wrap{flex-direction:column;gap:20px}
+  .pont-line{width:40px;height:1px;flex:none}
+}
+
 /* FORMULES */
 .formules-grid{
   display:grid;grid-template-columns:1fr 1.1fr 1fr;
@@ -482,8 +500,9 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
 <section id="prestations" class="sec">
   <div class="wrap">
     <div class="sec-head" id="prest-head">
-      <span class="kicker"><span class="kicker-line"></span>Ce que nous faisons</span>
-      <h2 class="sec-h">Prestations</h2>
+      <span class="kicker"><span class="kicker-line"></span>Ce qu'on filme</span>
+      <h2 class="sec-h">On crée vos vidéos.</h2>
+      <p class="sec-sub">Commandez la vidéo dont vous avez besoin — à l'unité, sans engagement.</p>
     </div>
 
     <div class="prest-item" id="p1">
@@ -528,12 +547,20 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
   </div>
 </section>
 
+<!-- PONT -->
+<div class="pont-wrap" data-r>
+  <div class="pont-line"></div>
+  <p class="pont-phrase">Envie d'aller plus loin qu'une seule vidéo ?<br>On peut s'occuper de tout, chaque mois.</p>
+  <div class="pont-line"></div>
+</div>
+
 <!-- ⑤ FORMULES -->
 <section id="formules" class="sec">
   <div class="wrap">
     <div class="sec-head" id="form-head">
-      <span class="kicker"><span class="kicker-line"></span>Investissement</span>
-      <h2 class="sec-h">Choisissez votre formule</h2>
+      <span class="kicker"><span class="kicker-line"></span>L'accompagnement</span>
+      <h2 class="sec-h">On gère vos réseaux.</h2>
+      <p class="sec-sub">Tournage régulier + gestion de vos réseaux. Une présence qui vit toute l'année.</p>
     </div>
     <div class="formules-grid">
       <div class="card">
