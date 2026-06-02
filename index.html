@@ -376,7 +376,8 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
 .foot-icons{display:flex;gap:24px;align-items:center}
 .foot-icon{color:var(--dim);transition:color .3s;text-decoration:none}
 .foot-icon:hover{color:var(--or)}
-.foot-icon svg{width:19px;height:19px;fill:currentColor;display:block}
+.foot-icon svg{width:20px;height:20px;fill:currentColor;display:block}
+.foot-icon svg[fill="none"]{fill:none}
 .foot-mail{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;color:var(--dim);text-decoration:none;transition:color .3s;display:flex;align-items:center;gap:8px}
 .foot-mail:hover{color:var(--or)}
 .foot-copy{font-family:var(--mono);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(122,112,96,.35)}
@@ -684,11 +685,10 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
       <a href="https://tiktok.com/@atelier.zorfix" class="foot-icon" aria-label="TikTok" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.31 6.31 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.19 8.19 0 004.79 1.54V6.78a4.85 4.85 0 01-1.02-.09z"/></svg>
       </a>
+      <a href="mailto:contact@zorfix.ch" class="foot-icon" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+      </a>
     </div>
-    <a href="mailto:contact@zorfix.ch" class="foot-mail">
-      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-      contact@zorfix.ch
-    </a>
     <p class="foot-copy">Zorfix. · Suisse Romande · MMXXVI</p>
   </div>
 </footer>
