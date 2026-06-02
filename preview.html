@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PREVIEW — Atelier Zorfix</title>
+<title>PREVIEW — Zorfix.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -302,6 +302,12 @@ nav{
   padding:3px 9px;margin-left:10px;
   vertical-align:middle;position:relative;top:-1px;
 }
+.prest-extra{
+  margin-top:14px;font-family:var(--mono);font-size:.7rem;
+  color:var(--dim);letter-spacing:.08em;
+}
+.br-desktop{display:inline}
+@media(max-width:640px){.br-desktop{display:none}}
 .badge-soon{background:rgba(231,181,60,.1);color:var(--or);border:1px solid rgba(231,181,60,.3)}
 .badge-opt{background:rgba(233,226,210,.06);color:var(--dim);border:1px solid rgba(233,226,210,.14)}
 
@@ -514,7 +520,9 @@ footer{
   .prest-num{font-size:clamp(72px,18vw,120px)}
   .formules-grid{grid-template-columns:1fr;max-width:380px;margin:0 auto}
   .card.star{transform:none}
-  .methode-grid{grid-template-columns:1fr;gap:44px;max-width:280px;margin:0 auto}
+  .methode-grid{grid-template-columns:1fr;gap:44px;max-width:100%;margin:0 auto}
+  .step{padding:0 8px;text-align:center}
+  .step-roman{margin:0 auto 22px}
   .methode-line-track{display:none}
   .prest-header{flex-direction:column}
 }
@@ -627,7 +635,7 @@ footer{
         <p>Nous travaillons avec les entreprises de Suisse romande qui veulent prendre leur image au sérieux — et la faire grandir.</p>
       </div>
       <div class="manifeste-sig" data-r>
-        Atelier Zorfix · Production vidéo · Suisse Romande
+        Zorfix. · Production vidéo · Suisse Romande
       </div>
     </div>
   </div>
@@ -644,36 +652,40 @@ footer{
     <div class="prest-item" data-r>
       <div class="prest-num" aria-hidden="true">01</div>
       <div class="prest-txt">
-        <p class="prest-label">01 · Vidéo d'entreprise</p>
-        <h3 class="prest-name">Votre identité<br>en mouvement.</h3>
-        <p class="prest-desc">Vidéos institutionnelles, présentations d'équipe, témoignages clients. Nous capturons l'essence de votre entreprise avec une direction artistique soignée.</p>
+        <p class="prest-label">01 · Vidéo de présentation</p>
+        <h3 class="prest-name">Qui vous êtes,<br>en une vidéo.</h3>
+        <p class="prest-desc">On montre qui vous êtes : vos locaux, votre équipe, votre savoir-faire, en une vidéo qui inspire confiance.</p>
       </div>
     </div>
 
     <div class="prest-item" data-r>
       <div class="prest-num" aria-hidden="true">02</div>
       <div class="prest-txt">
-        <p class="prest-label">02 · Photo &amp; Drone <span class="badge badge-soon">Bientôt</span></p>
-        <h3 class="prest-name">Le grand angle<br>de votre activité.</h3>
-        <p class="prest-desc">Prises de vue aériennes, reportages photo corporate, visuels immersifs. Une perspective nouvelle sur votre entreprise et ses lieux de vie.</p>
+        <p class="prest-label">02 · Interview &amp; témoignage</p>
+        <h3 class="prest-name">La parole qui<br>convainc.</h3>
+        <p class="prest-desc">On donne la parole à vous ou vos clients, pour une preuve sociale qui convainc.</p>
       </div>
     </div>
 
     <div class="prest-item" data-r>
       <div class="prest-num" aria-hidden="true">03</div>
       <div class="prest-txt">
-        <p class="prest-label">03 · Montage &amp; Post-production</p>
-        <h3 class="prest-name">La précision<br>dans chaque coupe.</h3>
-        <p class="prest-desc">Montage professionnel, étalonnage colorimétrique, motion design, habillage sonore. Votre contenu révélé dans sa meilleure lumière.</p>
+        <p class="prest-label">03 · Reportage de chantier / terrain</p>
+        <h3 class="prest-name">Votre expertise<br>vue de l'intérieur.</h3>
+        <p class="prest-desc">On capte votre travail en action, là où votre expertise se voit vraiment.</p>
       </div>
     </div>
 
     <div class="prest-item" data-r>
       <div class="prest-num" aria-hidden="true">04</div>
       <div class="prest-txt">
-        <p class="prest-label">04 · Diffusion &amp; Stratégie <span class="badge badge-opt">Option</span></p>
-        <h3 class="prest-name">Diffuser pour<br>mieux rayonner.</h3>
-        <p class="prest-desc">Stratégie de diffusion sur les réseaux sociaux, formats adaptés à chaque plateforme, suivi des performances et de l'engagement.</p>
+        <p class="prest-label">04 · Spot publicitaire</p>
+        <h3 class="prest-name">Court, percutant,<br>mémorable.</h3>
+        <p class="prest-desc">Une vidéo courte et percutante, pensée pour vos réseaux et vos campagnes.</p>
+        <p class="prest-extra">
+          <span class="badge badge-soon" style="margin-left:0;margin-right:8px">Bientôt</span>Photo &amp; drone
+          <span class="badge badge-opt" style="margin-left:8px">Option</span>Diffusion &amp; stratégie
+        </p>
       </div>
     </div>
   </div>
@@ -779,7 +791,7 @@ footer{
       <span class="sig-word">Croissance</span><span class="sig-dot">·</span>
       <span class="sig-word">Suisse Romande</span><span class="sig-dot">·</span>
       <span class="sig-word">Production Vidéo</span><span class="sig-dot">·</span>
-      <span class="sig-word">Atelier Zorfix</span><span class="sig-dot">·</span>
+      <span class="sig-word">Zorfix.</span><span class="sig-dot">·</span>
       <span class="sig-word">Lumière</span><span class="sig-dot">·</span>
       <span class="sig-word">Excellence</span><span class="sig-dot">·</span>
     </div>
@@ -789,7 +801,7 @@ footer{
       <span class="sig-word">Croissance</span><span class="sig-dot">·</span>
       <span class="sig-word">Suisse Romande</span><span class="sig-dot">·</span>
       <span class="sig-word">Production Vidéo</span><span class="sig-dot">·</span>
-      <span class="sig-word">Atelier Zorfix</span><span class="sig-dot">·</span>
+      <span class="sig-word">Zorfix.</span><span class="sig-dot">·</span>
       <span class="sig-word">Lumière</span><span class="sig-dot">·</span>
       <span class="sig-word">Excellence</span><span class="sig-dot">·</span>
     </div>
@@ -836,18 +848,15 @@ footer{
       <circle cx="240" cy="51" r="8" fill="#E7B53C"/>
     </svg>
     <div class="foot-icons">
-      <a href="https://instagram.com/zorfix" class="foot-icon" aria-label="Instagram" target="_blank" rel="noopener">
+      <a href="https://instagram.com/atelier.zorfix" class="foot-icon" aria-label="Instagram" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
       </a>
-      <a href="https://tiktok.com/@zorfix" class="foot-icon" aria-label="TikTok" target="_blank" rel="noopener">
+      <a href="https://tiktok.com/@atelier.zorfix" class="foot-icon" aria-label="TikTok" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.31 6.31 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.19 8.19 0 004.79 1.54V6.78a4.85 4.85 0 01-1.02-.09z"/></svg>
-      </a>
-      <a href="mailto:contact@zorfix.ch" class="foot-icon" aria-label="Email">
-        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
       </a>
     </div>
     <a href="mailto:contact@zorfix.ch" class="foot-mail">contact@zorfix.ch</a>
-    <p class="foot-copy">Atelier Zorfix · Suisse Romande · MMXXVI</p>
+    <p class="foot-copy">Zorfix. · Suisse Romande · MMXXVI</p>
   </div>
 </footer>
 
