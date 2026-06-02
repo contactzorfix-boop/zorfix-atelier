@@ -81,11 +81,17 @@ nav{
   padding:0 var(--px);
   display:flex;align-items:center;justify-content:space-between;
 }
-.logo{
-  font-family:var(--serif);font-size:1.1rem;font-weight:500;
-  letter-spacing:.1em;color:var(--creme);text-decoration:none;
+/* Nav : avatar circulaire (Logo rond) */
+.nav-logo{
+  display:flex;align-items:center;
+  text-decoration:none;
+  flex-shrink:0;
 }
-.logo b{color:var(--or);font-weight:500}
+.nav-avatar{
+  display:block;width:40px;height:40px;
+  transition:opacity .3s;
+}
+.nav-logo:hover .nav-avatar{opacity:.75}
 .nav-btn{
   font-family:var(--mono);font-size:.65rem;letter-spacing:.16em;
   text-transform:uppercase;color:var(--noir);background:var(--or);
@@ -123,40 +129,17 @@ nav{
 }
 
 /* ── LOGO CIRCULAIRE ─────────────────────────────────── */
-/*
-  IMPORTANT : le fichier avatar.png doit être ajouté à la racine du repo.
-  Si absent, un cercle doré avec "Z" s'affiche en fallback.
-*/
-.hero-logo{
-  width:clamp(96px,12vw,120px);
-  height:clamp(96px,12vw,120px);
-  border-radius:50%;
-  border:1.5px solid rgba(231,181,60,.5);
-  box-shadow:
-    0 0 0 6px rgba(231,181,60,.06),
-    0 0 32px rgba(231,181,60,.22),
-    0 0 80px rgba(231,181,60,.10),
-    0 0 160px rgba(231,181,60,.05);
-  display:flex;align-items:center;justify-content:center;
-  margin:0 auto 32px;
-  overflow:hidden;
-  background:radial-gradient(circle at 40% 35%,rgba(231,181,60,.12),rgba(231,181,60,.04));
-  position:relative;
+/* Hero : wordmark horizontal "Zorfix." */
+.hero-wordmark{
+  margin:0 auto 28px;
+  width:clamp(180px,48vw,310px);
 }
-/* Image logo réel */
-.hero-logo img.logo-img{
-  width:100%;height:100%;
-  border-radius:50%;
-  object-fit:cover;
-  display:block;
-  position:relative;z-index:1;
-}
-/* Fallback texte — visible uniquement si avatar.png absent */
-.hero-logo-fallback{
-  font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.4rem);
-  font-weight:300;color:var(--or);letter-spacing:.06em;font-style:italic;
-  line-height:1;
-  position:absolute;
+.wordmark-svg{
+  width:100%;height:auto;display:block;
+  filter:
+    drop-shadow(0 0 22px rgba(231,181,60,.22))
+    drop-shadow(0 0 60px rgba(231,181,60,.10));
+  overflow:visible;
 }
 
 .hero-kicker{
@@ -497,11 +480,14 @@ footer{
   display:flex;flex-direction:column;align-items:center;gap:26px;
   text-align:center;
 }
-.foot-logo{
-  font-family:var(--serif);font-size:1.2rem;font-weight:500;
-  letter-spacing:.1em;color:var(--creme);
+/* Footer wordmark */
+.foot-wordmark{
+  width:clamp(100px,16vw,140px);height:auto;
+  display:block;opacity:.6;
+  transition:opacity .3s;
+  overflow:visible;
 }
-.foot-logo b{color:var(--or);font-weight:500}
+.foot-wordmark:hover{opacity:.9}
 .foot-icons{display:flex;gap:26px;align-items:center}
 .foot-icon{color:var(--dim);transition:color .3s;text-decoration:none}
 .foot-icon:hover{color:var(--or)}
@@ -546,7 +532,7 @@ footer{
 }
 @media(max-width:380px){
   :root{--px:16px}
-  .hero-logo{width:88px;height:88px}
+  .hero-wordmark{width:160px}
 }
 </style>
 </head>
@@ -559,7 +545,16 @@ footer{
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="logo">Atelier <b>Zorfix</b></a>
+  <!-- Logo nav : Avatar rond — remplacer le SVG par <img src="assets/Avatar.png"> quand le fichier existe -->
+  <a href="#" class="nav-logo" aria-label="Zorfix">
+    <svg class="nav-avatar" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="22" cy="22" r="20.5" fill="rgba(8,6,4,.6)" stroke="#E9E2D2" stroke-width="1" opacity=".42"/>
+      <text x="19" y="30" font-family="'Cormorant Garamond',Georgia,serif"
+        font-style="italic" font-weight="300" font-size="26" fill="#E9E2D2"
+        text-anchor="middle" dominant-baseline="auto">Z</text>
+      <circle cx="28" cy="31" r="2.8" fill="#E7B53C"/>
+    </svg>
+  </a>
   <a href="https://tally.so/r/LZkbM2" class="nav-btn" target="_blank" rel="noopener">Demander un devis</a>
 </nav>
 
@@ -569,18 +564,20 @@ footer{
   <div class="vignette"></div>
   <div class="hero-wrap">
 
-    <!-- LOGO CIRCULAIRE
-         → Remplacez avatar.png par le vrai fichier logo dans le repo.
-           Si avatar.png est absent, le "Z" en Cormorant s'affiche en fallback.
+    <!-- WORDMARK HORIZONTAL
+         → Remplacer le SVG inline par <img src="assets/Logo.png" class="wordmark-svg" alt="Zorfix.">
+           quand le fichier Logo.png est déposé dans /assets/
     -->
-    <div class="hero-logo" id="hl-logo">
-      <img
-        class="logo-img"
-        src="avatar.png"
-        alt="Logo Atelier Zorfix"
-        onerror="this.style.display='none'"
-      >
-      <span class="hero-logo-fallback" id="logo-fallback">Z</span>
+    <div class="hero-wordmark" id="hl-logo">
+      <svg class="wordmark-svg" viewBox="0 0 252 72" xmlns="http://www.w3.org/2000/svg" aria-label="Zorfix.">
+        <text x="0" y="58"
+          font-family="'Cormorant Garamond',Georgia,serif"
+          font-style="italic" font-weight="300" font-size="62"
+          fill="#E9E2D2"
+          textLength="228" lengthAdjust="spacingAndGlyphs">Zorfix</text>
+        <!-- Point doré — cercle positionné après le texte -->
+        <circle cx="240" cy="51" r="8" fill="#E7B53C"/>
+      </svg>
     </div>
 
     <span class="hero-kicker" id="hl-kicker">Atelier · Suisse Romande</span>
@@ -829,7 +826,15 @@ footer{
 <!-- ⑩ FOOTER -->
 <footer>
   <div class="foot">
-    <div class="foot-logo">Atelier <b>Zorfix</b></div>
+    <!-- Wordmark footer -->
+    <svg class="foot-wordmark" viewBox="0 0 252 72" xmlns="http://www.w3.org/2000/svg" aria-label="Zorfix.">
+      <text x="0" y="58"
+        font-family="'Cormorant Garamond',Georgia,serif"
+        font-style="italic" font-weight="300" font-size="62"
+        fill="#E9E2D2"
+        textLength="228" lengthAdjust="spacingAndGlyphs">Zorfix</text>
+      <circle cx="240" cy="51" r="8" fill="#E7B53C"/>
+    </svg>
     <div class="foot-icons">
       <a href="https://instagram.com/zorfix" class="foot-icon" aria-label="Instagram" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -953,18 +958,6 @@ footer{
     cam.aspect=W/H; cam.updateProjectionMatrix();
     renderer.setSize(W,H);
   });
-})();
-
-// ── Logo fallback : masquer le "Z" si l'image charge ──
-(function(){
-  const img = document.querySelector('.logo-img');
-  const fallback = document.getElementById('logo-fallback');
-  if(!img) return;
-  if(img.complete && img.naturalWidth > 0){
-    fallback.style.display='none';
-  } else {
-    img.addEventListener('load',()=>{ fallback.style.display='none'; });
-  }
 })();
 
 // ── LENIS + GSAP ──────────────────────────────────────
