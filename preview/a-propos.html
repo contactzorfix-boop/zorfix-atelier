@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À propos — Zorfix. Production vidéo · Suisse Romande</title>
+<meta name="description" content="Pourquoi Zorfix existe. Notre vision, notre approche, notre zone d'intervention en Suisse romande.">
+<meta property="og:title" content="À propos — Zorfix.">
+<meta property="og:description" content="Pourquoi Zorfix existe. Notre vision et notre approche pour les entreprises de Suisse romande.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --noir:#0A0907;--creme:#E9E2D2;--dim:#7a7060;--or:#E7B53C;--or2:#F4D175;
+  --nav-h:68px;--sg:clamp(88px,12vh,130px);--px:clamp(22px,6vw,88px);
+  --serif:'Cormorant Garamond',Georgia,serif;--mono:'Courier Prime','Courier New',monospace;
+  --body:'Lora',Georgia,serif;--ease:cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:auto;font-size:16px}
+body{background:var(--noir);color:var(--creme);font-family:var(--body);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+#ambient{position:fixed;top:0;left:50%;transform:translateX(-50%);width:min(860px,125vw);height:75vh;background:radial-gradient(ellipse 60% 70% at 50% -4%,rgba(231,181,60,.10) 0%,rgba(231,181,60,.045) 28%,rgba(231,181,60,.012) 56%,transparent 74%);pointer-events:none;z-index:2;animation:ambientPulse 7s ease-in-out infinite;}
+@keyframes ambientPulse{0%,100%{opacity:.82}50%{opacity:1}}
+.grain{position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.028;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px 200px;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--nav-h);padding:0 var(--px);display:flex;align-items:center;justify-content:space-between;background:rgba(10,9,7,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+.nav-avatar{display:block;width:40px;height:40px;mix-blend-mode:screen;transition:opacity .3s}
+.nav-brand:hover .nav-avatar{opacity:.75}
+.nav-wordmark{font-family:var(--serif);font-style:italic;font-weight:300;font-size:1.25rem;color:var(--creme);letter-spacing:.02em}
+.nav-links{list-style:none;display:flex;align-items:center;gap:28px}
+.nav-links a{font-family:var(--mono);font-size:.63rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .3s}
+.nav-links a:hover,.nav-links a.active{color:var(--or)}
+.nav-links .nav-cta{font-family:var(--mono);font-size:.63rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or);border:1px solid var(--or);padding:7px 18px;text-decoration:none;transition:all .3s var(--ease);}
+.nav-links .nav-cta:hover{background:var(--or);color:var(--noir)}
+.nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:600}
+.nav-burger span{display:block;width:24px;height:1.5px;background:var(--creme);transition:all .3s var(--ease)}
+.nav-overlay{display:none;position:fixed;inset:0;background:rgba(10,9,7,.97);z-index:490;flex-direction:column;align-items:center;justify-content:center;gap:36px;}
+.nav-overlay.open{display:flex}
+.nav-overlay a{font-family:var(--serif);font-style:italic;font-size:2rem;font-weight:300;color:var(--creme);text-decoration:none;transition:color .3s}
+.nav-overlay a:hover,.nav-overlay a.active{color:var(--or)}
+.nav-overlay .nav-cta{font-family:var(--mono);font-style:normal;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--or);border:1px solid var(--or);padding:12px 32px;margin-top:8px}
+@media(max-width:767px){.nav-links{display:none}.nav-burger{display:flex}}
+
+/* LAYOUT */
+.sec{padding-top:var(--sg);padding-bottom:var(--sg)}
+.sec+.sec{border-top:1px solid rgba(233,226,210,.04)}
+.wrap{max-width:1160px;margin:0 auto;padding-left:var(--px);padding-right:var(--px)}
+.wrap-narrow{max-width:680px;margin:0 auto;padding-left:var(--px);padding-right:var(--px)}
+.kicker{font-family:var(--mono);font-size:.63rem;letter-spacing:.26em;text-transform:uppercase;color:var(--or);display:block;}
+.kicker-line{display:inline-block;width:22px;height:1px;background:var(--or);vertical-align:middle;margin-right:12px;position:relative;top:-1px;}
+.sec-head{text-align:center;margin-bottom:clamp(52px,7vw,88px)}
+.sec-h{font-family:var(--serif);font-size:clamp(2.1rem,3.8vw,3.2rem);font-weight:300;color:var(--creme);line-height:1.18;letter-spacing:-.01em;margin-top:14px;}
+.btn-or{font-family:var(--mono);font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;background:var(--or);color:var(--noir);padding:14px 36px;text-decoration:none;border:1px solid var(--or);transition:all .3s var(--ease);display:inline-block;}
+.btn-or:hover{background:transparent;color:var(--or)}
+
+/* PAGE HERO */
+.page-hero{padding-top:calc(var(--nav-h) + clamp(60px,10vh,100px));padding-bottom:clamp(52px,8vh,88px);padding-left:var(--px);padding-right:var(--px);text-align:center;position:relative;z-index:3;}
+.page-kicker{font-family:var(--mono);font-size:.66rem;letter-spacing:.32em;text-transform:uppercase;color:var(--or);display:block;margin-bottom:20px;}
+.page-h1{font-family:var(--serif);font-size:clamp(2.8rem,6vw,5.5rem);font-weight:300;line-height:1.05;letter-spacing:-.01em;font-style:italic;color:var(--creme);}
+
+/* CONTENT SECTIONS */
+.content-block{padding-top:clamp(44px,6vw,72px);}
+.content-title{font-family:var(--serif);font-size:clamp(1.5rem,2.4vw,2rem);font-weight:300;color:var(--creme);margin-bottom:18px;line-height:1.2;}
+.content-body{font-family:var(--body);font-size:clamp(.92rem,1.3vw,1rem);color:var(--dim);line-height:1.95;}
+.content-body+.content-body{margin-top:.9em}
+.content-body strong{color:var(--creme);font-weight:500;}
+
+/* ZONE */
+.zone-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;}
+.zone-tag{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border:1px solid rgba(231,181,60,.22);color:var(--or);}
+
+/* PILIERS */
+.piliers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:clamp(44px,6vw,72px);}
+.pilier{padding:44px 32px;border:1px solid rgba(233,226,210,.07);position:relative;overflow:hidden;transition:border-color .35s;}
+.pilier::before{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:var(--or);transition:height .4s var(--ease);}
+.pilier:hover{border-color:rgba(231,181,60,.18)}
+.pilier:hover::before{height:100%}
+.pilier-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;color:var(--or);display:block;margin-bottom:16px;}
+.pilier-title{font-family:var(--serif);font-size:clamp(1.3rem,1.8vw,1.6rem);font-weight:300;color:var(--creme);margin-bottom:12px;line-height:1.2;}
+.pilier-desc{font-family:var(--body);font-size:.88rem;color:var(--dim);line-height:1.82;}
+
+/* CTA */
+#cta-final{text-align:center}
+.cta-h{font-family:var(--serif);font-size:clamp(2rem,4.5vw,4rem);font-weight:300;color:var(--creme);line-height:1.1;margin-bottom:14px;font-style:italic;}
+.cta-sub{font-family:var(--body);font-size:.97rem;color:var(--dim);margin-bottom:44px;line-height:1.75;}
+
+/* FOOTER */
+footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
+.foot-inner{max-width:1160px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center}
+.foot-brand a{text-decoration:none;display:inline-block}
+.foot-logo{width:clamp(90px,14vw,130px);height:auto;display:block;opacity:.6;overflow:visible;transition:opacity .3s}
+.foot-brand a:hover .foot-logo{opacity:.85}
+.foot-nav{display:flex;gap:24px;flex-wrap:wrap;justify-content:center}
+.foot-nav a{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .3s}
+.foot-nav a:hover{color:var(--or)}
+.foot-social{display:flex;gap:24px;align-items:center}
+.foot-social a{color:var(--dim);transition:color .3s;text-decoration:none}
+.foot-social a:hover{color:var(--or)}
+.foot-social svg{width:20px;height:20px;fill:currentColor;display:block}
+.foot-social svg[fill="none"]{fill:none}
+.foot-copy{font-family:var(--mono);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(122,112,96,.35)}
+
+@media(max-width:900px){
+  .piliers-grid{grid-template-columns:1fr;max-width:440px;margin-left:auto;margin-right:auto;}
+}
+@media(max-width:640px){
+  :root{--sg:clamp(64px,10vh,96px);--px:20px}
+}
+</style>
+</head>
+<body>
+
+<div id="ambient" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-brand">
+    <img src="../assets/IMG_2100.png" class="nav-avatar" alt="Zorfix.">
+    <span class="nav-wordmark">Zorfix.</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="prestations.html">Prestations</a></li>
+    <li><a href="abonnement.html">Abonnement</a></li>
+    <li><a href="a-propos.html">À propos</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="nav-burger" aria-label="Menu">
+    <span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-overlay" id="nav-overlay">
+  <a href="index.html">Accueil</a>
+  <a href="prestations.html">Prestations</a>
+  <a href="abonnement.html">Abonnement</a>
+  <a href="a-propos.html">À propos</a>
+  <a href="contact.html" class="nav-cta">Contact</a>
+</div>
+
+<!-- PAGE HERO -->
+<header class="page-hero">
+  <span class="page-kicker" data-r>ZORFIX</span>
+  <h1 class="page-h1" data-r>Pourquoi Zorfix existe.</h1>
+</header>
+
+<!-- VISION / APPROCHE / ZONE -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap-narrow">
+
+    <div class="content-block" data-r>
+      <h2 class="content-title">Notre vision</h2>
+      <p class="content-body">Trop d'entreprises romandes excellent dans leur métier mais peinent à le montrer. Leurs vitrines en ligne ne rendent pas justice à ce qu'elles font vraiment. Zorfix est là pour changer ça.</p>
+    </div>
+
+    <div class="content-block" data-r>
+      <h2 class="content-title">Notre approche</h2>
+      <p class="content-body">Nous ne produisons pas de contenu en série. Chaque tournage est préparé, chaque montage est réfléchi. Nous travaillons avec un nombre limité d'entreprises à la fois, pour que chaque projet reçoive l'attention qu'il mérite.</p>
+    </div>
+
+    <div class="content-block" data-r>
+      <h2 class="content-title">Notre zone</h2>
+      <p class="content-body">Nous intervenons en Suisse romande — proche de vous, dans votre environnement réel.</p>
+      <div class="zone-list">
+        <span class="zone-tag">Genève</span>
+        <span class="zone-tag">Vaud</span>
+        <span class="zone-tag">Fribourg</span>
+        <span class="zone-tag">Valais</span>
+        <span class="zone-tag">Neuchâtel</span>
+        <span class="zone-tag">Jura</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LES 3 PILIERS -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker" data-r><span class="kicker-line"></span>NOS PILIERS</span>
+      <h2 class="sec-h" data-r>Ce qui guide chaque projet.</h2>
+    </div>
+    <div class="piliers-grid">
+      <div class="pilier" data-r>
+        <span class="pilier-label">ATELIER</span>
+        <h3 class="pilier-title">Un travail artisanal, préparé avec soin.</h3>
+        <p class="pilier-desc">Chaque vidéo est conçue pour vous, pas copiée d'un template. On prend le temps de comprendre votre métier avant d'allumer la caméra.</p>
+      </div>
+      <div class="pilier" data-r>
+        <span class="pilier-label">IMAGE</span>
+        <h3 class="pilier-title">Une image qui reflète vraiment votre niveau.</h3>
+        <p class="pilier-desc">Vos clients vous jugent en quelques secondes. Nous faisons en sorte que ce qu'ils voient corresponde à ce que vous valez vraiment.</p>
+      </div>
+      <div class="pilier" data-r>
+        <span class="pilier-label">CROISSANCE</span>
+        <h3 class="pilier-title">Du contenu qui travaille pour vous, longtemps.</h3>
+        <p class="pilier-desc">Une vidéo bien faite ne se périme pas. Elle continue d'attirer, de convaincre et de fidéliser bien au-delà de sa date de publication.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta-final" class="sec">
+  <div class="wrap">
+    <h2 class="cta-h" data-r>Envie de travailler avec nous ?</h2>
+    <p class="cta-sub" data-r>Un échange sans engagement. Une réponse sous 48h.</p>
+    <a href="https://tally.so/r/LZkbM2" class="btn-or" data-r target="_blank" rel="noopener">Demander un devis</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <a href="index.html">
+        <svg class="foot-logo" viewBox="0 0 272 80" overflow="visible">
+          <text x="0" y="64" font-family="'Cormorant Garamond',Georgia,serif" font-style="italic" font-weight="300" font-size="68" fill="#E9E2D2" textLength="244" lengthAdjust="spacingAndGlyphs">Zorfix</text>
+          <circle cx="259" cy="56" r="9" fill="#E7B53C"/>
+        </svg>
+      </a>
+    </div>
+    <nav class="foot-nav">
+      <a href="index.html">Accueil</a>
+      <a href="prestations.html">Prestations</a>
+      <a href="abonnement.html">Abonnement</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="foot-social">
+      <a href="https://instagram.com/atelier.zorfix" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://tiktok.com/@atelier.zorfix" target="_blank" rel="noopener" aria-label="TikTok">
+        <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.31 6.31 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.19 8.19 0 004.79 1.54V6.78a4.85 4.85 0 01-1.02-.09z"/></svg>
+      </a>
+      <a href="mailto:contact@zorfix.ch" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+      </a>
+    </div>
+    <p class="foot-copy">ZORFIX · SUISSE ROMANDE · MMXXVI</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const path = window.location.pathname;
+  document.querySelectorAll('.nav-links a, .nav-overlay a').forEach(a=>{
+    if(a.getAttribute('href') && path.endsWith(a.getAttribute('href'))) a.classList.add('active');
+  });
+  const burger = document.querySelector('.nav-burger');
+  const overlay = document.getElementById('nav-overlay');
+  if(burger && overlay){
+    burger.addEventListener('click',()=>overlay.classList.toggle('open'));
+    overlay.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>overlay.classList.remove('open')));
+  }
+
+  if(typeof Lenis==='undefined'||typeof gsap==='undefined') return;
+  const lenis = new Lenis({duration:1.3, easing:t=>Math.min(1,1.001-Math.pow(2,-10*t)), smoothTouch:true, touchMultiplier:1.8});
+  gsap.registerPlugin(ScrollTrigger);
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(t=>lenis.raf(t*1000));
+  gsap.ticker.lagSmoothing(0);
+
+  gsap.set('[data-r]',{opacity:0,y:22});
+  document.querySelectorAll('[data-r]').forEach(el=>{
+    gsap.to(el,{opacity:1,y:0,duration:.85,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}
+    });
+  });
+
+  // Piliers stagger
+  document.querySelectorAll('.pilier').forEach((p,i)=>{
+    gsap.from(p,{opacity:0,y:28,duration:.8,delay:i*.12,ease:'power3.out',
+      scrollTrigger:{trigger:'.piliers-grid',start:'top 74%',toggleActions:'play none none none'}
+    });
+  });
+})();
+</script>
+</body>
+</html>
