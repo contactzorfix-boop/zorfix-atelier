@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Production vidéo — Zorfix.</title>
-<meta name="description" content="Vidéos de présentation, interviews, reportages et spots publicitaires pour entreprises romandes. Sans engagement, à la carte.">
-<meta property="og:title" content="Production vidéo — Zorfix.">
-<meta property="og:description" content="Vidéos de présentation, interviews, reportages terrain et spots publicitaires pour entreprises romandes. À l'unité, quand vous en avez besoin.">
+<title>À propos — Zorfix.</title>
+<meta name="description" content="Pourquoi Zorfix existe. Notre vision, notre approche, notre zone d'intervention en Suisse romande.">
+<meta property="og:title" content="À propos — Zorfix.">
+<meta property="og:description" content="Pourquoi Zorfix existe. Notre vision et notre approche pour les entreprises de Suisse romande.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -54,82 +54,52 @@ nav#main-nav{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--nav-h)
 .sec{padding-top:var(--sg);padding-bottom:var(--sg)}
 .sec+.sec{border-top:1px solid rgba(233,226,210,.04)}
 .wrap{max-width:1160px;margin:0 auto;padding-left:var(--px);padding-right:var(--px)}
+.wrap-narrow{max-width:680px;margin:0 auto;padding-left:var(--px);padding-right:var(--px)}
 .kicker{font-family:var(--mono);font-size:.63rem;letter-spacing:.26em;text-transform:uppercase;color:var(--or);display:block;}
 .kicker-line{display:inline-block;width:22px;height:1px;background:var(--or);vertical-align:middle;margin-right:12px;position:relative;top:-1px;}
 .sec-head{text-align:center;margin-bottom:clamp(52px,7vw,88px)}
 .sec-h{font-family:var(--serif);font-size:clamp(2.1rem,3.8vw,3.2rem);font-weight:300;color:var(--creme);line-height:1.18;letter-spacing:-.01em;margin-top:14px;}
-.sec-sub{font-family:var(--body);font-size:clamp(.88rem,1.3vw,.97rem);color:var(--dim);line-height:1.88;text-align:center;max-width:480px;margin:18px auto 0;}
 .btn-or{font-family:var(--mono);font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;background:var(--or);color:var(--noir);padding:14px 36px;text-decoration:none;border:1px solid var(--or);transition:all .3s var(--ease);display:inline-block;}
 .btn-or:hover{background:transparent;color:var(--or)}
-.btn-ghost{font-family:var(--mono);font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;background:transparent;color:var(--creme);padding:14px 36px;text-decoration:none;border:1px solid rgba(233,226,210,.22);transition:all .3s var(--ease);display:inline-block;}
-.btn-ghost:hover{border-color:rgba(233,226,210,.55)}
 
-/* HERO SIMPLE */
-.hero-simple{
-  padding-top:calc(var(--nav-h) + clamp(60px,10vh,100px));
-  padding-bottom:clamp(52px,8vh,88px);
-  padding-left:var(--px);padding-right:var(--px);
-  text-align:center;position:relative;z-index:3;
-}
-.hero-inner{max-width:760px;margin:0 auto;}
-.hero-h1{font-family:var(--serif);font-size:clamp(2.8rem,6vw,5.5rem);font-weight:300;line-height:1.05;letter-spacing:-.01em;font-style:italic;color:var(--creme);margin-bottom:20px;}
-.hero-sub{font-family:var(--body);font-size:clamp(.9rem,1.4vw,1.05rem);color:var(--dim);line-height:1.82;max-width:min(520px,88%);margin:0 auto;}
+/* PAGE HERO */
+.page-hero{padding-top:calc(var(--nav-h) + clamp(60px,10vh,100px));padding-bottom:clamp(52px,8vh,88px);padding-left:var(--px);padding-right:var(--px);text-align:center;position:relative;z-index:3;}
+.page-kicker{font-family:var(--mono);font-size:.66rem;letter-spacing:.32em;text-transform:uppercase;color:var(--or);display:block;margin-bottom:20px;}
+.page-h1{font-family:var(--serif);font-size:clamp(2.8rem,6vw,5.5rem);font-weight:300;line-height:1.05;letter-spacing:-.01em;font-style:italic;color:var(--creme);}
+.ap-brand-logo{display:block;width:clamp(130px,20vw,200px);height:auto;margin:0 auto 32px;opacity:.75;}
 
-/* PREST BLOCKS */
-.prest-block{
-  display:grid;
-  grid-template-columns:clamp(100px,14vw,180px) 1fr;
-  gap:clamp(32px,6vw,80px);
-  align-items:center;
-  padding:64px 0;
-  border-bottom:1px solid rgba(233,226,210,.06);
-}
-.prest-block:first-child{border-top:1px solid rgba(233,226,210,.06);}
-.prest-block--reverse{grid-template-columns:1fr clamp(100px,14vw,180px);}
-.prest-block--reverse .prest-num{order:2;text-align:right;}
-.prest-block--reverse .prest-content{order:1;}
-.prest-num{
-  font-family:var(--serif);font-size:clamp(80px,12vw,160px);
-  font-weight:300;line-height:1;
-  color:transparent;
-  -webkit-text-stroke:1px rgba(231,181,60,.18);
-  user-select:none;
-  transition:-webkit-text-stroke-color .4s;
-}
-.prest-block:hover .prest-num{-webkit-text-stroke-color:rgba(231,181,60,.45);}
-.prest-label{font-family:var(--mono);font-size:.62rem;letter-spacing:.28em;color:var(--or);text-transform:uppercase;display:block;margin-bottom:14px;}
-.prest-title{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:300;color:var(--creme);line-height:1.15;margin-bottom:16px;}
-.prest-desc{font-family:var(--body);font-size:.95rem;color:var(--dim);line-height:1.82;margin-bottom:14px;}
-.prest-benefit{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;color:var(--or);}
-.prest-tags{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;}
-.badge{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:0;}
-.badge-or{border:1px solid rgba(231,181,60,.4);color:var(--or);background:rgba(231,181,60,.06);}
+/* CONTENT SECTIONS */
+.content-block{padding-top:clamp(44px,6vw,72px);}
+.content-title{font-family:var(--serif);font-size:clamp(1.5rem,2.4vw,2rem);font-weight:300;color:var(--creme);margin-bottom:18px;line-height:1.2;}
+.content-body{font-family:var(--body);font-size:clamp(.92rem,1.3vw,1rem);color:var(--dim);line-height:1.95;}
+.content-body+.content-body{margin-top:.9em}
+.content-body strong{color:var(--creme);font-weight:500;}
 
-@media(max-width:768px){
-  .prest-block,.prest-block--reverse{grid-template-columns:1fr;}
-  .prest-block--reverse .prest-num{order:0;text-align:left;}
-  .prest-num{font-size:clamp(60px,18vw,100px);}
-}
+/* ZONE */
+.zone-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;}
+.zone-tag{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border:1px solid rgba(231,181,60,.22);color:var(--or);}
 
-/* DRONE SECTION */
+/* PILIERS */
+.piliers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:clamp(44px,6vw,72px);}
+.pilier{padding:44px 32px;border:1px solid rgba(233,226,210,.07);position:relative;overflow:hidden;transition:border-color .35s;}
+.pilier::before{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:var(--or);transition:height .4s var(--ease);}
+.pilier:hover{border-color:rgba(231,181,60,.18)}
+.pilier:hover::before{height:100%}
+.pilier-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;color:var(--or);display:block;margin-bottom:16px;}
+.pilier-title{font-family:var(--serif);font-size:clamp(1.3rem,1.8vw,1.6rem);font-weight:300;color:var(--creme);margin-bottom:12px;line-height:1.2;}
+.pilier-desc{font-family:var(--body);font-size:.88rem;color:var(--dim);line-height:1.82;}
 
-/* STEPS */
-.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:880px;margin:0 auto;}
-.step{text-align:center;padding:0 16px;}
-.step-roman{font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--or);width:60px;height:60px;border-radius:50%;border:1px solid rgba(231,181,60,.28);display:flex;align-items:center;justify-content:center;margin:0 auto 26px;background:var(--noir);transition:border-color .3s,box-shadow .3s;}
-.step:hover .step-roman{border-color:rgba(231,181,60,.6);box-shadow:0 0 24px rgba(231,181,60,.12)}
-.step-name{font-family:var(--serif);font-size:clamp(1.1rem,1.8vw,1.35rem);font-weight:400;color:var(--creme);margin-bottom:10px;}
-.step-desc{font-family:var(--body);font-size:.87rem;color:var(--dim);line-height:1.78;}
-@media(max-width:768px){.steps-grid{grid-template-columns:1fr;max-width:420px;margin:0 auto;}}
-
-/* CTA SECTION */
-.sec-cta{text-align:center;}
+/* CTA */
+#cta-final{text-align:center}
+.cta-h{font-family:var(--serif);font-size:clamp(2rem,4.5vw,4rem);font-weight:300;color:var(--creme);line-height:1.1;margin-bottom:14px;font-style:italic;}
+.cta-sub{font-family:var(--body);font-size:.97rem;color:var(--dim);margin-bottom:44px;line-height:1.75;}
 
 /* FOOTER */
 footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
 .foot-inner{max-width:1160px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center}
+.foot-brand a{text-decoration:none;display:inline-block}
 .foot-logo{width:clamp(90px,14vw,130px);height:auto;display:block;opacity:.6;overflow:visible;transition:opacity .3s}
-.foot-inner:hover .foot-logo{opacity:.85}
+.foot-brand a:hover .foot-logo{opacity:.85}
 .foot-nav{display:flex;gap:24px;flex-wrap:wrap;justify-content:center}
 .foot-nav a{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .3s}
 .foot-nav a:hover{color:var(--or)}
@@ -138,6 +108,9 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
 .foot-icon:hover{color:var(--or)}
 .foot-copy{font-family:var(--mono);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(122,112,96,.35)}
 
+@media(max-width:900px){
+  .piliers-grid{grid-template-columns:1fr;max-width:440px;margin-left:auto;margin-right:auto;}
+}
 @media(max-width:640px){
   :root{--sg:clamp(64px,10vh,96px);--px:20px}
 }
@@ -151,7 +124,7 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
 <!-- NAV -->
 <nav id="main-nav">
   <a href="index.html" class="nav-brand">
-    <img src="../assets/zorfix-avatar.svg" class="nav-avatar" alt="Zorfix.">
+    <img src="assets/zorfix-avatar.svg" class="nav-avatar" alt="Zorfix.">
     <span class="nav-wordmark">Zorfix.</span>
   </a>
   <ul class="nav-links" id="nav-links">
@@ -175,99 +148,76 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
   <a href="contact.html" class="nav-cta">Contact</a>
 </div>
 
-<!-- HERO -->
-<section id="hero" class="hero-simple">
-  <div class="hero-inner">
-    <span class="kicker" id="pv-kicker"><span class="kicker-line"></span>CE QU'ON FILME</span>
-    <h1 class="hero-h1" id="pv-h1">On crée vos vidéos.</h1>
-    <p class="hero-sub" id="pv-sub">Une vidéo quand vous en avez besoin — à la carte, sans engagement.</p>
-  </div>
-</section>
 
-<!-- PRESTATIONS -->
-<section id="prestations" class="sec">
-  <div class="wrap">
+<!-- PAGE HERO -->
+<header class="page-hero">
+  <img src="assets/zorfix-logo.svg" class="ap-brand-logo" alt="Zorfix." data-r>
+  <h1 class="page-h1" data-r>Pourquoi nous existons.</h1>
+</header>
 
-    <div class="prest-block">
-      <div class="prest-num" aria-hidden="true">01</div>
-      <div class="prest-content">
-        <span class="prest-label">Vidéo de présentation</span>
-        <h2 class="prest-title">Qui vous êtes,<br>en une vidéo.</h2>
-        <p class="prest-desc">Vos locaux, votre équipe, votre savoir-faire — mis en scène avec soin pour inspirer confiance dès le premier regard.</p>
-        <p class="prest-benefit">Idéal pour votre site web, votre LinkedIn et vos présentations clients.</p>
-      </div>
+<!-- VISION / APPROCHE / ZONE -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap-narrow">
+
+    <div class="content-block" data-r>
+      <h2 class="content-title">Notre vision</h2>
+      <p class="content-body">Trop d'entreprises romandes excellent dans leur métier mais peinent à le montrer. Leurs vitrines en ligne ne rendent pas justice à ce qu'elles font vraiment. Zorfix est là pour changer ça.</p>
     </div>
 
-    <div class="prest-block prest-block--reverse">
-      <div class="prest-num" aria-hidden="true">02</div>
-      <div class="prest-content">
-        <span class="prest-label">Interview & témoignage</span>
-        <h2 class="prest-title">La parole qui<br>convainc.</h2>
-        <p class="prest-desc">Donnez la parole à votre équipe ou à vos clients. Une preuve sociale authentique, bien plus efficace que n'importe quelle accroche publicitaire.</p>
-        <p class="prest-benefit">Le format qui convertit le mieux sur les réseaux et les pages de vente.</p>
-      </div>
+    <div class="content-block" data-r>
+      <h2 class="content-title">Notre approche</h2>
+      <p class="content-body">Nous ne produisons pas de contenu en série. Chaque tournage est préparé, chaque montage est réfléchi. Nous travaillons avec un nombre limité d'entreprises à la fois, pour que chaque projet reçoive l'attention qu'il mérite.</p>
     </div>
 
-    <div class="prest-block">
-      <div class="prest-num" aria-hidden="true">03</div>
-      <div class="prest-content">
-        <span class="prest-label">Reportage terrain / chantier</span>
-        <h2 class="prest-title">Votre expertise<br>vue de l'intérieur.</h2>
-        <p class="prest-desc">On s'installe sur le terrain et on capte votre travail en action — là où votre savoir-faire se voit vraiment.</p>
-        <p class="prest-benefit">Parfait pour montrer la réalité de votre métier et vous démarquer.</p>
-      </div>
-    </div>
-
-    <div class="prest-block prest-block--reverse">
-      <div class="prest-num" aria-hidden="true">04</div>
-      <div class="prest-content">
-        <span class="prest-label">Spot publicitaire</span>
-        <h2 class="prest-title">Court, percutant,<br>mémorable.</h2>
-        <p class="prest-desc">Une vidéo courte et percutante, conçue pour vos campagnes Instagram. Optimisée pour capter l'attention et convertir.</p>
-        <p class="prest-benefit">Format 9:16 et 16:9 livrés. Prêt à diffuser.</p>
-        <div class="prest-tags">
-          <span class="badge badge-or">Instagram Ads</span>
-          <span class="badge badge-or">Campagnes sociales</span>
-        </div>
+    <div class="content-block" data-r>
+      <h2 class="content-title">Notre zone</h2>
+      <p class="content-body">Nous intervenons en Suisse romande — proche de vous, dans votre environnement réel.</p>
+      <div class="zone-list">
+        <span class="zone-tag">Genève</span>
+        <span class="zone-tag">Vaud</span>
+        <span class="zone-tag">Fribourg</span>
+        <span class="zone-tag">Valais</span>
+        <span class="zone-tag">Neuchâtel</span>
+        <span class="zone-tag">Jura</span>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- PROCESSUS -->
-<section id="processus" class="sec">
+<!-- LES 3 PILIERS -->
+<section class="sec">
   <div class="wrap">
-    <div class="sec-head" data-r>
-      <span class="kicker"><span class="kicker-line"></span>NOTRE PROCESSUS</span>
-      <h2 class="sec-h">Une demi-journée.<br>Des vidéos pour toute l'année.</h2>
+    <div class="sec-head">
+      <span class="kicker" data-r><span class="kicker-line"></span>NOS PILIERS</span>
+      <h2 class="sec-h" data-r>Ce qui guide chaque projet.</h2>
     </div>
-    <div class="steps-grid">
-      <div class="step">
-        <div class="step-roman">I</div>
-        <h3 class="step-name">Avant</h3>
-        <p class="step-desc">Nous étudions votre activité, votre clientèle, vos objectifs. Le jour J, on arrive avec un plan clair.</p>
+    <div class="piliers-grid">
+      <div class="pilier" data-r>
+        <span class="pilier-label">ATELIER</span>
+        <h3 class="pilier-title">Un travail artisanal, préparé avec soin.</h3>
+        <p class="pilier-desc">Chaque vidéo est conçue pour vous, pas copiée d'un template. On prend le temps de comprendre votre métier avant d'allumer la caméra.</p>
       </div>
-      <div class="step">
-        <div class="step-roman">II</div>
-        <h3 class="step-name">Pendant</h3>
-        <p class="step-desc">Une demi-journée chez vous. On s'adapte à votre environnement. Pas de plateau loué, pas de mise en scène artificielle.</p>
+      <div class="pilier" data-r>
+        <span class="pilier-label">IMAGE</span>
+        <h3 class="pilier-title">Une image qui reflète vraiment votre niveau.</h3>
+        <p class="pilier-desc">Vos clients vous jugent en quelques secondes. Nous faisons en sorte que ce qu'ils voient corresponde à ce que vous valez vraiment.</p>
       </div>
-      <div class="step">
-        <div class="step-roman">III</div>
-        <h3 class="step-name">Après</h3>
-        <p class="step-desc">Vidéos livrées, prêtes à publier. Montage, formats optimisés. Vous n'avez plus qu'à publier.</p>
+      <div class="pilier" data-r>
+        <span class="pilier-label">CROISSANCE</span>
+        <h3 class="pilier-title">Du contenu qui travaille pour vous, longtemps.</h3>
+        <p class="pilier-desc">Une vidéo bien faite ne se périme pas. Elle continue d'attirer, de convaincre et de fidéliser bien au-delà de sa date de publication.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-<section class="sec sec-cta">
-  <div class="wrap" style="text-align:center">
-    <h2 class="sec-h" data-r>Et si on filmait<br>votre entreprise ?</h2>
-    <p class="sec-sub" data-r style="margin:18px auto 40px">Un échange sans engagement. Une réponse sous 48h.</p>
-    <a href="https://tally.so/r/LZkbM2" class="btn-or" target="_blank" rel="noopener" data-r>Demander un devis</a>
+<section id="cta-final" class="sec">
+  <div class="wrap">
+    <h2 class="cta-h" data-r>Envie de travailler avec nous ?</h2>
+    <p class="cta-sub" data-r>Un échange sans engagement. Une réponse sous 48h.</p>
+    <a href="https://tally.so/r/LZkbM2" class="btn-or" data-r target="_blank" rel="noopener">Demander un devis</a>
   </div>
 </section>
 
@@ -330,43 +280,18 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
   gsap.ticker.add(t=>lenis.raf(t*1000));
   gsap.ticker.lagSmoothing(0);
 
-  // Hero entrance — visible immédiatement au chargement
-  gsap.set(['#pv-kicker','#pv-h1','#pv-sub'],{opacity:0,y:18});
-  gsap.timeline({delay:.25})
-    .to('#pv-kicker',{opacity:1,y:0,duration:.7,ease:'power3.out'})
-    .to('#pv-h1',    {opacity:1,y:0,duration:1, ease:'power3.out'},'-=.4')
-    .to('#pv-sub',   {opacity:1,y:0,duration:.7,ease:'power3.out'},'-=.45');
-
-  // Generic reveals
-  gsap.set('[data-r]',{opacity:0,y:18});
+  gsap.set('[data-r]',{opacity:0,y:22});
   document.querySelectorAll('[data-r]').forEach(el=>{
     gsap.to(el,{opacity:1,y:0,duration:.85,ease:'power3.out',
       scrollTrigger:{trigger:el,start:'top 95%',toggleActions:'play none none none'}
     });
   });
 
-  // Prest blocks — entrée explicite sans conflit
-  gsap.set('.prest-block',{opacity:0,y:24});
-  document.querySelectorAll('.prest-block').forEach((b,i)=>{
-    gsap.to(b,{opacity:1,y:0,duration:.9,ease:'power3.out',
-      scrollTrigger:{trigger:b,start:'top 92%',toggleActions:'play none none none'}
+  // Piliers stagger
+  document.querySelectorAll('.pilier').forEach((p,i)=>{
+    gsap.from(p,{opacity:0,y:28,duration:.8,delay:i*.12,ease:'power3.out',
+      scrollTrigger:{trigger:'.piliers-grid',start:'top 74%',toggleActions:'play none none none'}
     });
-  });
-
-  // Parallax on big numbers
-  document.querySelectorAll('.prest-num').forEach(num=>{
-    gsap.to(num,{y:-18,ease:'none',
-      scrollTrigger:{trigger:num,start:'top bottom',end:'bottom top',scrub:1.2}
-    });
-  });
-
-  // Steps stagger — entrée explicite
-  gsap.set('.step',{opacity:0,y:24});
-  ScrollTrigger.create({
-    trigger:'#processus', start:'top 82%',
-    onEnter:()=>{
-      gsap.to('.step',{opacity:1,y:0,duration:.75,stagger:.18,ease:'power3.out'});
-    }
   });
 })();
 </script>
