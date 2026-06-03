@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — Zorfix. Production vidéo · Suisse Romande</title>
-<meta name="description" content="Contactez Zorfix. Un échange sans engagement, une réponse sous 48h. Suisse romande.">
-<meta property="og:title" content="Contact — Zorfix.">
-<meta property="og:description" content="Un échange sans engagement. Une réponse sous 48h. Production vidéo en Suisse romande.">
+<title>Réseaux sociaux — Zorfix.</title>
+<meta name="description" content="Accompagnement mensuel réseaux sociaux pour entreprises romandes. Tournage, montage, gestion Instagram. Formules Présence, Croissance, Signature.">
+<meta property="og:title" content="Réseaux sociaux — Zorfix.">
+<meta property="og:description" content="Accompagnement mensuel réseaux sociaux pour entreprises romandes. Tournage, montage, gestion Instagram.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -41,7 +41,7 @@ nav#main-nav{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--nav-h)
 .nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:600}
 .nav-burger span{display:block;width:24px;height:1.5px;background:var(--creme);transition:all .3s var(--ease)}
 .nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;background:rgba(10,9,7,.97);z-index:490;align-items:center;justify-content:center;gap:36px;}
-.nav-links.open a{font-family:var(--serif);font-style:italic;font-size:2rem;font-weight:300;color:var(--creme);text-decoration:none;}
+.nav-links.open a{font-family:var(--serif);font-style:italic;font-size:2rem;font-weight:300;color:var(--creme);}
 .nav-links.open a:hover,.nav-links.open a.active{color:var(--or)}
 .nav-links.open .nav-cta{font-family:var(--mono);font-style:normal;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--or);border:1px solid var(--or);padding:12px 32px;margin-top:8px}
 @media(max-width:767px){.nav-links{display:none}.nav-burger{display:flex}}
@@ -51,49 +51,61 @@ nav#main-nav{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--nav-h)
 .sec+.sec{border-top:1px solid rgba(233,226,210,.04)}
 .wrap{max-width:1160px;margin:0 auto;padding-left:var(--px);padding-right:var(--px)}
 .kicker{font-family:var(--mono);font-size:.63rem;letter-spacing:.26em;text-transform:uppercase;color:var(--or);display:block;}
+.kicker-line{display:inline-block;width:22px;height:1px;background:var(--or);vertical-align:middle;margin-right:12px;position:relative;top:-1px;}
+.sec-head{text-align:center;margin-bottom:clamp(52px,7vw,88px)}
+.sec-h{font-family:var(--serif);font-size:clamp(2.1rem,3.8vw,3.2rem);font-weight:300;color:var(--creme);line-height:1.18;letter-spacing:-.01em;margin-top:14px;}
+.sec-sub{font-family:var(--body);font-size:clamp(.88rem,1.3vw,.97rem);color:var(--dim);line-height:1.88;text-align:center;max-width:480px;margin:18px auto 0;}
+.btn-or{font-family:var(--mono);font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;background:var(--or);color:var(--noir);padding:14px 36px;text-decoration:none;border:1px solid var(--or);transition:all .3s var(--ease);display:inline-block;}
+.btn-or:hover{background:transparent;color:var(--or)}
+.btn-ghost{font-family:var(--mono);font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;background:transparent;color:var(--creme);padding:14px 36px;text-decoration:none;border:1px solid rgba(233,226,210,.22);transition:all .3s var(--ease);display:inline-block;}
+.btn-ghost:hover{border-color:rgba(233,226,210,.55)}
 
-/* PAGE HERO */
-.page-hero{padding-top:calc(var(--nav-h) + clamp(60px,10vh,100px));padding-bottom:clamp(52px,8vh,88px);padding-left:var(--px);padding-right:var(--px);text-align:center;position:relative;z-index:3;}
-.page-kicker{font-family:var(--mono);font-size:.66rem;letter-spacing:.32em;text-transform:uppercase;color:var(--or);display:block;margin-bottom:20px;}
-.page-h1{font-family:var(--serif);font-size:clamp(2.8rem,6vw,5.5rem);font-weight:300;line-height:1.05;letter-spacing:-.01em;font-style:italic;color:var(--creme);margin-bottom:20px;}
-.page-sub{font-family:var(--body);font-size:clamp(.9rem,1.4vw,1.05rem);color:var(--dim);line-height:1.82;max-width:min(520px,88%);margin:0 auto;}
+/* HERO SIMPLE */
+.hero-simple{
+  padding-top:calc(var(--nav-h) + clamp(60px,10vh,100px));
+  padding-bottom:clamp(52px,8vh,88px);
+  padding-left:var(--px);padding-right:var(--px);
+  text-align:center;position:relative;z-index:3;
+}
+.hero-inner{max-width:760px;margin:0 auto;}
+.hero-h1{font-family:var(--serif);font-size:clamp(2.8rem,6vw,5.5rem);font-weight:300;line-height:1.05;letter-spacing:-.01em;font-style:italic;color:var(--creme);margin-bottom:20px;}
+.hero-sub{font-family:var(--body);font-size:clamp(.9rem,1.4vw,1.05rem);color:var(--dim);line-height:1.82;max-width:min(520px,88%);margin:0 auto;}
 
-/* TALLY SECTION */
-.tally-wrap{
-  max-width:760px;margin:0 auto;
-  padding:clamp(44px,6vw,72px) clamp(28px,4vw,56px);
-  background:rgba(233,226,210,.025);
-  border:1px solid rgba(233,226,210,.07);
-  position:relative;z-index:3;
-}
-.tally-wrap iframe{display:block;min-height:600px;}
+/* OFFRES COMPARE */
+.offres-compare{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:start;padding:48px 0;}
+.offre-divider{width:1px;background:rgba(233,226,210,.1);align-self:stretch;margin:0 clamp(24px,4vw,60px);}
+.offre-item{padding:32px 0;}
+.offre-item--active .offre-title{color:var(--creme);}
+.offre-title{font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.2rem);font-weight:300;color:var(--dim);line-height:1.2;margin:12px 0 16px;}
+.offre-desc{font-family:var(--body);font-size:.92rem;color:var(--dim);line-height:1.82;}
+@media(max-width:768px){.offres-compare{grid-template-columns:1fr;}.offre-divider{width:100%;height:1px;margin:24px 0;}}
 
-/* CONTACT INFO */
-.contact-info{
-  max-width:560px;margin:0 auto;text-align:center;
-  padding-top:clamp(44px,6vw,72px);
-}
-.contact-divider{
-  width:40px;height:1px;background:rgba(231,181,60,.28);
-  margin:0 auto clamp(36px,5vw,56px);
-}
-.contact-item{
-  display:flex;align-items:center;justify-content:center;
-  gap:14px;margin-bottom:20px;
-}
-.contact-item svg{width:18px;height:18px;flex-shrink:0;fill:currentColor;color:var(--or)}
-.contact-item svg[fill="none"]{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
-.contact-item a{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;color:var(--dim);text-decoration:none;transition:color .3s;}
-.contact-item a:hover{color:var(--or)}
-.contact-item span{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;color:var(--dim);}
-.contact-zone{margin-top:32px;font-family:var(--mono);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(122,112,96,.5);}
+/* CARDS */
+.cards-grid{display:grid;grid-template-columns:1fr 1.08fr 1fr;gap:20px;align-items:center;max-width:1020px;margin:0 auto;}
+.card{padding:44px 28px;border:1px solid rgba(233,226,210,.09);background:rgba(10,9,7,.5);position:relative;transition:border-color .3s;}
+.card:hover{border-color:rgba(231,181,60,.2);}
+.card--star{border-color:rgba(231,181,60,.35);background:rgba(231,181,60,.03);transform:scale(1.04);box-shadow:0 0 60px rgba(231,181,60,.07);}
+.card-badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;background:var(--or);color:var(--noir);padding:5px 14px;white-space:nowrap;}
+.card-name{font-family:var(--serif);font-size:1.7rem;font-weight:300;color:var(--creme);margin-bottom:4px;}
+.card-price{font-family:var(--mono);font-size:.62rem;letter-spacing:.15em;color:var(--or);text-transform:uppercase;margin-bottom:8px;}
+.card-sub{font-family:var(--serif);font-style:italic;font-size:.98rem;color:var(--dim);margin-bottom:22px;}
+.card-features{list-style:none;margin-bottom:30px;}
+.card-features li{font-family:var(--body);font-size:.86rem;color:var(--dim);padding:8px 0;border-bottom:1px solid rgba(233,226,210,.05);display:flex;gap:10px;}
+.card-features li::before{content:'—';color:var(--or);flex-shrink:0;font-family:var(--mono);font-size:.65rem;}
+.btn-card{display:block;width:100%;text-align:center;font-family:var(--mono);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;padding:13px;text-decoration:none;border:1px solid rgba(233,226,210,.18);color:var(--creme);transition:all .3s;}
+.btn-card:hover{border-color:var(--creme);}
+.btn-card--or{background:var(--or);color:var(--noir);border-color:var(--or);}
+.btn-card--or:hover{background:transparent;color:var(--or);}
+.cards-note{text-align:center;font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--dim);margin-top:44px;}
+@media(max-width:900px){.cards-grid{grid-template-columns:1fr;max-width:380px;margin:0 auto;}.card--star{transform:none;}}
+
+/* CTA SECTION */
+.sec-cta{text-align:center;}
 
 /* FOOTER */
 footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
 .foot-inner{max-width:1160px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center}
-.foot-brand a{text-decoration:none;display:inline-block}
 .foot-logo{width:clamp(90px,14vw,130px);height:auto;display:block;opacity:.6;overflow:visible;transition:opacity .3s}
-.foot-brand a:hover .foot-logo{opacity:.85}
 .foot-nav{display:flex;gap:24px;flex-wrap:wrap;justify-content:center}
 .foot-nav a{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .3s}
 .foot-nav a:hover{color:var(--or)}
@@ -104,7 +116,6 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
 
 @media(max-width:640px){
   :root{--sg:clamp(64px,10vh,96px);--px:20px}
-  .tally-wrap{padding:28px 16px}
 }
 </style>
 </head>
@@ -131,49 +142,90 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
   </button>
 </nav>
 
+<!-- HERO -->
+<section id="hero" class="hero-simple">
+  <div class="hero-inner">
+    <span class="kicker" data-r><span class="kicker-line"></span>L'ACCOMPAGNEMENT</span>
+    <h1 class="hero-h1" data-r>On gère vos réseaux.</h1>
+    <p class="hero-sub" data-r>Un accompagnement mensuel : on tourne, on monte et on gère vos réseaux toute l'année.</p>
+  </div>
+</section>
 
-<!-- PAGE HERO -->
-<header class="page-hero">
-  <span class="page-kicker" data-r>PARLONS</span>
-  <h1 class="page-h1" data-r>Contactez-nous.</h1>
-  <p class="page-sub" data-r>Un échange sans engagement. Une réponse sous 48h.</p>
-</header>
-
-<!-- TALLY FORM -->
-<section class="sec" style="padding-top:0">
+<!-- EXPLICATION -->
+<section class="sec">
   <div class="wrap">
-    <div class="tally-wrap" data-r>
-      <iframe
-        src="https://tally.so/embed/LZkbM2?alignLeft=1&hideTitle=1&transparentBackground=1"
-        width="100%"
-        height="600"
-        frameborder="0"
-        style="border:none;background:transparent"
-        title="Formulaire de contact Zorfix"
-      ></iframe>
+    <div class="offres-compare" data-r>
+      <div class="offre-item">
+        <span class="kicker">PONCTUEL</span>
+        <h3 class="offre-title">Une vidéo<br>quand vous voulez.</h3>
+        <p class="offre-desc">Commandez une vidéo spécifique, sans engagement. Idéal pour un lancement, un événement, une campagne.</p>
+        <a href="production-video.html" class="btn-ghost" style="margin-top:24px;display:inline-block">Voir la production vidéo →</a>
+      </div>
+      <div class="offre-divider"></div>
+      <div class="offre-item offre-item--active">
+        <span class="kicker" style="color:var(--or)">MENSUEL</span>
+        <h3 class="offre-title">On s'occupe<br>de tout, chaque mois.</h3>
+        <p class="offre-desc">Tournage régulier, montage, publication. Votre présence en ligne vit et grandit toute l'année, sans que vous ayez à vous en occuper.</p>
+      </div>
     </div>
+  </div>
+</section>
 
-    <!-- CONTACT INFO -->
-    <div class="contact-info" data-r>
-      <div class="contact-divider"></div>
-
-      <div class="contact-item">
-        <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-        <a href="mailto:contact@zorfix.ch">contact@zorfix.ch</a>
-      </div>
-
-      <div class="contact-item">
-        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        <a href="https://instagram.com/atelier.zorfix" target="_blank" rel="noopener">instagram.com/atelier.zorfix</a>
-      </div>
-
-      <div class="contact-item">
-        <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.31 6.31 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.19 8.19 0 004.79 1.54V6.78a4.85 4.85 0 01-1.02-.09z"/></svg>
-        <a href="https://tiktok.com/@atelier.zorfix" target="_blank" rel="noopener">tiktok.com/@atelier.zorfix</a>
-      </div>
-
-      <p class="contact-zone">Suisse romande — Genève · Vaud · Fribourg · Valais · Neuchâtel · Jura</p>
+<!-- FORMULES -->
+<section id="formules" class="sec">
+  <div class="wrap">
+    <div class="sec-head" data-r>
+      <span class="kicker"><span class="kicker-line"></span>LES FORMULES</span>
+      <h2 class="sec-h">Choisissez votre rythme.</h2>
     </div>
+    <div class="cards-grid">
+      <div class="card">
+        <h3 class="card-name">Présence</h3>
+        <p class="card-price">Sur devis</p>
+        <p class="card-sub">Exister, régulièrement.</p>
+        <ul class="card-features">
+          <li>1 tournage / mois</li>
+          <li>3 vidéos courtes prêtes à publier</li>
+          <li>Vous publiez</li>
+        </ul>
+        <a href="https://tally.so/r/LZkbM2" class="btn-card" target="_blank" rel="noopener">Demander un devis</a>
+      </div>
+      <div class="card card--star">
+        <span class="card-badge">La plus choisie</span>
+        <h3 class="card-name">Croissance</h3>
+        <p class="card-price">Sur devis</p>
+        <p class="card-sub">Prendre de la vitesse.</p>
+        <ul class="card-features">
+          <li>1 tournage / mois</li>
+          <li>4 vidéos courtes</li>
+          <li>1 vidéo Instagram (pub)</li>
+          <li>On gère votre Instagram</li>
+        </ul>
+        <a href="https://tally.so/r/LZkbM2" class="btn-card btn-card--or" target="_blank" rel="noopener">Demander un devis</a>
+      </div>
+      <div class="card">
+        <h3 class="card-name">Signature</h3>
+        <p class="card-price">Sur devis</p>
+        <p class="card-sub">Votre équipe vidéo attitrée.</p>
+        <ul class="card-features">
+          <li>2 tournages / mois</li>
+          <li>6 vidéos courtes</li>
+          <li>2 vidéos Insta Ads</li>
+          <li>On gère votre Instagram</li>
+        </ul>
+        <a href="https://tally.so/r/LZkbM2" class="btn-card" target="_blank" rel="noopener">Demander un devis</a>
+      </div>
+    </div>
+    <p class="cards-note" data-r>Chaque entreprise est unique — votre formule l'est aussi.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sec sec-cta">
+  <div class="wrap" style="text-align:center">
+    <h2 class="sec-h" data-r>Votre présence en ligne<br>mérite mieux.</h2>
+    <p class="sec-sub" data-r style="margin:18px auto 40px">Un échange sans engagement. Une réponse sous 48h.</p>
+    <a href="https://tally.so/r/LZkbM2" class="btn-or" target="_blank" rel="noopener" data-r>Demander un devis</a>
   </div>
 </section>
 
@@ -236,6 +288,21 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
   document.querySelectorAll('[data-r]').forEach(el=>{
     gsap.to(el,{opacity:1,y:0,duration:.85,ease:'power3.out',
       scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}
+    });
+  });
+
+  // Cards stagger
+  document.querySelectorAll('.card').forEach((card,i)=>{
+    gsap.from(card,{opacity:0,y:32,duration:.8,delay:i*.12,ease:'power3.out',
+      scrollTrigger:{trigger:'#formules',start:'top 74%',toggleActions:'play none none none'}
+    });
+  });
+
+  // Smooth anchor
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const t=document.querySelector(a.getAttribute('href'));
+      if(t){e.preventDefault();lenis.scrollTo(t,{duration:1.4});}
     });
   });
 })();

@@ -53,7 +53,7 @@ body{background:var(--noir);color:var(--creme);font-family:var(--body);overflow-
 }
 
 /* NAV */
-nav{
+nav#main-nav{
   position:fixed;top:0;left:0;right:0;z-index:500;
   height:var(--nav-h);padding:0 var(--px);
   display:flex;align-items:center;justify-content:space-between;
@@ -75,15 +75,10 @@ nav{
 .nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:600}
 .nav-burger span{display:block;width:24px;height:1.5px;background:var(--creme);transition:all .3s var(--ease)}
 
-/* MOBILE MENU OVERLAY */
-.nav-overlay{
-  display:none;position:fixed;inset:0;background:rgba(10,9,7,.97);z-index:490;
-  flex-direction:column;align-items:center;justify-content:center;gap:36px;
-}
-.nav-overlay.open{display:flex}
-.nav-overlay a{font-family:var(--serif);font-style:italic;font-size:2rem;font-weight:300;color:var(--creme);text-decoration:none;letter-spacing:.02em;transition:color .3s}
-.nav-overlay a:hover,.nav-overlay a.active{color:var(--or)}
-.nav-overlay .nav-cta{font-family:var(--mono);font-style:normal;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--or);border:1px solid var(--or);padding:12px 32px;margin-top:8px}
+.nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;background:rgba(10,9,7,.97);z-index:490;align-items:center;justify-content:center;gap:36px;}
+.nav-links.open a{font-family:var(--serif);font-style:italic;font-size:2rem;font-weight:300;color:var(--creme);text-decoration:none;letter-spacing:.02em;}
+.nav-links.open a:hover,.nav-links.open a.active{color:var(--or)}
+.nav-links.open .nav-cta{font-family:var(--mono);font-style:normal;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--or);border:1px solid var(--or);padding:12px 32px;margin-top:8px}
 
 @media(max-width:767px){
   .nav-links{display:none}
@@ -199,24 +194,15 @@ nav{
 .ap-title{font-family:var(--serif);font-size:1.2rem;font-weight:400;color:var(--creme);line-height:1.3}
 .ap-arrow{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;color:var(--or);margin-top:16px;display:block;text-transform:uppercase}
 
-/* DEUX OFFRES */
-.offres-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:840px;margin:0 auto}
-.offre-block{
-  padding:48px 36px;border:1px solid rgba(233,226,210,.08);
-  text-decoration:none;display:block;
-  transition:border-color .35s;position:relative;overflow:hidden;
-}
-.offre-block::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(circle at 30% 40%,rgba(231,181,60,.04),transparent 60%);
-  opacity:0;transition:opacity .4s;
-}
-.offre-block:hover{border-color:rgba(231,181,60,.22)}
-.offre-block:hover::before{opacity:1}
-.offre-kicker{font-family:var(--mono);font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;color:var(--or);display:block;margin-bottom:16px}
-.offre-title{font-family:var(--serif);font-size:clamp(1.5rem,2.2vw,1.9rem);font-weight:300;color:var(--creme);margin-bottom:14px;line-height:1.2}
-.offre-desc{font-family:var(--body);font-size:.9rem;color:var(--dim);line-height:1.82;margin-bottom:24px}
-.offre-link{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--or)}
+/* POLES */
+.poles-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.pole-card{display:block;padding:44px 36px;border:1px solid rgba(233,226,210,.09);text-decoration:none;transition:border-color .3s,background .3s;background:rgba(10,9,7,.3);}
+.pole-card:hover{border-color:rgba(231,181,60,.35);background:rgba(231,181,60,.02);}
+.pole-num{font-family:var(--serif);font-size:clamp(48px,8vw,80px);font-weight:300;color:transparent;-webkit-text-stroke:1px rgba(231,181,60,.2);display:block;line-height:1;margin-bottom:16px;}
+.pole-title{font-family:var(--serif);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:300;color:var(--creme);margin-bottom:14px;}
+.pole-desc{font-family:var(--body);font-size:.9rem;color:var(--dim);line-height:1.8;margin-bottom:20px;}
+.pole-link{font-family:var(--mono);font-size:.62rem;letter-spacing:.15em;color:var(--or);text-transform:uppercase;}
+@media(max-width:768px){.poles-grid{grid-template-columns:1fr;}}
 
 /* FONDATEUR */
 #fondateur{text-align:center;position:relative;overflow:hidden;min-height:560px;display:flex;align-items:center;}
@@ -259,10 +245,8 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
 .foot-nav a{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .3s}
 .foot-nav a:hover{color:var(--or)}
 .foot-social{display:flex;gap:24px;align-items:center}
-.foot-social a{color:var(--dim);transition:color .3s;text-decoration:none}
-.foot-social a:hover{color:var(--or)}
-.foot-social svg{width:20px;height:20px;fill:currentColor;display:block}
-.foot-social svg[fill="none"]{fill:none}
+.foot-icon{color:var(--dim);transition:color .3s;text-decoration:none;display:flex;align-items:center;}
+.foot-icon:hover{color:var(--or)}
 .foot-copy{font-family:var(--mono);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(122,112,96,.35)}
 
 /* RESPONSIVE */
@@ -288,31 +272,22 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
 <div class="grain" aria-hidden="true"></div>
 
 <!-- NAV -->
-<nav>
+<nav id="main-nav">
   <a href="index.html" class="nav-brand">
     <img src="../assets/IMG_2100.png" class="nav-avatar" alt="Zorfix.">
     <span class="nav-wordmark">Zorfix.</span>
   </a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="nav-links">
     <li><a href="index.html">Accueil</a></li>
-    <li><a href="prestations.html">Prestations</a></li>
-    <li><a href="abonnement.html">Abonnement</a></li>
+    <li><a href="production-video.html">Production vidéo</a></li>
+    <li><a href="reseaux-sociaux.html">Réseaux sociaux</a></li>
     <li><a href="a-propos.html">À propos</a></li>
     <li><a href="contact.html" class="nav-cta">Contact</a></li>
   </ul>
-  <button class="nav-burger" aria-label="Menu">
+  <button class="nav-burger" id="nav-burger" aria-label="Menu" aria-expanded="false">
     <span></span><span></span>
   </button>
 </nav>
-
-<!-- MOBILE OVERLAY -->
-<div class="nav-overlay" id="nav-overlay">
-  <a href="index.html">Accueil</a>
-  <a href="prestations.html">Prestations</a>
-  <a href="abonnement.html">Abonnement</a>
-  <a href="a-propos.html">À propos</a>
-  <a href="contact.html" class="nav-cta">Contact</a>
-</div>
 
 <!-- HERO -->
 <section id="hero">
@@ -324,7 +299,7 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
     <h1 class="hero-h1" id="hl-h1">On met en lumière ce que votre entreprise a de mieux.</h1>
     <div class="hero-btns" id="hl-btns">
       <a href="https://tally.so/r/LZkbM2" class="btn-or" target="_blank" rel="noopener">Demander un devis</a>
-      <a href="abonnement.html" class="btn-ghost">Découvrir nos offres</a>
+      <a href="reseaux-sociaux.html" class="btn-ghost">Découvrir nos offres</a>
     </div>
   </div>
   <div class="scroll-ind" id="hl-scroll">
@@ -349,22 +324,22 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
       <h2 class="sec-h" data-r>On crée vos vidéos.</h2>
     </div>
     <div class="ap-grid">
-      <a href="prestations.html" class="ap-card" data-r>
+      <a href="production-video.html" class="ap-card" data-r>
         <span class="ap-num" aria-hidden="true">01</span>
         <span class="ap-title">Vidéo de présentation</span>
         <span class="ap-arrow">Voir →</span>
       </a>
-      <a href="prestations.html" class="ap-card" data-r>
+      <a href="production-video.html" class="ap-card" data-r>
         <span class="ap-num" aria-hidden="true">02</span>
         <span class="ap-title">Interview &amp; témoignage</span>
         <span class="ap-arrow">Voir →</span>
       </a>
-      <a href="prestations.html" class="ap-card" data-r>
+      <a href="production-video.html" class="ap-card" data-r>
         <span class="ap-num" aria-hidden="true">03</span>
         <span class="ap-title">Reportage terrain</span>
         <span class="ap-arrow">Voir →</span>
       </a>
-      <a href="prestations.html" class="ap-card" data-r>
+      <a href="production-video.html" class="ap-card" data-r>
         <span class="ap-num" aria-hidden="true">04</span>
         <span class="ap-title">Spot publicitaire</span>
         <span class="ap-arrow">Voir →</span>
@@ -373,24 +348,25 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
   </div>
 </section>
 
-<!-- DEUX OFFRES -->
-<section id="deux-offres" class="sec">
+<!-- DEUX POLES -->
+<section class="sec">
   <div class="wrap">
     <div class="sec-head">
-      <span class="kicker" data-r><span class="kicker-line"></span>DEUX FAÇONS DE TRAVAILLER AVEC NOUS</span>
+      <span class="kicker" data-r><span class="kicker-line"></span>DEUX PÔLES MÉTIER</span>
+      <h2 class="sec-h" data-r>Deux façons de travailler<br>avec nous.</h2>
     </div>
-    <div class="offres-grid">
-      <a href="prestations.html" class="offre-block" data-r>
-        <span class="offre-kicker">Sans engagement</span>
-        <h3 class="offre-title">À l'unité</h3>
-        <p class="offre-desc">Commandez la vidéo dont vous avez besoin, quand vous en avez besoin. Pas de contrat, pas de récurrence.</p>
-        <span class="offre-link">Voir les prestations →</span>
+    <div class="poles-grid">
+      <a href="production-video.html" class="pole-card" data-r>
+        <span class="pole-num">01</span>
+        <h3 class="pole-title">Production vidéo</h3>
+        <p class="pole-desc">On filme votre entreprise : présentation, interview, terrain, spot. Une vidéo quand vous en avez besoin.</p>
+        <span class="pole-link">Voir les prestations →</span>
       </a>
-      <a href="abonnement.html" class="offre-block" data-r>
-        <span class="offre-kicker">Mensuel</span>
-        <h3 class="offre-title">En abonnement</h3>
-        <p class="offre-desc">On tourne, on monte, on publie chaque mois. Une présence régulière qui construit votre image dans la durée.</p>
-        <span class="offre-link">Voir l'abonnement →</span>
+      <a href="reseaux-sociaux.html" class="pole-card" data-r>
+        <span class="pole-num">02</span>
+        <h3 class="pole-title">Réseaux sociaux</h3>
+        <p class="pole-desc">On gère votre présence en ligne, chaque mois. Tournage, montage, publication — vous n'avez plus à y penser.</p>
+        <span class="pole-link">Voir les formules →</span>
       </a>
     </div>
   </div>
@@ -403,7 +379,7 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
     <span class="kicker" data-r><span class="kicker-line"></span>Édition Fondateur</span>
     <h2 class="fond-title" data-r>10 entreprises.<br>Une opportunité unique.</h2>
     <div class="fond-jauge" data-r>
-      <span class="jauge-lbl"><b id="counter-val">0</b>&nbsp;/&nbsp;10 places prises</span>
+      <span class="jauge-lbl"><b id="counter-val">3</b>&nbsp;/&nbsp;10 places prises</span>
       <div class="jauge"><div class="jauge-bar" id="jauge-bar"></div></div>
       <span class="jauge-lbl">7 restantes</span>
     </div>
@@ -448,30 +424,26 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
 <!-- FOOTER -->
 <footer>
   <div class="foot-inner">
-    <div class="foot-brand">
-      <a href="index.html">
-        <svg class="foot-logo" viewBox="0 0 272 80" overflow="visible">
-          <text x="0" y="64" font-family="'Cormorant Garamond',Georgia,serif" font-style="italic" font-weight="300" font-size="68" fill="#E9E2D2" textLength="244" lengthAdjust="spacingAndGlyphs">Zorfix</text>
-          <circle cx="259" cy="56" r="9" fill="#E7B53C"/>
-        </svg>
-      </a>
-    </div>
+    <svg class="foot-logo" viewBox="0 0 272 80" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+      <text x="0" y="64" font-family="'Cormorant Garamond',Georgia,serif" font-style="italic" font-weight="300" font-size="68" fill="#E9E2D2" textLength="244" lengthAdjust="spacingAndGlyphs">Zorfix</text>
+      <circle cx="259" cy="56" r="9" fill="#E7B53C"/>
+    </svg>
     <nav class="foot-nav">
       <a href="index.html">Accueil</a>
-      <a href="prestations.html">Prestations</a>
-      <a href="abonnement.html">Abonnement</a>
+      <a href="production-video.html">Production vidéo</a>
+      <a href="reseaux-sociaux.html">Réseaux sociaux</a>
       <a href="a-propos.html">À propos</a>
       <a href="contact.html">Contact</a>
     </nav>
     <div class="foot-social">
-      <a href="https://instagram.com/atelier.zorfix" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      <a href="https://instagram.com/atelier.zorfix" target="_blank" rel="noopener" aria-label="Instagram" class="foot-icon">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
       </a>
-      <a href="https://tiktok.com/@atelier.zorfix" target="_blank" rel="noopener" aria-label="TikTok">
-        <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.31 6.31 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.19 8.19 0 004.79 1.54V6.78a4.85 4.85 0 01-1.02-.09z"/></svg>
+      <a href="https://tiktok.com/@atelier.zorfix" target="_blank" rel="noopener" aria-label="TikTok" class="foot-icon">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.31 6.31 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.19 8.19 0 004.79 1.54V6.78a4.85 4.85 0 01-1.02-.09z"/></svg>
       </a>
-      <a href="mailto:contact@zorfix.ch" aria-label="Email">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+      <a href="mailto:contact@zorfix.ch" aria-label="Email" class="foot-icon">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
       </a>
     </div>
     <p class="foot-copy">ZORFIX · SUISSE ROMANDE · MMXXVI</p>
@@ -559,20 +531,21 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
 
 // SHARED: Lenis + GSAP + Nav
 (function(){
-  // Nav active link
-  const path = window.location.pathname;
-  document.querySelectorAll('.nav-links a, .nav-overlay a').forEach(a=>{
-    if(a.getAttribute('href') && path.endsWith(a.getAttribute('href'))) a.classList.add('active');
+  // Active nav link
+  const links = document.querySelectorAll('.nav-links a');
+  const path = window.location.pathname.split('/').pop() || 'index.html';
+  links.forEach(a => {
+    if(a.getAttribute('href') === path) a.classList.add('active');
   });
-
-  // Burger menu
-  const burger = document.querySelector('.nav-burger');
-  const overlay = document.getElementById('nav-overlay');
-  if(burger && overlay){
-    burger.addEventListener('click',()=>{
-      overlay.classList.toggle('open');
+  // Burger
+  const burger = document.getElementById('nav-burger');
+  const navLinks = document.getElementById('nav-links');
+  if(burger && navLinks){
+    burger.addEventListener('click', () => {
+      const open = burger.getAttribute('aria-expanded') === 'true';
+      burger.setAttribute('aria-expanded', String(!open));
+      navLinks.classList.toggle('open', !open);
     });
-    overlay.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>overlay.classList.remove('open')));
   }
 
   if(typeof Lenis==='undefined'||typeof gsap==='undefined') return;
