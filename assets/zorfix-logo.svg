@@ -1,0 +1,7 @@
+<svg viewBox="0 0 280 80" xmlns="http://www.w3.org/2000/svg" overflow="visible" fill="none">
+  <text x="0" y="64"
+    font-family="'Cormorant Garamond',Georgia,serif"
+    font-style="italic" font-weight="300" font-size="68"
+    fill="#E9E2D2" textLength="248" lengthAdjust="spacingAndGlyphs">Zorfix</text>
+  <circle cx="263" cy="56" r="9" fill="#E7B53C"/>
+</svg>
