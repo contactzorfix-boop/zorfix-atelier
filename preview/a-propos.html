@@ -193,17 +193,17 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
       <h2 class="sec-h" data-r>Ce qui guide chaque projet.</h2>
     </div>
     <div class="piliers-grid">
-      <div class="pilier" data-r>
+      <div class="pilier">
         <span class="pilier-label">ATELIER</span>
         <h3 class="pilier-title">Un travail artisanal, préparé avec soin.</h3>
         <p class="pilier-desc">Chaque vidéo est conçue pour vous, pas copiée d'un template. On prend le temps de comprendre votre métier avant d'allumer la caméra.</p>
       </div>
-      <div class="pilier" data-r>
+      <div class="pilier">
         <span class="pilier-label">IMAGE</span>
         <h3 class="pilier-title">Une image qui reflète vraiment votre niveau.</h3>
         <p class="pilier-desc">Vos clients vous jugent en quelques secondes. Nous faisons en sorte que ce qu'ils voient corresponde à ce que vous valez vraiment.</p>
       </div>
-      <div class="pilier" data-r>
+      <div class="pilier">
         <span class="pilier-label">CROISSANCE</span>
         <h3 class="pilier-title">Du contenu qui travaille pour vous, longtemps.</h3>
         <p class="pilier-desc">Une vidéo bien faite ne se périme pas. Elle continue d'attirer, de convaincre et de fidéliser bien au-delà de sa date de publication.</p>
@@ -288,10 +288,12 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
   });
 
   // Piliers stagger
-  document.querySelectorAll('.pilier').forEach((p,i)=>{
-    gsap.from(p,{opacity:0,y:28,duration:.8,delay:i*.12,ease:'power3.out',
-      scrollTrigger:{trigger:'.piliers-grid',start:'top 74%',toggleActions:'play none none none'}
-    });
+  gsap.set('.pilier',{opacity:0,y:22});
+  ScrollTrigger.create({
+    trigger:'.piliers-grid', start:'top 82%',
+    onEnter:()=>{
+      gsap.to('.pilier',{opacity:1,y:0,duration:.8,stagger:.14,ease:'power3.out'});
+    }
   });
 })();
 </script>
