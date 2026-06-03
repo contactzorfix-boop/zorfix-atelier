@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>À propos — Zorfix. Production vidéo · Suisse Romande</title>
+<title>À propos — Zorfix.</title>
 <meta name="description" content="Pourquoi Zorfix existe. Notre vision, notre approche, notre zone d'intervention en Suisse romande.">
 <meta property="og:title" content="À propos — Zorfix.">
 <meta property="og:description" content="Pourquoi Zorfix existe. Notre vision et notre approche pour les entreprises de Suisse romande.">
@@ -30,7 +30,7 @@ body{background:var(--noir);color:var(--creme);font-family:var(--body);overflow-
 /* NAV */
 nav#main-nav{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--nav-h);padding:0 var(--px);display:flex;align-items:center;justify-content:space-between;background:rgba(10,9,7,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);}
 .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
-.nav-avatar{display:block;width:40px;height:40px;mix-blend-mode:screen;transition:opacity .3s}
+.nav-avatar{display:block;width:40px;height:40px;border-radius:50%;transition:opacity .3s}
 .nav-brand:hover .nav-avatar{opacity:.75}
 .nav-wordmark{font-family:var(--serif);font-style:italic;font-weight:300;font-size:1.25rem;color:var(--creme);letter-spacing:.02em}
 .nav-links{list-style:none;display:flex;align-items:center;gap:28px}
@@ -66,6 +66,7 @@ nav#main-nav{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--nav-h)
 .page-hero{padding-top:calc(var(--nav-h) + clamp(60px,10vh,100px));padding-bottom:clamp(52px,8vh,88px);padding-left:var(--px);padding-right:var(--px);text-align:center;position:relative;z-index:3;}
 .page-kicker{font-family:var(--mono);font-size:.66rem;letter-spacing:.32em;text-transform:uppercase;color:var(--or);display:block;margin-bottom:20px;}
 .page-h1{font-family:var(--serif);font-size:clamp(2.8rem,6vw,5.5rem);font-weight:300;line-height:1.05;letter-spacing:-.01em;font-style:italic;color:var(--creme);}
+.ap-brand-logo{display:block;width:clamp(130px,20vw,200px);height:auto;margin:0 auto 32px;opacity:.75;}
 
 /* CONTENT SECTIONS */
 .content-block{padding-top:clamp(44px,6vw,72px);}
@@ -123,7 +124,7 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
 <!-- NAV -->
 <nav id="main-nav">
   <a href="index.html" class="nav-brand">
-    <img src="../assets/IMG_2100.png" class="nav-avatar" alt="Zorfix.">
+    <img src="../assets/zorfix-avatar.svg" class="nav-avatar" alt="Zorfix.">
     <span class="nav-wordmark">Zorfix.</span>
   </a>
   <ul class="nav-links" id="nav-links">
@@ -150,8 +151,8 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
 
 <!-- PAGE HERO -->
 <header class="page-hero">
-  <span class="page-kicker" data-r>ZORFIX</span>
-  <h1 class="page-h1" data-r>Pourquoi Zorfix existe.</h1>
+  <img src="../assets/zorfix-logo.svg" class="ap-brand-logo" alt="Zorfix." data-r>
+  <h1 class="page-h1" data-r>Pourquoi nous existons.</h1>
 </header>
 
 <!-- VISION / APPROCHE / ZONE -->

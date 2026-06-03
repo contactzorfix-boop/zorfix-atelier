@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zorfix. — Production vidéo · Suisse Romande</title>
-<meta name="description" content="Zorfix. — On met en lumière ce que votre entreprise a de mieux. Production vidéo pour les entreprises de Suisse romande.">
+<title>Zorfix. — Production vidéo & réseaux sociaux · Suisse Romande</title>
+<meta name="description" content="On met en lumière ce que votre entreprise a de mieux. Production vidéo et gestion réseaux sociaux pour entreprises de Suisse romande.">
 <meta property="og:title" content="Zorfix. — Production vidéo · Suisse Romande">
 <meta property="og:description" content="On met en lumière ce que votre entreprise a de mieux. Production vidéo pour les entreprises de Suisse romande.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,7 +60,7 @@ nav#main-nav{
   background:rgba(10,9,7,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
 }
 .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
-.nav-avatar{display:block;width:40px;height:40px;mix-blend-mode:screen;transition:opacity .3s}
+.nav-avatar{display:block;width:40px;height:40px;border-radius:50%;transition:opacity .3s}
 .nav-brand:hover .nav-avatar{opacity:.75}
 .nav-wordmark{font-family:var(--serif);font-style:italic;font-weight:300;font-size:1.25rem;color:var(--creme);letter-spacing:.02em}
 .nav-links{list-style:none;display:flex;align-items:center;gap:28px}
@@ -105,10 +105,7 @@ nav#main-nav{
   padding:clamp(90px,11vh,130px) var(--px) clamp(60px,8vh,90px);
   max-width:920px;width:100%;
 }
-.hero-avatar{
-  display:block;width:80px;height:80px;border-radius:50%;
-  mix-blend-mode:screen;margin:0 auto 32px;
-}
+.hero-logo{display:block;width:clamp(160px,24vw,240px);height:auto;margin:0 auto 36px;}
 .hero-kicker{
   font-family:var(--mono);font-size:.66rem;letter-spacing:.32em;
   text-transform:uppercase;color:var(--or);display:block;margin-bottom:24px;
@@ -279,7 +276,7 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
 <!-- NAV -->
 <nav id="main-nav">
   <a href="index.html" class="nav-brand">
-    <img src="../assets/IMG_2100.png" class="nav-avatar" alt="Zorfix.">
+    <img src="../assets/zorfix-avatar.svg" class="nav-avatar" alt="Zorfix.">
     <span class="nav-wordmark">Zorfix.</span>
   </a>
   <ul class="nav-links" id="nav-links">
@@ -308,12 +305,12 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
   <canvas id="c"></canvas>
   <div class="vignette"></div>
   <div class="hero-wrap">
-    <img src="../assets/IMG_2100.png" class="hero-avatar" id="hl-avatar" alt="Zorfix.">
-    <span class="hero-kicker" id="hl-kicker">ATELIER · SUISSE ROMANDE</span>
+    <img src="../assets/zorfix-logo.svg" class="hero-logo" id="hl-avatar" alt="Zorfix.">
+    <span class="hero-kicker" id="hl-kicker">ZORFIX · SUISSE ROMANDE</span>
     <h1 class="hero-h1" id="hl-h1">On met <em class="hero-em">en lumière</em> ce que votre entreprise a de mieux.</h1>
     <div class="hero-btns" id="hl-btns">
       <a href="https://tally.so/r/LZkbM2" class="btn-or" target="_blank" rel="noopener">Demander un devis</a>
-      <a href="reseaux-sociaux.html" class="btn-ghost">Découvrir nos offres</a>
+      <a href="production-video.html" class="btn-ghost">Voir nos prestations</a>
     </div>
   </div>
   <div class="scroll-ind" id="hl-scroll">
@@ -373,13 +370,13 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
       <a href="production-video.html" class="pole-card" data-r>
         <span class="pole-num">01</span>
         <h3 class="pole-title">Production vidéo</h3>
-        <p class="pole-desc">On filme votre entreprise : présentation, interview, terrain, spot. Une vidéo quand vous en avez besoin.</p>
+        <p class="pole-desc">On filme votre entreprise : présentation, interview, terrain, spot publicitaire. Une vidéo quand vous en avez besoin.</p>
         <span class="pole-link">Voir les prestations →</span>
       </a>
       <a href="reseaux-sociaux.html" class="pole-card" data-r>
         <span class="pole-num">02</span>
         <h3 class="pole-title">Réseaux sociaux</h3>
-        <p class="pole-desc">On gère votre présence en ligne, chaque mois. Tournage, montage, publication — vous n'avez plus à y penser.</p>
+        <p class="pole-desc">On gère votre présence en ligne chaque mois : tournage, montage et publication régulière.</p>
         <span class="pole-link">Voir les formules →</span>
       </a>
     </div>
@@ -391,14 +388,14 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
   <div class="fond-bg" aria-hidden="true">10</div>
   <div class="wrap fond-inner">
     <span class="kicker" data-r><span class="kicker-line"></span>Édition Fondateur</span>
-    <h2 class="fond-title" data-r>10 entreprises.<br>Une opportunité unique.</h2>
+    <h2 class="fond-title" data-r>10 entreprises accompagnées.<br>Une opportunité unique.</h2>
     <div class="fond-jauge" data-r>
       <span class="jauge-lbl"><b id="counter-val">3</b>&nbsp;/&nbsp;10 places prises</span>
       <div class="jauge"><div class="jauge-bar" id="jauge-bar"></div></div>
       <span class="jauge-lbl">7 restantes</span>
     </div>
     <p class="fond-desc" data-r>
-      Nous sélectionnons 10 entreprises fondatrices pour bâtir notre portfolio avec exigence. Conditions préférentielles, suivi personnalisé, relation sur le long terme.
+      Nous sélectionnons 10 entreprises pour notre accompagnement mensuel fondateur. Tarifs préférentiels, suivi personnalisé, relation dans la durée.
     </p>
     <a href="https://tally.so/r/LZkbM2" class="btn-or" data-r target="_blank" rel="noopener">Réserver ma place</a>
   </div>
