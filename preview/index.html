@@ -75,10 +75,14 @@ nav#main-nav{
 .nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:600}
 .nav-burger span{display:block;width:24px;height:1.5px;background:var(--creme);transition:all .3s var(--ease)}
 
-.nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;background:rgba(10,9,7,.97);z-index:490;align-items:center;justify-content:center;gap:36px;}
-.nav-links.open a{font-family:var(--serif);font-style:italic;font-size:2rem;font-weight:300;color:var(--creme);text-decoration:none;letter-spacing:.02em;}
-.nav-links.open a:hover,.nav-links.open a.active{color:var(--or)}
-.nav-links.open .nav-cta{font-family:var(--mono);font-style:normal;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--or);border:1px solid var(--or);padding:12px 32px;margin-top:8px}
+.nav-overlay{display:none;position:fixed;inset:0;background:rgba(8,6,4,.97);z-index:800;flex-direction:column;align-items:center;justify-content:center;gap:clamp(28px,4vh,44px);}
+.nav-overlay.open{display:flex}
+.nav-overlay a{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.8rem,5vw,2.6rem);color:var(--creme);text-decoration:none;letter-spacing:.02em;transition:color .25s var(--ease);}
+.nav-overlay a:hover,.nav-overlay a.active{color:var(--or)}
+.nav-overlay .nav-cta{font-family:var(--mono);font-style:normal;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);border:1px solid rgba(231,181,60,.6);padding:12px 40px;margin-top:8px;transition:all .3s var(--ease);}
+.nav-overlay .nav-cta:hover{background:var(--or);color:var(--noir)}
+.nav-close-btn{position:absolute;top:28px;right:clamp(22px,6vw,88px);background:none;border:none;cursor:pointer;color:var(--dim);font-family:var(--mono);font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;transition:color .2s;padding:8px;}
+.nav-close-btn:hover{color:var(--creme)}
 
 @media(max-width:767px){
   .nav-links{display:none}
@@ -114,6 +118,7 @@ nav#main-nav{
   font-weight:300;line-height:1.07;letter-spacing:-.01em;
   font-style:italic;color:var(--creme);margin-bottom:20px;
 }
+.hero-em{color:var(--or);font-style:italic}
 .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:44px}
 .scroll-ind{
   position:absolute;bottom:36px;left:50%;
@@ -258,7 +263,7 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
   .hero-btns{flex-direction:column;align-items:center}
   .btn-or,.btn-ghost{width:100%;max-width:280px;text-align:center;padding:13px 20px}
   :root{--sg:clamp(64px,10vh,96px);--px:20px}
-  .ap-grid{grid-template-columns:1fr 1fr}
+  .ap-grid{grid-template-columns:1fr}
 }
 @media(max-width:380px){
   :root{--px:16px}
@@ -288,6 +293,15 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
     <span></span><span></span>
   </button>
 </nav>
+<!-- MOBILE OVERLAY -->
+<div class="nav-overlay" id="nav-overlay">
+  <button class="nav-close-btn" id="nav-close">✕ Fermer</button>
+  <a href="index.html">Accueil</a>
+  <a href="production-video.html">Production vidéo</a>
+  <a href="reseaux-sociaux.html">Réseaux sociaux</a>
+  <a href="a-propos.html">À propos</a>
+  <a href="contact.html" class="nav-cta">Contact</a>
+</div>
 
 <!-- HERO -->
 <section id="hero">
@@ -296,7 +310,7 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
   <div class="hero-wrap">
     <img src="../assets/IMG_2100.png" class="hero-avatar" id="hl-avatar" alt="Zorfix.">
     <span class="hero-kicker" id="hl-kicker">ATELIER · SUISSE ROMANDE</span>
-    <h1 class="hero-h1" id="hl-h1">On met en lumière ce que votre entreprise a de mieux.</h1>
+    <h1 class="hero-h1" id="hl-h1">On met <em class="hero-em">en lumière</em> ce que votre entreprise a de mieux.</h1>
     <div class="hero-btns" id="hl-btns">
       <a href="https://tally.so/r/LZkbM2" class="btn-or" target="_blank" rel="noopener">Demander un devis</a>
       <a href="reseaux-sociaux.html" class="btn-ghost">Découvrir nos offres</a>
@@ -324,22 +338,22 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
       <h2 class="sec-h" data-r>On crée vos vidéos.</h2>
     </div>
     <div class="ap-grid">
-      <a href="production-video.html" class="ap-card" data-r>
+      <a href="production-video.html" class="ap-card">
         <span class="ap-num" aria-hidden="true">01</span>
         <span class="ap-title">Vidéo de présentation</span>
         <span class="ap-arrow">Voir →</span>
       </a>
-      <a href="production-video.html" class="ap-card" data-r>
+      <a href="production-video.html" class="ap-card">
         <span class="ap-num" aria-hidden="true">02</span>
         <span class="ap-title">Interview &amp; témoignage</span>
         <span class="ap-arrow">Voir →</span>
       </a>
-      <a href="production-video.html" class="ap-card" data-r>
+      <a href="production-video.html" class="ap-card">
         <span class="ap-num" aria-hidden="true">03</span>
         <span class="ap-title">Reportage terrain</span>
         <span class="ap-arrow">Voir →</span>
       </a>
-      <a href="production-video.html" class="ap-card" data-r>
+      <a href="production-video.html" class="ap-card">
         <span class="ap-num" aria-hidden="true">04</span>
         <span class="ap-title">Spot publicitaire</span>
         <span class="ap-arrow">Voir →</span>
@@ -539,12 +553,16 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
   });
   // Burger
   const burger = document.getElementById('nav-burger');
-  const navLinks = document.getElementById('nav-links');
-  if(burger && navLinks){
-    burger.addEventListener('click', () => {
-      const open = burger.getAttribute('aria-expanded') === 'true';
-      burger.setAttribute('aria-expanded', String(!open));
-      navLinks.classList.toggle('open', !open);
+  const overlay = document.getElementById('nav-overlay');
+  const navClose = document.getElementById('nav-close');
+  if(burger && overlay){
+    burger.addEventListener('click', () => overlay.classList.add('open'));
+    if(navClose) navClose.addEventListener('click', () => overlay.classList.remove('open'));
+    overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', () => overlay.classList.remove('open')));
+    // Active link in overlay
+    const overPath = window.location.pathname.split('/').pop() || 'index.html';
+    overlay.querySelectorAll('a').forEach(a => {
+      if(a.getAttribute('href') === overPath) a.classList.add('active');
     });
   }
 
@@ -572,16 +590,17 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
   document.querySelectorAll('[data-r]').forEach(el=>{
     gsap.to(el,{
       opacity:1,y:0,duration:.85,ease:'power3.out',
-      scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}
+      scrollTrigger:{trigger:el,start:'top 95%',toggleActions:'play none none none'}
     });
   });
 
-  // Cards stagger
-  document.querySelectorAll('.ap-card').forEach((card,i)=>{
-    gsap.from(card,{
-      opacity:0,y:28,duration:.8,delay:i*.1,ease:'power3.out',
-      scrollTrigger:{trigger:'#apercu',start:'top 74%',toggleActions:'play none none none'}
-    });
+  // Cards stagger — pas de data-r sur ces éléments, gestion explicite
+  gsap.set('.ap-card', {opacity:0, y:24});
+  ScrollTrigger.create({
+    trigger:'#apercu', start:'top 82%',
+    onEnter:()=>{
+      gsap.to('.ap-card', {opacity:1, y:0, duration:.75, stagger:.12, ease:'power3.out'});
+    }
   });
 
   // Fondateur counter + jauge

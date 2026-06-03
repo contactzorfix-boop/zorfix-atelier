@@ -40,10 +40,14 @@ nav#main-nav{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--nav-h)
 .nav-links .nav-cta:hover{background:var(--or);color:var(--noir)}
 .nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:600}
 .nav-burger span{display:block;width:24px;height:1.5px;background:var(--creme);transition:all .3s var(--ease)}
-.nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;background:rgba(10,9,7,.97);z-index:490;align-items:center;justify-content:center;gap:36px;}
-.nav-links.open a{font-family:var(--serif);font-style:italic;font-size:2rem;font-weight:300;color:var(--creme);}
-.nav-links.open a:hover,.nav-links.open a.active{color:var(--or)}
-.nav-links.open .nav-cta{font-family:var(--mono);font-style:normal;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--or);border:1px solid var(--or);padding:12px 32px;margin-top:8px}
+.nav-overlay{display:none;position:fixed;inset:0;background:rgba(8,6,4,.97);z-index:800;flex-direction:column;align-items:center;justify-content:center;gap:clamp(28px,4vh,44px);}
+.nav-overlay.open{display:flex}
+.nav-overlay a{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.8rem,5vw,2.6rem);color:var(--creme);text-decoration:none;letter-spacing:.02em;transition:color .25s var(--ease);}
+.nav-overlay a:hover,.nav-overlay a.active{color:var(--or)}
+.nav-overlay .nav-cta{font-family:var(--mono);font-style:normal;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);border:1px solid rgba(231,181,60,.6);padding:12px 40px;margin-top:8px;transition:all .3s var(--ease);}
+.nav-overlay .nav-cta:hover{background:var(--or);color:var(--noir)}
+.nav-close-btn{position:absolute;top:28px;right:clamp(22px,6vw,88px);background:none;border:none;cursor:pointer;color:var(--dim);font-family:var(--mono);font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;transition:color .2s;padding:8px;}
+.nav-close-btn:hover{color:var(--creme)}
 @media(max-width:767px){.nav-links{display:none}.nav-burger{display:flex}}
 
 /* LAYOUT */
@@ -141,13 +145,22 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
     <span></span><span></span>
   </button>
 </nav>
+<!-- MOBILE OVERLAY -->
+<div class="nav-overlay" id="nav-overlay">
+  <button class="nav-close-btn" id="nav-close">✕ Fermer</button>
+  <a href="index.html">Accueil</a>
+  <a href="production-video.html">Production vidéo</a>
+  <a href="reseaux-sociaux.html">Réseaux sociaux</a>
+  <a href="a-propos.html">À propos</a>
+  <a href="contact.html" class="nav-cta">Contact</a>
+</div>
 
 <!-- HERO -->
 <section id="hero" class="hero-simple">
   <div class="hero-inner">
-    <span class="kicker" data-r><span class="kicker-line"></span>L'ACCOMPAGNEMENT</span>
-    <h1 class="hero-h1" data-r>On gère vos réseaux.</h1>
-    <p class="hero-sub" data-r>Un accompagnement mensuel : on tourne, on monte et on gère vos réseaux toute l'année.</p>
+    <span class="kicker" id="rs-kicker"><span class="kicker-line"></span>L'ACCOMPAGNEMENT</span>
+    <h1 class="hero-h1" id="rs-h1">On gère vos réseaux.</h1>
+    <p class="hero-sub" id="rs-sub">Un accompagnement mensuel : on tourne, on monte et on gère vos réseaux toute l'année.</p>
   </div>
 </section>
 
@@ -268,12 +281,16 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
   });
   // Burger
   const burger = document.getElementById('nav-burger');
-  const navLinks = document.getElementById('nav-links');
-  if(burger && navLinks){
-    burger.addEventListener('click', () => {
-      const open = burger.getAttribute('aria-expanded') === 'true';
-      burger.setAttribute('aria-expanded', String(!open));
-      navLinks.classList.toggle('open', !open);
+  const overlay = document.getElementById('nav-overlay');
+  const navClose = document.getElementById('nav-close');
+  if(burger && overlay){
+    burger.addEventListener('click', () => overlay.classList.add('open'));
+    if(navClose) navClose.addEventListener('click', () => overlay.classList.remove('open'));
+    overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', () => overlay.classList.remove('open')));
+    // Active link in overlay
+    const overPath = window.location.pathname.split('/').pop() || 'index.html';
+    overlay.querySelectorAll('a').forEach(a => {
+      if(a.getAttribute('href') === overPath) a.classList.add('active');
     });
   }
 
@@ -284,18 +301,28 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
   gsap.ticker.add(t=>lenis.raf(t*1000));
   gsap.ticker.lagSmoothing(0);
 
-  gsap.set('[data-r]',{opacity:0,y:22});
+  // Hero entrance — visible immédiatement
+  gsap.set(['#rs-kicker','#rs-h1','#rs-sub'],{opacity:0,y:18});
+  gsap.timeline({delay:.25})
+    .to('#rs-kicker',{opacity:1,y:0,duration:.7,ease:'power3.out'})
+    .to('#rs-h1',    {opacity:1,y:0,duration:1, ease:'power3.out'},'-=.4')
+    .to('#rs-sub',   {opacity:1,y:0,duration:.7,ease:'power3.out'},'-=.45');
+
+  // Generic reveals
+  gsap.set('[data-r]',{opacity:0,y:18});
   document.querySelectorAll('[data-r]').forEach(el=>{
     gsap.to(el,{opacity:1,y:0,duration:.85,ease:'power3.out',
-      scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}
+      scrollTrigger:{trigger:el,start:'top 95%',toggleActions:'play none none none'}
     });
   });
 
-  // Cards stagger
-  document.querySelectorAll('.card').forEach((card,i)=>{
-    gsap.from(card,{opacity:0,y:32,duration:.8,delay:i*.12,ease:'power3.out',
-      scrollTrigger:{trigger:'#formules',start:'top 74%',toggleActions:'play none none none'}
-    });
+  // Cards stagger — entrée explicite sans conflit
+  gsap.set('.card',{opacity:0,y:28});
+  ScrollTrigger.create({
+    trigger:'#formules', start:'top 82%',
+    onEnter:()=>{
+      gsap.to('.card',{opacity:1,y:0,duration:.8,stagger:.14,ease:'power3.out'});
+    }
   });
 
   // Smooth anchor
