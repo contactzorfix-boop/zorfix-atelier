@@ -7,9 +7,33 @@
 <meta name="description" content="On met en lumière ce que votre entreprise a de mieux. Production vidéo et gestion réseaux sociaux pour entreprises de Suisse romande.">
 <meta property="og:title" content="Zorfix. — Production vidéo · Suisse Romande">
 <meta property="og:description" content="On met en lumière ce que votre entreprise a de mieux. Production vidéo pour les entreprises de Suisse romande.">
+<meta property="og:url" content="https://zorfix.ch/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://zorfix.ch/assets/og-image.svg">
+<link rel="icon" type="image/svg+xml" href="assets/zorfix-avatar.svg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Zorfix",
+  "url": "https://zorfix.ch",
+  "email": "contact@zorfix.ch",
+  "image": "https://zorfix.ch/assets/zorfix-logo.svg",
+  "areaServed": "Suisse romande",
+  "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "Suisse romande",
+    "addressCountry": "CH"
+  },
+  "sameAs": [
+    "https://instagram.com/atelier.zorfix",
+    "https://tiktok.com/@atelier.zorfix"
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -130,6 +154,65 @@ nav#main-nav{
 }
 @keyframes scrollPulse{0%,100%{opacity:.3;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.1)}}
 .scroll-txt{font-family:var(--mono);font-size:.56rem;letter-spacing:.22em;color:var(--or);text-transform:uppercase}
+
+/* VISEUR CAMERA */
+.viseur{position:absolute;top:calc(var(--nav-h) + clamp(16px,3vw,40px));left:clamp(16px,3vw,40px);right:clamp(16px,3vw,40px);bottom:clamp(16px,3vw,40px);z-index:4;pointer-events:none;border:1px solid rgba(233,226,210,.15);}
+.viseur-corner{position:absolute;width:22px;height:22px;border-color:rgba(233,226,210,.5);}
+.viseur-corner.tl{top:-1px;left:-1px;border-top:1px solid;border-left:1px solid;}
+.viseur-corner.tr{top:-1px;right:-1px;border-top:1px solid;border-right:1px solid;}
+.viseur-corner.bl{bottom:-1px;left:-1px;border-bottom:1px solid;border-left:1px solid;}
+.viseur-corner.br{bottom:-1px;right:-1px;border-bottom:1px solid;border-right:1px solid;}
+.viseur-rec{position:absolute;top:18px;left:18px;display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono','Courier Prime',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(233,226,210,.6);}
+.viseur-rec-dot{width:7px;height:7px;border-radius:50%;background:#e23b3b;animation:recPulse 2.4s ease-in-out infinite;}
+@keyframes recPulse{0%,100%{opacity:.35;box-shadow:0 0 0 rgba(226,59,59,0)}50%{opacity:1;box-shadow:0 0 8px rgba(226,59,59,.7)}}
+.viseur-tc{position:absolute;top:18px;right:18px;font-family:'JetBrains Mono','Courier Prime',monospace;font-size:.62rem;letter-spacing:.15em;color:rgba(233,226,210,.45);}
+
+/* HERO GRAIN */
+.hero-grain{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  opacity:.04;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:180px 180px;
+}
+
+/* SHIMMER ON "LUMIERE" */
+.hero-shimmer{
+  background:linear-gradient(100deg,var(--or) 0%,var(--or2) 25%,var(--or) 50%,var(--or2) 75%,var(--or) 100%);
+  background-size:300% 100%;
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+  font-style:italic;
+  animation:shimmer 6s linear infinite;
+}
+@keyframes shimmer{0%{background-position:0% 0}100%{background-position:300% 0}}
+
+/* CARD HOVER + ARROW SLIDE */
+.ap-card,.pole-card{transition:transform .35s var(--ease),border-color .35s,background .35s;}
+.ap-card:hover,.pole-card:hover{transform:translateY(-4px);}
+.ap-arrow,.pole-link{display:inline-block;transition:transform .25s var(--ease);}
+.ap-card:hover .ap-arrow,.pole-card:hover .pole-link{transform:translateX(4px);}
+
+/* MOBILE STICKY CTA */
+.mobile-cta{
+  position:fixed;left:0;right:0;bottom:0;z-index:700;
+  display:flex;justify-content:center;padding:12px var(--px);
+  background:rgba(10,9,7,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-top:1px solid rgba(233,226,210,.08);
+  transform:translateY(100%);transition:transform .4s var(--ease);
+}
+.mobile-cta.visible{transform:translateY(0);}
+.mobile-cta a{
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;
+  background:var(--or);color:var(--noir);padding:13px 28px;text-decoration:none;
+  width:100%;max-width:340px;text-align:center;min-height:44px;display:flex;align-items:center;justify-content:center;
+}
+@media(min-width:768px){.mobile-cta{display:none}}
+
+/* REDUCED MOTION */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important;}
+  .hero-shimmer{background-position:0 0;-webkit-text-fill-color:var(--or);color:var(--or);background:none;}
+}
 
 /* BUTTONS */
 .btn-or{
@@ -302,11 +385,20 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
 <section id="hero">
   <canvas id="c"></canvas>
   <!-- <video class="hero-bg-video" muted autoplay loop playsinline src="assets/hero.mp4"></video> -->
+  <div class="hero-grain" aria-hidden="true"></div>
+  <div class="viseur" aria-hidden="true">
+    <span class="viseur-corner tl"></span>
+    <span class="viseur-corner tr"></span>
+    <span class="viseur-corner bl"></span>
+    <span class="viseur-corner br"></span>
+    <span class="viseur-rec"><span class="viseur-rec-dot"></span>REC</span>
+    <span class="viseur-tc" id="hl-tc">00:00:00:00</span>
+  </div>
   <div class="vignette"></div>
   <div class="hero-wrap">
     <img src="assets/zorfix-logo.svg" class="hero-logo" id="hl-avatar" alt="Zorfix.">
     <span class="hero-kicker" id="hl-kicker">ZORFIX · SUISSE ROMANDE</span>
-    <h1 class="hero-h1" id="hl-h1">On met <em class="hero-em">en lumière</em> ce que votre entreprise a de mieux.</h1>
+    <h1 class="hero-h1" id="hl-h1">On met <em class="hero-em">en <span class="hero-shimmer">lumière</span></em> ce que votre entreprise a de mieux.</h1>
     <div class="hero-btns" id="hl-btns">
       <a href="https://tally.so/r/LZkbM2" class="btn-or" target="_blank" rel="noopener">Demander un devis</a>
       <a href="production-video.html" class="btn-ghost">Voir nos prestations</a>
@@ -389,7 +481,7 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
     <span class="kicker" data-r><span class="kicker-line"></span>Édition Fondateur</span>
     <h2 class="fond-title" data-r>10 entreprises accompagnées.<br>Une opportunité unique.</h2>
     <div class="fond-jauge" data-r>
-      <span class="jauge-lbl">Lancement · 10 places disponibles</span>
+      <span class="jauge-lbl">Lancement · 10 places</span>
       <span class="jauge-lbl">1ᵉʳ mois offert · engagement 3 mois</span>
     </div>
     <p class="fond-desc" data-r>
@@ -458,6 +550,11 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
     <p class="foot-copy">ZORFIX · SUISSE ROMANDE · MMXXVI</p>
   </div>
 </footer>
+
+<!-- MOBILE STICKY CTA -->
+<div class="mobile-cta" id="mobile-cta">
+  <a href="https://tally.so/r/LZkbM2" target="_blank" rel="noopener">Demander un devis</a>
+</div>
 
 <script>
 // THREE.JS — beams / halo / particles
@@ -563,6 +660,12 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
 
   if(typeof Lenis==='undefined'||typeof gsap==='undefined') return;
 
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduceMotion){
+    gsap.set(['#hl-avatar','#hl-kicker','#hl-h1','#hl-btns','#hl-scroll','[data-r]','.ap-card'],{opacity:1,y:0,scale:1});
+    return;
+  }
+
   const lenis = new Lenis({duration:1.3, easing:t=>Math.min(1,1.001-Math.pow(2,-10*t)), smoothTouch:true, touchMultiplier:1.8});
   gsap.registerPlugin(ScrollTrigger);
   lenis.on('scroll', ScrollTrigger.update);
@@ -597,6 +700,30 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
       gsap.to('.ap-card', {opacity:1, y:0, duration:.75, stagger:.12, ease:'power3.out'});
     }
   });
+})();
+
+// VISEUR TIMECODE + MOBILE STICKY CTA
+(function(){
+  const tc = document.getElementById('hl-tc');
+  if(tc && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    const start = Date.now();
+    setInterval(()=>{
+      const el = Math.floor((Date.now()-start)/1000);
+      const h = String(Math.floor(el/3600)).padStart(2,'0');
+      const m = String(Math.floor((el%3600)/60)).padStart(2,'0');
+      const s = String(el%60).padStart(2,'0');
+      const f = String(Math.floor((Date.now()-start)/40)%25).padStart(2,'0');
+      tc.textContent = `${h}:${m}:${s}:${f}`;
+    },40);
+  }
+
+  const mobileCta = document.getElementById('mobile-cta');
+  if(mobileCta){
+    window.addEventListener('scroll',()=>{
+      const scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+      mobileCta.classList.toggle('visible', scrolled > .6);
+    },{passive:true});
+  }
 })();
 </script>
 </body>
