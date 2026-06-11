@@ -80,6 +80,27 @@ body{background:var(--noir);color:var(--creme);font-family:var(--body);overflow-
   background-size:200px 200px;
 }
 
+/* LETTERBOX OPENING */
+.letterbox{position:fixed;left:0;right:0;height:12vh;background:var(--noir);z-index:1000;pointer-events:none;}
+#letterbox-top{top:0}
+#letterbox-bottom{bottom:0}
+
+/* FOCUS-IN (mise au point) */
+.focus-in{opacity:0;filter:blur(8px);}
+
+/* GOLD SWEEP */
+.gold-sweep{
+  background-image:linear-gradient(100deg,currentColor 0%,currentColor 42%,var(--creme) 50%,currentColor 58%,currentColor 100%);
+  background-size:250% 100%;background-position:200% 0;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+
+/* SPOTLIGHT CARDS */
+@media(hover:hover) and (pointer:fine){
+  .spot{transition:transform .4s var(--ease),background-image .15s linear;}
+  .spot:hover{transform:translateY(-4px);background-image:radial-gradient(circle 240px at var(--mx,50%) var(--my,50%),rgba(231,181,60,.06),transparent 70%);}
+}
+
 /* NAV */
 nav#main-nav{
   position:fixed;top:0;left:0;right:0;z-index:500;
@@ -94,6 +115,9 @@ nav#main-nav{
 .nav-links{list-style:none;display:flex;align-items:center;gap:28px}
 .nav-links a{font-family:var(--mono);font-size:.63rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .3s}
 .nav-links a:hover,.nav-links a.active{color:var(--or)}
+.nav-links a:not(.nav-cta){position:relative;display:inline-block}
+.nav-links a:not(.nav-cta)::after{content:'';position:absolute;left:50%;right:50%;bottom:-6px;height:1px;background:var(--or);transition:left .3s var(--ease),right .3s var(--ease)}
+.nav-links a:not(.nav-cta):hover::after,.nav-links a:not(.nav-cta).active::after{left:0;right:0}
 .nav-links .nav-cta{
   font-family:var(--mono);font-size:.63rem;letter-spacing:.16em;text-transform:uppercase;
   color:var(--or);border:1px solid var(--or);padding:7px 18px;text-decoration:none;
@@ -216,6 +240,9 @@ nav#main-nav{
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important;}
   .hero-shimmer{background-position:0 0;-webkit-text-fill-color:var(--or);color:var(--or);background:none;}
+  .gold-sweep{background:none;-webkit-text-fill-color:currentColor;}
+  .focus-in{opacity:1 !important;filter:none !important;}
+  .letterbox{display:none !important;}
 }
 
 /* BUTTONS */
@@ -358,6 +385,11 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
 <div id="ambient" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
 
+<!-- LETTERBOX OPENING -->
+<div class="letterbox" id="letterbox-top" aria-hidden="true"></div>
+<div class="letterbox" id="letterbox-bottom" aria-hidden="true"></div>
+<script>if(sessionStorage.getItem('zorfixLB')){var lbT=document.getElementById('letterbox-top'),lbB=document.getElementById('letterbox-bottom');if(lbT)lbT.style.display='none';if(lbB)lbB.style.display='none';}</script>
+
 <!-- NAV -->
 <nav id="main-nav">
   <a href="index.html" class="nav-brand">
@@ -417,7 +449,7 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
 <!-- PITCH -->
 <section id="pitch" class="sec">
   <div class="wrap">
-    <p class="pitch-body" data-r>Chaque entreprise romande a une histoire qui mérite d'être montrée avec <em>force</em> et lumière.</p>
+    <p class="pitch-body" data-r>Chaque entreprise romande a une histoire qui mérite d'être montrée avec <em class="gold-sweep">force</em> et lumière.</p>
     <p class="pitch-sub" data-r>Nous sommes là pour ça.</p>
   </div>
 </section>
@@ -430,23 +462,23 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
       <h2 class="sec-h" data-r>On crée vos vidéos.</h2>
     </div>
     <div class="ap-grid">
-      <a href="production-video.html" class="ap-card">
-        <span class="ap-num" aria-hidden="true">01</span>
+      <a href="production-video.html" class="ap-card spot">
+        <span class="ap-num focus-in" aria-hidden="true">01</span>
         <span class="ap-title">Vidéo de présentation</span>
         <span class="ap-arrow">Voir →</span>
       </a>
-      <a href="production-video.html" class="ap-card">
-        <span class="ap-num" aria-hidden="true">02</span>
+      <a href="production-video.html" class="ap-card spot">
+        <span class="ap-num focus-in" aria-hidden="true">02</span>
         <span class="ap-title">Interview &amp; témoignage</span>
         <span class="ap-arrow">Voir →</span>
       </a>
-      <a href="production-video.html" class="ap-card">
-        <span class="ap-num" aria-hidden="true">03</span>
+      <a href="production-video.html" class="ap-card spot">
+        <span class="ap-num focus-in" aria-hidden="true">03</span>
         <span class="ap-title">Reportage terrain</span>
         <span class="ap-arrow">Voir →</span>
       </a>
-      <a href="production-video.html" class="ap-card">
-        <span class="ap-num" aria-hidden="true">04</span>
+      <a href="production-video.html" class="ap-card spot">
+        <span class="ap-num focus-in" aria-hidden="true">04</span>
         <span class="ap-title">Spot publicitaire</span>
         <span class="ap-arrow">Voir →</span>
       </a>
@@ -462,14 +494,14 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
       <h2 class="sec-h" data-r>Deux façons de travailler<br>avec nous.</h2>
     </div>
     <div class="poles-grid">
-      <a href="production-video.html" class="pole-card" data-r>
-        <span class="pole-num">01</span>
+      <a href="production-video.html" class="pole-card spot" data-r>
+        <span class="pole-num focus-in">01</span>
         <h3 class="pole-title">Production vidéo</h3>
         <p class="pole-desc">On filme votre entreprise : présentation, interview, terrain, spot publicitaire. Une vidéo quand vous en avez besoin.</p>
         <span class="pole-link">Voir les prestations →</span>
       </a>
-      <a href="reseaux-sociaux.html" class="pole-card" data-r>
-        <span class="pole-num">02</span>
+      <a href="reseaux-sociaux.html" class="pole-card spot" data-r>
+        <span class="pole-num focus-in">02</span>
         <h3 class="pole-title">Réseaux sociaux</h3>
         <p class="pole-desc">On gère votre présence en ligne chaque mois : tournage, montage et publication régulière.</p>
         <span class="pole-link">Voir les formules →</span>
@@ -520,7 +552,7 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
 <!-- CTA FINAL -->
 <section id="cta-final" class="sec">
   <div class="wrap">
-    <h2 class="cta-h" data-r>Parlons de<br><em>votre projet.</em></h2>
+    <h2 class="cta-h" data-r>Parlons de<br><em class="gold-sweep">votre projet.</em></h2>
     <p class="cta-sub" data-r>Un échange sans engagement. Une réponse sous 48h.</p>
     <a href="https://tally.so/r/LZkbM2" class="btn-or" data-r target="_blank" rel="noopener">Demander un devis</a>
   </div>
@@ -667,6 +699,8 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(reduceMotion){
     gsap.set(['#hl-avatar','#hl-kicker','#hl-h1','#hl-btns','#hl-scroll','[data-r]','.ap-card'],{opacity:1,y:0,scale:1});
+    gsap.set('.focus-in',{opacity:1,filter:'none'});
+    gsap.set('.gold-sweep',{backgroundPosition:'0 0'});
     return;
   }
 
@@ -675,6 +709,16 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add(t=>lenis.raf(t*1000));
   gsap.ticker.lagSmoothing(0);
+
+  // Letterbox opening (once per session)
+  const lbTop = document.getElementById('letterbox-top');
+  const lbBottom = document.getElementById('letterbox-bottom');
+  if(lbTop && lbBottom && lbTop.style.display !== 'none'){
+    gsap.timeline({delay:.15})
+      .to(lbTop,    {yPercent:-100, duration:1.1, ease:'power3.inOut'})
+      .to(lbBottom, {yPercent:100,  duration:1.1, ease:'power3.inOut'}, '<');
+  }
+  sessionStorage.setItem('zorfixLB','1');
 
   // Hero entrance
   gsap.set('#hl-avatar',{opacity:0,scale:.88});
@@ -704,6 +748,41 @@ footer{padding:52px var(--px) 36px;border-top:1px solid rgba(233,226,210,.05)}
       gsap.to('.ap-card', {opacity:1, y:0, duration:.75, stagger:.12, ease:'power3.out'});
     }
   });
+
+  // Focus-in (mise au point) sur les visuels
+  gsap.set('.focus-in',{opacity:0, filter:'blur(8px)'});
+  document.querySelectorAll('.focus-in').forEach(el=>{
+    gsap.to(el,{
+      opacity:1, filter:'blur(0px)', duration:.9, ease:'power2.out',
+      scrollTrigger:{trigger:el, start:'top 90%', toggleActions:'play none none none'}
+    });
+  });
+
+  // Balayage de lumière sur les mots dorés
+  gsap.set('.gold-sweep',{backgroundPosition:'200% 0'});
+  document.querySelectorAll('.gold-sweep').forEach(el=>{
+    ScrollTrigger.create({
+      trigger:el, start:'top 85%', once:true,
+      onEnter:()=>gsap.to(el,{backgroundPosition:'-50% 0', duration:1.2, ease:'power2.inOut'})
+    });
+  });
+
+  // Parallax léger du hero
+  gsap.to('.hero-wrap',{
+    yPercent:-8, ease:'none',
+    scrollTrigger:{trigger:'#hero', start:'top top', end:'bottom top', scrub:true}
+  });
+
+  // Reflet projecteur au survol (desktop)
+  if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+    document.querySelectorAll('.spot').forEach(card=>{
+      card.addEventListener('mousemove', e=>{
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', ((e.clientX-r.left)/r.width*100)+'%');
+        card.style.setProperty('--my', ((e.clientY-r.top)/r.height*100)+'%');
+      });
+    });
+  }
 })();
 
 // VISEUR TIMECODE + MOBILE STICKY CTA
